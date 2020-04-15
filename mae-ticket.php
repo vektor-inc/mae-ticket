@@ -18,7 +18,7 @@ class MaeTick_Front_Controller {
 
     public static function set_rewrite_rules() {
         // add_action( 'init', array( __CLASS__, 'add_routes' ) );
-        $this->manage_user_routes();
+        // $this->manage_user_routes();
         flush_rewrite_rules();
     }
 
@@ -51,7 +51,7 @@ class MaeTick_Front_Controller {
 
 
 add_action('wp_head', function(){
-    echo "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+    // echo "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
 });
 
 MaeTick_Front_Controller::init();
