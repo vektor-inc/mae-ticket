@@ -73,17 +73,6 @@ class MaeTick_QrCode {
         return self::API_BASE . '?' . implode( '&', $options );
     }
 
-    public static function getImgTagFromBase64( $code, $size, $quality , $additional_cllasses=array() ) {
-        list( $type, $data ) = self::getEncoded( $code, $size, $quality );
-
-        $classes = implode( ' ', $additional_cllasses );
-        $cls = '';
-        if ( !empty($classes) ) {
-            $cls = ' class="'. $classes . '"';
-        }
-        return '<img'. $cls . ' src="data:' . $type . ';base64,' . $data . '" />';
-    }
-
     public static function getImgTag( $code, $size, $quality, $additional_cllasses=array() ) {
         $url = self::createUrl( $code, $size, $quality );
         $classes = implode( ' ', $additional_cllasses );
@@ -93,13 +82,25 @@ class MaeTick_QrCode {
         }
         return '<img'. $cls . ' src="'. $url .'" />';
     }
+}
 
-    public static function getEncoded( $code, $size, $quality ) {
-        return self::_cache( array($code, $size, $quality), array( __CLASS__, '_getEncoded' ), array( $code, $size, $quality ) );
+class MaeTick_Base64QrCode extends MaeTick_QrCode {
+    public static function getImgTag( $code, $size, $quality , $additional_cllasses=array() ) {
+        list( $type, $data ) = self::getBody( $code, $size, $quality );
+
+        $classes = implode( ' ', $additional_cllasses );
+        $cls = '';
+        if ( !empty($classes) ) {
+            $cls = ' class="'. $classes . '"';
+        }
+        return '<img'. $cls . ' src="data:' . $type . ';base64,' . $data . '" />';
     }
 
-    public static function _getEncoded( $code, $size, $quality ) {
-        var_dump($code);
+    public static function getBody( $code, $size, $quality ) {
+        return self::_cache( array($code, $size, $quality), array( __CLASS__, '_getBody' ), array( $code, $size, $quality ) );
+    }
+
+    public static function _getBody( $code, $size, $quality ) {
         $url = self::createUrl( $code, $size, $quality );
         $r = wp_safe_remote_get($url);
 
@@ -110,6 +111,8 @@ class MaeTick_QrCode {
         if( $r['response']['code'] == 200) {
             return array( $type, base64_encode($r['body']) );
         }
+
+        return array( $type, '' );
     }
 
     public static function _cache( $keys, $fnc, $args ) {
@@ -121,9 +124,8 @@ class MaeTick_QrCode {
         }
         return $result;
     }
-
 }
+
 
 MaeTick_Front_Controller::init();
 register_activation_hook( __FILE__, array( 'MaeTick_Front_Controller', 'set_rewrite_rules') );
-
