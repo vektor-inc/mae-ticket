@@ -2,6 +2,7 @@
 
 class MaeTick_Front_Controller {
     const CODE_VAR = 'ticket_code';
+    const QR_INPUT_VAR = 'qr_input';
 
     public static function init() {
         add_filter( 'query_vars', array( __CLASS__, 'query_vars'), 10, 1 );
@@ -26,20 +27,25 @@ class MaeTick_Front_Controller {
 
     public static function add_routes() {
         add_rewrite_rule( '^qr/([^/]+)/?', 'index.php?'. self::CODE_VAR .'=$matches[1]', 'top' );
+        add_rewrite_rule( '^qr/?$', 'index.php?'. self::QR_INPUT_VAR .'=1', 'top' );
     }
 
     public static function query_vars( $vars ) {
         $vars[] = self::CODE_VAR;
+        $vars[] = self::QR_INPUT_VAR;
+
         return $vars;
     }
 
     public static function front_controller() {
         global $wp_query;
         $code_var = $wp_query->get( self::CODE_VAR );
-        var_dump($code_var);
-        error_log($code_var);
+        $qr_input = $wp_query->get( 'qr_input' );
 
-        get_template_part( 'qr-code' );
+        if ( $qr_input == '1' ) {
+            include( plugin_dir_path( __FILE__ ) . 'templates/input-form.php' );
+            die();
+        }
     }
 
 }

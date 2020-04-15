@@ -9,11 +9,22 @@ if ( !defined('ABSPATH') ) {
     die();
 }
 
-require_once( dirname( __FILE__ ) . '/class.maetic_front_controller.php' );
-require_once( dirname( __FILE__ ) . '/class.maetic_qrcode.php' );
-require_once( dirname( __FILE__ ) . '/class.maetic_base64qrcode.php' );
+require_once( 'class.maetic_front_controller.php' );
+require_once( 'class.maetic_qrcode.php' );
+require_once( 'class.maetic_base64qrcode.php' );
 
 
+add_action( 'wp_enqueue_scripts', 'maet_register_scripts' , 30, 0 );
+function maet_register_scripts() {
+    wp_register_style(
+        'maetic',
+        plugins_url( 'assets/css/style.css', __FILE__ ),
+        array(),
+        '1',
+        'all'
+    );
+    wp_enqueue_style( 'maetic');
+}
 
 MaeTick_Front_Controller::init();
 register_activation_hook( __FILE__, array( 'MaeTick_Front_Controller', 'set_rewrite_rules') );

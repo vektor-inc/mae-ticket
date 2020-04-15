@@ -1,0 +1,17 @@
+#maetick_input {
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    #number-1,
+    #number-2,
+    #number-3,
+    #number-4 {
+        width: 7em;
+        font-weight: 1.3em;
+        display: inline;
+        font-weight: bold;
+    }
+}
