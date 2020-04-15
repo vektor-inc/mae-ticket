@@ -1,0 +1,13 @@
+{
+    "name": "vektor-inc/mae-ticket",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Vektor, inc.",
+            "email": "info@vektor-inc.co.jp"
+        }
+    ],
+    "require": {
+        "endroid/qr-code": "^3.7"
+    }
+}
