@@ -49,10 +49,81 @@ class MaeTick_Front_Controller {
 
 }
 
+class MaeTick_QrCode {
+    const API_BASE = 'https://chart.googleapis.com/chart';
 
-add_action('wp_head', function(){
-    echo "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
-});
+    public function _construct( $code, $size="512x512", $quality='M' ) {
+        $this->code = $code;
+        $this->quality = $quality;
+        $this->size = $size;
+    }
+
+    public function _getUrl() {
+        return self::createUrl( $this->code, $this->size, $this->$quality );
+    }
+
+    public static function createUrl( $code, $size, $quality ) {
+        $options = array(
+            'cht=qr',
+            'chld=' . $quality,
+            'chs=' . $size,
+            'chl=' . urlencode($code)
+        );
+
+        return self::API_BASE . '?' . implode( '&', $options );
+    }
+
+    public static function getImgTagFromBase64( $code, $size, $quality , $additional_cllasses=array() ) {
+        list( $type, $data ) = self::getEncoded( $code, $size, $quality );
+
+        $classes = implode( ' ', $additional_cllasses );
+        $cls = '';
+        if ( !empty($classes) ) {
+            $cls = ' class="'. $classes . '"';
+        }
+        return '<img'. $cls . ' src="data:' . $type . ';base64,' . $data . '" />';
+    }
+
+    public static function getImgTag( $code, $size, $quality, $additional_cllasses=array() ) {
+        $url = self::createUrl( $code, $size, $quality );
+        $classes = implode( ' ', $additional_cllasses );
+        $cls = '';
+        if ( !empty($classes) ) {
+            $cls = ' class="'. $classes . '"';
+        }
+        return '<img'. $cls . ' src="'. $url .'" />';
+    }
+
+    public static function getEncoded( $code, $size, $quality ) {
+        return self::_cache( array($code, $size, $quality), array( __CLASS__, '_getEncoded' ), array( $code, $size, $quality ) );
+    }
+
+    public static function _getEncoded( $code, $size, $quality ) {
+        var_dump($code);
+        $url = self::createUrl( $code, $size, $quality );
+        $r = wp_safe_remote_get($url);
+
+        $type = 'image/ping';
+        if ( isset($r['headers']['content-type']) ) {
+            $type = $r['headers']['content-type'];
+        }
+        if( $r['response']['code'] == 200) {
+            return array( $type, base64_encode($r['body']) );
+        }
+    }
+
+    public static function _cache( $keys, $fnc, $args ) {
+        $key = md5( implode( $keys ) );
+        $result = wp_cache_get( $key );
+        if ( false == $result ) {
+            $result = call_user_func_array( $fnc, $args );
+            wp_cache_set($key, $result);
+        }
+        return $result;
+    }
+
+}
 
 MaeTick_Front_Controller::init();
 register_activation_hook( __FILE__, array( 'MaeTick_Front_Controller', 'set_rewrite_rules') );
+
