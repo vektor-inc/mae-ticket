@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "npx wp-env start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,6 +17,8 @@
   },
   "homepage": "https://github.com/vektor-inc/mae-ticket#readme",
   "devDependencies": {
+    "@wordpress/env": "^1.1.0",
+    "@wordpress/scripts": "^7.2.0",
     "gulp": "^4.0.2"
   }
 }
