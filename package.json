@@ -1,0 +1,21 @@
+{
+  "name": "mae-ticket",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vektor-inc/mae-ticket.git"
+  },
+  "author": "Vektor,inc.",
+  "bugs": {
+    "url": "https://github.com/vektor-inc/mae-ticket/issues"
+  },
+  "homepage": "https://github.com/vektor-inc/mae-ticket#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  }
+}
