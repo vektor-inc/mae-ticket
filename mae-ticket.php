@@ -5,6 +5,10 @@
 * Author: Vektor, Inc.
 */
 
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
 class MaeTick_Front_Controller {
     const CODE_VAR = 'ticket_code';
 
@@ -49,6 +53,24 @@ class MaeTick_Front_Controller {
 
 }
 
+class MaeTick_Backend_Controller {
+    const CODE_VAR = 'ticket_code';
+
+    public static function init() {
+        add_filter( 'query_vars', array( __CLASS__, 'query_vars'), 10, 1 );
+        add_action( 'init', array( __CLASS__, 'add_routes' ) );
+        add_action( 'template_redirect', array( __CLASS__, 'front_controller' ), 10, 1 );
+        // add_action( 'parse_query', array( ))
+        add_action( 'pre_get_posts', array( __CLASS__, 'pre_get_posts' ), 9, 1 );
+    }
+}
+
+/**
+ * Check if WooCommerce is active
+ **/
+if ( !in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+    return;
+}
 
 add_action('wp_head', function(){
     // echo "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
