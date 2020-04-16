@@ -72,9 +72,6 @@ class MaeTick_Front_Controller {
                 wp_safe_redirect( $location, 302 );
             }
 
-            var_dump(get_query_template('maetic/code_page'));
-            var_dump(get_query_template('post'));
-            var_dump(get_query_template('inc/template-tags.php'));
 
             $wp_query->init_query_flags();
 
