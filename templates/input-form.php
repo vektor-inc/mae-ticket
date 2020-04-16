@@ -16,7 +16,6 @@
             <input type="number" name="number-4" id="number-4" placeholder="0000" />
         </div>
 
-
         <?php do_action('maet_input_after'); ?>
 
         <input type="submit" class="_submit" value="確認" />

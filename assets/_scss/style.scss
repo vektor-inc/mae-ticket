@@ -11,6 +11,7 @@ $break_point: 1200px;
     }
 
     ._input_wrp {
+        min-width: 24em;
         display: flex;
         border-top: solid #444 1px;
         padding: .1em;

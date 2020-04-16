@@ -31,7 +31,6 @@
             let t = e.target
             let digit = Number(t.getAttribute('digit'))
 
-            console.log(e.keyCode);
             if(48 <= e.keyCode && e.keyCode <= 57) {
                 valid(t)
                 if (t.value.length == max && digit < numbers.length-1) {
@@ -39,10 +38,10 @@
                     numbers[digit+1].select()
                 }
             }
-            if(e.keyCode == 37 && digit != 0) {
+            if(e.keyCode == 37 && digit != 0){
                 numbers[digit-1].focus()
             }
-            if(e.keyCode == 39 && digit < numbers.length-1) {
+            if(e.keyCode == 39 && digit < numbers.length-1){
                 numbers[digit+1].focus()
             }
         })
@@ -53,6 +52,9 @@
 
             if(48 <= e.keyCode && e.keyCode <= 57) {
                 if(t.value.length == max)e.preventDefault()
+            }
+            if([189,69,190,229].includes(e.keyCode)){
+                e.preventDefault()
             }
             if(e.keyCode == 8) {
                 if(t.value.length == 0 && digit > 0) {
