@@ -15,24 +15,24 @@ class MaeTick_Postmeta {
 		if(is_null($order)){
 			return false;
 		};
-
-		return MaeTick_Postmeta::is_orderId_expired($orderId);
+		return time() <= MaeTick_Postmeta::get_expired_date($orderId);
 	}
 
-	/**
-	 * 注文が有効期限が切れか確認。
-	 * @param $orderId
-	 *
-	 * @return bool 有効な時にTrue|期限切れの時にFalse
-	 */
-	public static function is_orderId_expired($orderId){
+	public static function get_expired_date($orderId){
+
+		$ordered_date = MaeTick_Postmeta::get_ordered_date($orderId);
+		//unixtime
+		$expired_period =get_option( 'maetic_expired_period', false );
+		return $ordered_date + intval($expired_period);
+	}
+
+	public static function get_ordered_date($orderId){
 
 		$_date_completed = get_post_meta($orderId, '_date_completed', true);
 		if($_date_completed === ''){
 			return false;
+		}else{
+			return $_date_completed;
 		}
-		//unixtime
-		$expired_period =get_option( 'maetic_expired_period', false );
-		return time() <= $_date_completed + intval($expired_period);
 	}
 }
