@@ -9,9 +9,36 @@
     #number-2,
     #number-3,
     #number-4 {
-        width: 7em;
-        font-weight: 1.3em;
+        width: 6em;
+        padding: .1em 1em;
+        font-size: 1.3em;
         display: inline;
         font-weight: bold;
+        text-align: center;
+
+        border: none;
+        border-radius:0;
+        box-shadow: none;
+        &:focus {
+            border-bottom: solid #333 1px;
+        }
+        &.ok {
+            border-bottom: solid green 1px;
+        }
+        &.error {
+            border-bottom: solid red 1px;
+        }
+    }
+
+    ._wrap {
+        position: relative;
+        ._over {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #eee;
+        }
     }
 }
