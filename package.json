@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npx wp-env start",
+    "stop": "npx wp-env stop",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
