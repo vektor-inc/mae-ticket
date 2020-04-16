@@ -4,7 +4,6 @@
 * Version: 0.0.1
 * Author: Vektor, Inc.
 */
-
 if ( !defined('ABSPATH') ) {
     die();
 }
@@ -12,7 +11,6 @@ if ( !defined('ABSPATH') ) {
 require_once( 'class.maetic_front_controller.php' );
 require_once( 'class.maetic_qrcode.php' );
 require_once( 'class.maetic_base64qrcode.php' );
-
 
 add_action( 'wp_enqueue_scripts', 'maet_register_scripts' , 30, 0 );
 function maet_register_scripts() {
