@@ -43,9 +43,13 @@ class MaeTick_Front_Controller {
         $qr_input = $wp_query->get( 'qr_input' );
 
         if ( $qr_input == '1' ) {
-            include( plugin_dir_path( __FILE__ ) . 'templates/input-form.php' );
+            $wp_query->init_query_flags();
+            include( plugin_dir_path( __FILE__ ) . 'templates/input-page.php' );
             die();
         }
     }
+}
 
+function maetic_get_template_part( $part ) {
+    include( plugin_dir_path( __FILE__ ) . 'templates/' . $part . '.php' );
 }

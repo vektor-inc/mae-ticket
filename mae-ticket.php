@@ -24,6 +24,15 @@ function maet_register_scripts() {
         'all'
     );
     wp_enqueue_style( 'maetic');
+
+    wp_register_script(
+        'maetic-form',
+        plugins_url( 'assets/js/form.min.js', __FILE__ ),
+        array(),
+        '1',
+        true
+    );
+    wp_enqueue_script( 'maetic-form' );
 }
 
 MaeTick_Front_Controller::init();
