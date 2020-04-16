@@ -1,5 +1,5 @@
 <?php
-class MaeTick_Wp_Posts_model {
+class MaeTick_Postmeta_model {
     public static function init() {
 
     }

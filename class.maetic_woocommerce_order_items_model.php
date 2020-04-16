@@ -1,5 +1,5 @@
 <?php
-class MaeTick_Wp_Posts_model {
+class MaeTick_Woocommerce_Order_Items_model {
     public static function init() {
 
     }
