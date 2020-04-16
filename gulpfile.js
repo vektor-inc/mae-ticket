@@ -62,3 +62,5 @@ gulp.task('watch', ()=>{
     )
   )
 })
+
+gulp.task('default', gulp.series('sass', 'scripts'))
