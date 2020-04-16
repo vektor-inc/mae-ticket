@@ -1,8 +1,5 @@
 <?php
 class MaeTick_Postmeta {
-    public static function init() {
-
-    }
 
 	/**
 	 * 注文が存在するかつ、期限切れでないか確認。
@@ -18,6 +15,12 @@ class MaeTick_Postmeta {
 		return time() <= MaeTick_Postmeta::get_expired_date($orderId);
 	}
 
+	/**
+	 * 有効期限を取得
+	 * @param $orderId
+	 *
+	 * @return bool|int|mixed
+	 */
 	public static function get_expired_date($orderId){
 
 		$ordered_date = MaeTick_Postmeta::get_ordered_date($orderId);
@@ -26,6 +29,12 @@ class MaeTick_Postmeta {
 		return $ordered_date + intval($expired_period);
 	}
 
+	/**
+	 * 注文日時を取得
+	 * @param $orderId
+	 *
+	 * @return bool|mixed
+	 */
 	public static function get_ordered_date($orderId){
 
 		$_date_completed = get_post_meta($orderId, '_date_completed', true);
