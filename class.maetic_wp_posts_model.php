@@ -1,5 +1,5 @@
 <?php
-class MaeTick_Ticket_Stats_Management {
+class MaeTick_Wp_Posts_model {
     public static function init() {
 
     }
