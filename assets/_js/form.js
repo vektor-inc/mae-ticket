@@ -70,6 +70,11 @@
                 e.target.select()
             }
         })
+
+        window.addEventListener('DOMContentLoaded', ()=>{
+            numbers[0].select()
+            numbers[0].focus()
+        }, false)
     }
 })(document, 'maetick_input', 4, ['number-1','number-2','number-3','number-4'])
 ;

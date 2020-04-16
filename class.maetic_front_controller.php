@@ -37,17 +37,97 @@ class MaeTick_Front_Controller {
         return $vars;
     }
 
+    public static function is_edit_ticket( $user=null ) {
+        if ( null != $user ) {
+            $can = user_can( $user, 'edit_posts' );
+        }else{
+            $can = current_user_can( 'edit_posts' );
+        }
+        return apply_filters( 'maetic_is_edit_ticket', $can );
+    }
+
     public static function front_controller() {
         global $wp_query;
         $code_var = $wp_query->get( self::CODE_VAR );
         $qr_input = $wp_query->get( 'qr_input' );
 
         if ( $qr_input == '1' ) {
+            if ( ! self::is_edit_ticket() ) {
+                status_header(404);
+                nocache_headers();
+                // include( get_query_template( '404' ) );
+                if ( '' != get_404_template() )
+                    include( get_404_template() );
+                exit();
+            }
+
+            if (
+                isset($_GET['number-1'])
+                && isset($_GET['number-2'])
+                && isset($_GET['number-3'])
+                && isset($_GET['number-4'])
+            ) {
+                $code = $_GET['number-1'].$_GET['number-1'].$_GET['number-1'].$_GET['number-1'];
+                $location = get_home_url() . "/qr/$code";
+                wp_safe_redirect( $location, 302 );
+            }
+
+            var_dump(get_query_template('maetic/code_page'));
+            var_dump(get_query_template('post'));
+            var_dump(get_query_template('inc/template-tags.php'));
+
             $wp_query->init_query_flags();
-            include( plugin_dir_path( __FILE__ ) . 'templates/input-page.php' );
+
+            include( maetic_get_template( 'input-page' ) );
+
+            die();
+        }
+
+        if ( $code_var ) {
+            if ( ! self::is_edit_ticket() ) {
+                status_header(404);
+                nocache_headers();
+                if ( '' != get_404_template() )
+                    include( get_404_template() );
+                exit();
+            }
+
+            if ( $_SERVER["REQUEST_METHOD"] == 'POST' ) {
+                if ( empty( $_POST['maetic_code'] ) ) {
+                    $wp_query->set_404();
+                    status_header(404);
+                    return;
+                }
+                $code = $_POST['maetic_code'];
+                check_admin_referer( 'maetic_qr_'.$code );
+            }
+
+            include( maetic_get_template( 'code-page' ) );
+
             die();
         }
     }
+}
+
+function maetic_get_template( $type_origin, $templates=array() ) {
+     $type_origin = preg_replace( '|[^a-z0-9-]+|', '', $type_origin );
+     $type = 'maetic/' . $type_origin;
+
+    if ( empty( $templates ) ) {
+         $templates = array( "{$type}.php" );
+    }
+
+    $templates = apply_filters( "{$type}_template_hierarchy", $templates );
+    $template = locate_template( $templates );
+
+    // addition
+    $plugin_template_path = plugin_dir_path( __FILE__ ) . "templates/{$type_origin}.php";
+    error_log($plugin_template_path);
+    if ( empty( $template ) && file_exists( $plugin_template_path ) ) {
+        $template = $plugin_template_path;
+    }
+
+    return apply_filters( "{$type}_template", $template, $type, $templates );
 }
 
 function maetic_get_template_part( $part ) {

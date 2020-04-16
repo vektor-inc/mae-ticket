@@ -1,6 +1,6 @@
 
 <div id="maetick_input">
-    <form method="POST">
+    <form method="GET" id="maetic_form">
 
         <?php do_action('maet_input_before'); ?>
 
