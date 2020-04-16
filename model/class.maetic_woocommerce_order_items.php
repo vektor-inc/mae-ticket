@@ -1,5 +1,5 @@
 <?php
-class MaeTick_Woocommerce_Order_Itemmeta_model{
+class MaeTick_Woocommerce_Order_Items {
     public static function init() {
 
     }
