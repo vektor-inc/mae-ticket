@@ -4,18 +4,27 @@ class MaeTick_Postmeta {
 
     }
 
-//	public static function is_orderId_valid($orderId){
-//    	$order = get_post($orderId);
-//		if(is_null($order)){
-//			return false;
-//		};
-//
-//		$is_expired = MaeTick_Postmeta::is_orderId_expired($orderId);
-//		$is_maeTick = MaeTick_Postmeta::is_orderId_maetic_product($orderId);
-//
-//		return !$is_expired && $is_maeTick;
-//	}
+	/**
+	 * 注文が存在するかつ、期限切れでないか確認。
+	 * @param $orderId
+	 *
+	 * @return bool
+	 */
+	public static function is_orderId_valid($orderId){
+    	$order = get_post($orderId);
+		if(is_null($order)){
+			return false;
+		};
 
+		return MaeTick_Postmeta::is_orderId_expired($orderId);
+	}
+
+	/**
+	 * 注文が有効期限が切れか確認。
+	 * @param $orderId
+	 *
+	 * @return bool 有効な時にTrue|期限切れの時にFalse
+	 */
 	public static function is_orderId_expired($orderId){
 
 		$_date_completed = get_post_meta($orderId, '_date_completed', true);
@@ -26,9 +35,4 @@ class MaeTick_Postmeta {
 		$expired_period =get_option( 'maetic_expired_period', false );
 		return time() <= $_date_completed + intval($expired_period);
 	}
-
-//	public static function is_orderId_maetic_product($orderId){
-//		$is_maetic_product = get_post_meta($orderId, 'maetic_is_maetic_product', true);
-//		return $is_maetic_product !== '';
-//	}
 }
