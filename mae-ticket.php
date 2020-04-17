@@ -16,6 +16,13 @@ if ( !defined('ABSPATH') ) {
 require_once( dirname( __FILE__ ) . '/class.maetic_front_controller.php' );
 require_once( dirname( __FILE__ ) . '/class.maetic_qrcode.php' );
 require_once( dirname( __FILE__ ) . '/class.maetic_base64qrcode.php' );
+require_once( dirname( __FILE__ ) . '/model/class.maetic_postmeta.php' );
 
-MaeTick_Front_Controller::init();
-register_activation_hook( __FILE__, array( 'MaeTick_Front_Controller', 'set_rewrite_rules') );
+update_option('maetic_expired_period',31536000);
+$result = MaeTick_Postmeta::is_orderId_valid(20);
+
+var_dump($result);
+//echo date('Y/m/d H:i:s', $result);
+
+//MaeTick_Front_Controller::init();
+//register_activation_hook( __FILE__, array( 'MaeTick_Front_Controller', 'set_rewrite_rules') );
