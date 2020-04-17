@@ -1,6 +1,7 @@
 <?php
 
 class MaeTick_Front_Controller {
+    const ACTION_VAR = 'action_code';
     const CODE_VAR = 'ticket_code';
     const QR_INPUT_VAR = 'qr_input';
 
@@ -26,11 +27,13 @@ class MaeTick_Front_Controller {
     }
 
     public static function add_routes() {
+        add_rewrite_rule( '^qr/([^/]+)/([a-zA-Z]+)/?', 'index.php?'. self::CODE_VAR .'=$matches[1]&'. self::ACTION_VAR .'=$matches[2]', 'top' );
         add_rewrite_rule( '^qr/([^/]+)/?', 'index.php?'. self::CODE_VAR .'=$matches[1]', 'top' );
         add_rewrite_rule( '^qr/?$', 'index.php?'. self::QR_INPUT_VAR .'=1', 'top' );
     }
 
     public static function query_vars( $vars ) {
+        $vars[] = self::ACTION_VAR;
         $vars[] = self::CODE_VAR;
         $vars[] = self::QR_INPUT_VAR;
 
@@ -50,12 +53,14 @@ class MaeTick_Front_Controller {
         global $wp_query;
         $code_var = $wp_query->get( self::CODE_VAR );
         $qr_input = $wp_query->get( 'qr_input' );
+        $action_var = $wp_query->get( self::ACTION_VAR );
 
         if ( $qr_input == '1' ) {
             if ( ! self::is_edit_ticket() ) {
                 status_header(404);
                 nocache_headers();
                 // include( get_query_template( '404' ) );
+
                 if ( '' != get_404_template() )
                     include( get_404_template() );
                 exit();
@@ -71,6 +76,11 @@ class MaeTick_Front_Controller {
                 $location = get_home_url() . "/qr/$code";
                 wp_safe_redirect( $location, 302 );
             }
+
+            add_filter( 'body_class', function( $classes ) {
+                $classes[] = 'code_imput';
+                return $classes;
+            }, 10, 1 );
 
 
             $wp_query->init_query_flags();
@@ -89,14 +99,32 @@ class MaeTick_Front_Controller {
                 exit();
             }
 
-            if ( $_SERVER["REQUEST_METHOD"] == 'POST' ) {
+            add_filter( 'body_class', function( $classes ) {
+                $classes[] = 'code_info';
+                return $classes;
+            }, 10, 1 );
+
+            if ( $action_var ) {
+                if ( $_SERVER["REQUEST_METHOD"] != 'POST' ) {
+                        $wp_query->set_404();
+                        status_header(404);
+                        return;
+                }
+
                 if ( empty( $_POST['maetic_code'] ) ) {
                     $wp_query->set_404();
                     status_header(404);
                     return;
                 }
+
                 $code = $_POST['maetic_code'];
-                check_admin_referer( 'maetic_qr_'.$code );
+                check_admin_referer( 'maetic_qr_' .$action_var. '_' .$code );
+
+                if ( $action_var == 'use' ) {
+
+                }else if ( $action_var == 'reverse' ) {
+
+                }
             }
 
             include( maetic_get_template( 'code-page' ) );
@@ -127,6 +155,10 @@ function maetic_get_template( $type_origin, $templates=array() ) {
     return apply_filters( "{$type}_template", $template, $type, $templates );
 }
 
-function maetic_get_template_part( $part ) {
-    include( plugin_dir_path( __FILE__ ) . 'templates/' . $part . '.php' );
+function maetic_get_template_part( $slug ) {
+    $template = maetic_get_template( $slug );
+
+    if ( $template ) {
+        include( $template );
+    }
 }
