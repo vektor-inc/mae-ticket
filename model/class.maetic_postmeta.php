@@ -26,6 +26,16 @@ class MaeTick_Postmeta {
 	}
 
 	/**
+	 * Maeticプロダクトか判定
+	 * @param $product_id
+	 *
+	 * @return bool
+	 */
+	public static function is_maetic_product($product_id){
+		return get_post_meta($product_id, 'enable_maetic_product', true);
+	}
+
+	/**
 	 * 注文日時を取得 (unixtime)
 	 * @param $orderId
 	 *

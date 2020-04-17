@@ -45,7 +45,7 @@ class MaeTick_Woocommerce_Order_Itemmeta extends MaeTick_Postmeta{
 	}
 
 	public static function save_maetic_product_options_field( $post_id ) {
-		$enable_maetic_product = isset( $_POST['enable_maetic_product'] ) ? 'yes' : 'no';
+		$enable_maetic_product = isset( $_POST['enable_maetic_product'] ) ? true : false;
 		update_post_meta( $post_id, 'enable_maetic_product', $enable_maetic_product );
 
 		if ( isset( $_POST['maetic_expired_period'] ) ) :
@@ -53,23 +53,6 @@ class MaeTick_Woocommerce_Order_Itemmeta extends MaeTick_Postmeta{
 		endif;
 	}
 
-	/**
-	 * Maeticプロダクトか判定
-	 * @param $orderId
-	 *
-	 * @return bool
-	 */
-	public static function is_orderId_maetic_product($orderId){
-		$is_maetic_product = get_post_meta($orderId, 'enable_maetic_product', true);
-		return $is_maetic_product !== '';
-	}
-
-	/**
-	 * 有効期限を取得 (unixtime)
-	 * @param $orderId
-	 *
-	 * @return bool|int|mixed
-	 */
 	public static function get_expired_date($order_item_id){
 		$item = new WC_Order_Item_Product($order_item_id);
 
