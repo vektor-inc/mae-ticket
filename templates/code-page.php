@@ -3,8 +3,10 @@
 <div class="container">
     <div id="maetic_code_page">
         <div class="info">
-            <?php echo $code_var; ?>
+            <span class="_code"><?php echo maetic_get_separated_code( $code_var ); ?></span>
         </div>
+
+        <hr/>
 
         <div class="_control">
             <form method="POST" action="/qr/<?php echo $code_var; ?>/use" >
