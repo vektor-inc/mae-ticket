@@ -15,7 +15,7 @@ class MaeTick_Front_Controller {
 
     public static function set_rewrite_rules() {
         // add_action( 'init', array( __CLASS__, 'add_routes' ) );
-        $this->manage_user_routes();
+//        $this->manage_user_routes();
         flush_rewrite_rules();
     }
 

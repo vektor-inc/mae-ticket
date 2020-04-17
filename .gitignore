@@ -9,3 +9,4 @@ node_modules/
 dist/
 sftp-config.json
 .wp-env.json
+wordpress/
