@@ -16,6 +16,15 @@ class MaeTick_Postmeta {
 //		return MaeTick_Postmeta::is_orderId_maetic_product($orderId);
 //	}
 
+	public static function get_expired_period($product_id){
+		$expired_period = get_post_meta($product_id, 'maetic_expired_period', true);
+		if($expired_period === ''){
+			return false;
+		}else{
+			return $expired_period;
+		}
+	}
+
 	/**
 	 * 注文日時を取得 (unixtime)
 	 * @param $orderId

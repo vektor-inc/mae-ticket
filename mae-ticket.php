@@ -25,8 +25,18 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 	MaeTick_Woocommerce_Order_Itemmeta::init();
 
 	add_action( 'woocommerce_after_register_post_type',function (){
-		$items = MaeTick_Woocommerce_Order_Items::init(20);
-		var_dump(($items));
+
+
+//		$expired_period = MaeTick_Postmeta::get_expired_period(18);
+//		echo $expired_period;
+
+
+		$order_items_id = MaeTick_Woocommerce_Order_Items::get_order_items_id(20);
+		foreach ($order_items_id as $order_item_id){
+			$expired_date = MaeTick_Woocommerce_Order_Itemmeta::get_expired_date($order_item_id);
+//			echo $expired_date . "|";
+			echo date('Y/m/d H:i:s', intval($expired_date)) . '|';
+		}
 	});
 }
 

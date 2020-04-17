@@ -1,5 +1,7 @@
 <?php
-class MaeTick_Woocommerce_Order_Itemmeta{
+require_once( dirname( __FILE__ ) . '/class.maetic_postmeta.php' );
+
+class MaeTick_Woocommerce_Order_Itemmeta extends MaeTick_Postmeta{
 
     public static function init() {
 	    add_filter( 'woocommerce_product_data_tabs', array( __CLASS__, 'maetic_product_tab'), 10, 1 );
@@ -29,7 +31,7 @@ class MaeTick_Woocommerce_Order_Itemmeta{
 
 		woocommerce_wp_text_input( array(
 			'id'				=> 'maetic_expired_period',
-			'label'				=> __( 'Expired Period', 'mae-ticket' ),
+			'label'				=> __( 'Expired Period (Day)', 'mae-ticket' ),
 			'desc_tip'			=> 'true',
 			'description'		=> __( 'Enter the number of days the virtual ticket is valid for.', 'mae-ticket' ),
 			'type' 				=> 'number',
@@ -38,7 +40,7 @@ class MaeTick_Woocommerce_Order_Itemmeta{
 				'step'	=> '1',
 			),
 		) );
-		?></div>dfsfdisok;
+		?></div>
 		</div><?php
 	}
 
@@ -68,10 +70,19 @@ class MaeTick_Woocommerce_Order_Itemmeta{
 	 *
 	 * @return bool|int|mixed
 	 */
-	public static function get_expired_date($orderId){
-		$ordered_date = MaeTick_Postmeta::get_ordered_date($orderId);
-		$expired_period = get_option( 'maetic_expired_period', false );
+	public static function get_expired_date($order_item_id){
+		$item = new WC_Order_Item_Product($order_item_id);
+
+		$order_id = $item->get_order_id();
+		$ordered_date = MaeTick_Postmeta::get_ordered_date($order_id);
+
+		$product_id   = $item->get_product_id();
+		$expired_period = MaeTick_Postmeta::get_expired_period($product_id);
 		return $ordered_date + (intval($expired_period)*86400);//期限切れ期間(日)×1日(秒)
+	}
+
+	public static function get_order_item_meta($item_id,$meta_key){
+		return wc_get_order_item_meta($item_id,$meta_key,true);
 	}
 
 }
