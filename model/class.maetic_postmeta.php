@@ -37,11 +37,11 @@ class MaeTick_Postmeta {
 	 */
 	public static function get_ordered_date($orderId){
 
-		$_date_completed = get_post_meta($orderId, '_date_completed', true);
-		if($_date_completed === ''){
-			return false;
-		}else{
-			return $_date_completed;
-		}
+		return $_date_completed = get_post_meta($orderId, '_date_completed', true);
+//		if($_date_completed === ''){
+//			return false;
+//		}else{
+//			return $_date_completed;
+//		}
 	}
 }
