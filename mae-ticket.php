@@ -1,9 +1,14 @@
 <?php
-/*
-* Plugin Name: maeticket
-* Version: 0.0.1
-* Author: Vektor, Inc.
-*/
+/**
+ * Plugin Name:     maeticket
+ * Plugin URI:      https://github.com/vektor-inc/mae-ticket
+ * Description:
+ * Author:          Vektor, Inc.
+ * Text Domain:     mae-ticket
+ * Domain Path:     /languages
+ * Version:         0.0.1
+ */
+
 if ( !defined('ABSPATH') ) {
     die();
 }
