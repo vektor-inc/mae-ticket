@@ -8,10 +8,6 @@
     "stop": "npx wp-env stop",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "wp-env": {
-    "plugin-dir": "mae-ticket",
-    "plugin-name": "Maeticket"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vektor-inc/mae-ticket.git"
