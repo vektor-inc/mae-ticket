@@ -17,12 +17,27 @@ require_once( dirname( __FILE__ ) . '/class.maetic_front_controller.php' );
 require_once( dirname( __FILE__ ) . '/class.maetic_qrcode.php' );
 require_once( dirname( __FILE__ ) . '/class.maetic_base64qrcode.php' );
 require_once( dirname( __FILE__ ) . '/model/class.maetic_postmeta.php' );
+require_once( dirname( __FILE__ ) . '/model/class.maetic_woocommerce_order_itemmeta.php' );
+require_once( dirname( __FILE__ ) . '/model/class.maetic_woocommerce_order_items.php' );
 
-update_option('maetic_expired_period',31536000);
-$result = MaeTick_Postmeta::is_orderId_valid(20);
 
-var_dump($result);
-//echo date('Y/m/d H:i:s', $result);
+if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+	MaeTick_Woocommerce_Order_Itemmeta::init();
+
+	add_action( 'woocommerce_after_register_post_type',function (){
+		$items = MaeTick_Woocommerce_Order_Items::init(20);
+		var_dump(($items));
+	});
+}
+
+
+
+//$is_valid = MaeTick_Postmeta::is_orderId_valid(20);
+//$expired_date = MaeTick_Postmeta::get_expired_date(18);
+
+//echo date('Y/m/d H:i:s', $expired_date);
+//var_dump($is_valid);
+
 
 //MaeTick_Front_Controller::init();
 //register_activation_hook( __FILE__, array( 'MaeTick_Front_Controller', 'set_rewrite_rules') );
