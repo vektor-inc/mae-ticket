@@ -1,9 +1,9 @@
-<?php get_header(); ?>
+<?php maetic_get_template_part( 'header' ); ?>
 
 <div class="container">
     <div id="maetic_code_page">
         <div class="info">
-            <?php echo $code; ?>
+            <?php echo $code_var; ?>
         </div>
 
         <div class="_control">
@@ -22,4 +22,4 @@
     </div>
 </div>
 
-<?php get_footer(); ?>
+<?php maetic_get_template_part( 'footer' ); ?>

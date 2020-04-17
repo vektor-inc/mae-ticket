@@ -4,7 +4,7 @@
 
         <?php do_action('maet_input_before'); ?>
 
-        <h2>input ticket code</h2>
+        <h2><?php _e('Input ticket code', 'maetic'); ?></h2>
 
         <div class="_input_wrp">
             <input type="number" name="number-1" id="number-1" placeholder="0000" />

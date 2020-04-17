@@ -8,6 +8,7 @@ if ( !defined('ABSPATH') ) {
     die();
 }
 
+require_once( 'functions.php' );
 require_once( 'class.maetic_front_controller.php' );
 require_once( 'class.maetic_qrcode.php' );
 require_once( 'class.maetic_base64qrcode.php' );
