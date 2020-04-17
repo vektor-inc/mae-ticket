@@ -5,7 +5,7 @@
   "main": "gulpfile.js",
   "scripts": {
     "gulp": "gulp",
-    "build": "gulp sass",
+    "build": "gulp default",
     "watch": "gulp watch",
     "start": "npx wp-env start",
     "stop": "npx wp-env stop"

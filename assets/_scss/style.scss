@@ -1,3 +1,8 @@
+$success_color: green;
+$error_color: red;
+$focus_color: #333;
+$break_point: 1200px;
+
 #maetick_input {
     input[type=number]::-webkit-inner-spin-button,
     input[type=number]::-webkit-outer-spin-button {
@@ -5,40 +10,90 @@
       margin: 0;
     }
 
-    #number-1,
-    #number-2,
-    #number-3,
-    #number-4 {
-        width: 6em;
-        padding: .1em 1em;
-        font-size: 1.3em;
-        display: inline;
-        font-weight: bold;
-        text-align: center;
+    ._input_wrp {
+        min-width: 24em;
+        display: flex;
+        border-top: solid #444 1px;
+        padding: .1em;
+        margin-bottom: 1em;
 
-        border: none;
-        border-radius:0;
-        box-shadow: none;
-        &:focus {
-            border-bottom: solid #333 1px;
-        }
-        &.ok {
-            border-bottom: solid green 1px;
-        }
-        &.error {
-            border-bottom: solid red 1px;
+        input[type=number] {
+            width: 100%;
+            padding: .1em;
+            font-size: 2em;
+            display: inline;
+            font-weight: bold;
+            text-align: center;
+            color: #333;
+            font-family: sans-serif;
+
+            border: none;
+            border-radius: 0;
+            border-bottom: solid #333 2px;
+
+            box-shadow: none;
+            &:focus {
+                border-bottom: solid $focus_color 2px;
+            }
+            &.ok {
+                border-bottom: solid $success_color 2px;
+            }
+            &.error {
+                border-bottom: solid $error_color 2px;
+            }
+            &::placeholder {
+                opacity: 0.2;
+            }
+            &::selection {
+                background-color: #03ba88;
+                color: #fff;
+                width:100%;
+            }
         }
     }
 
-    ._wrap {
-        position: relative;
-        ._over {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #eee;
+    .__border {
+        padding: 0em .2em;
+    }
+
+    ._submit {
+        width: 100%;
+        text-align: center;
+        padding: .3em;
+        font-size: 2em;
+
+    }
+
+    @media screen and (min-width: $break_point) {
+        .__border {
+            padding: 0em .5em;
         }
+        ._submit {
+            width: auto;
+            padding: .3em 1em;
+            font-size: 1em;
+        }
+    }
+}
+
+#maetic_code_page {
+
+    ._control form{
+        display: inline;
+    }
+
+    .btn-sticky {
+      display: inline-block;
+      padding: 0.5em 1em;
+      text-decoration: none;
+      background: #f7f7f7;
+      border-left: solid 6px #ff7c5c;/*左線*/
+      color: #ff7c5c;/*文字色*/
+      font-weight: bold;
+      box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+    }
+    .btn-sticky:active {
+      box-shadow: inset 0 0 2px rgba(128, 128, 128, 0.1);
+      transform: translateY(2px);
     }
 }
