@@ -45,7 +45,7 @@ class MaeTick_Woocommerce_Order_Itemmeta extends MaeTick_Postmeta{
 	}
 
 	public static function save_maetic_product_options_field( $post_id ) {
-		$enable_maetic_product = isset( $_POST['enable_maetic_product'] ) ? true : false;
+		$enable_maetic_product = isset( $_POST['enable_maetic_product'] ) ? 'yes' : 'no';
 		update_post_meta( $post_id, 'enable_maetic_product', $enable_maetic_product );
 
 		if ( isset( $_POST['maetic_expired_period'] ) ) :
@@ -64,8 +64,16 @@ class MaeTick_Woocommerce_Order_Itemmeta extends MaeTick_Postmeta{
 		return $ordered_date + (intval($expired_period)*86400);//期限切れ期間(日)×1日(秒)
 	}
 
-	public static function get_order_item_meta($item_id,$meta_key){
-		return wc_get_order_item_meta($item_id,$meta_key,true);
+	public static function get_order_item_meta($order_item_id,$meta_key){
+		return wc_get_order_item_meta($order_item_id,$meta_key,true);
+	}
+
+	public static function get_quantity($order_item_id){
+		return MaeTick_Woocommerce_Order_Itemmeta::get_order_item_meta($order_item_id,'_qty');
+	}
+
+	public static function get_used_ticket_quantity($order_item_id){
+		return wc_get_order_item_meta($order_item_id,'maetic_used_ticket_quantity',true);
 	}
 
 }

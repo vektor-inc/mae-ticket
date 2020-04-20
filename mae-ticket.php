@@ -26,19 +26,23 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 
 	add_action( 'woocommerce_after_register_post_type',function (){
 
-
-//		$expired_period = MaeTick_Postmeta::get_expired_period(18);
-//		echo $expired_period;
+		// $expired_period = MaeTick_Postmeta::get_expired_period(18);
+		// echo $expired_period;
 
 		$maetic_product = MaeTick_Postmeta::is_maetic_product(18);
-		echo $maetic_product;
-
+		echo "isMaetic : " . $maetic_product;
+		echo "<br>";
 
 		$order_items_id = MaeTick_Woocommerce_Order_Items::get_order_items_id(20);
 		foreach ($order_items_id as $order_item_id){
 			$expired_date = MaeTick_Woocommerce_Order_Itemmeta::get_expired_date($order_item_id);
-//			echo $expired_date . "|";
-//			echo date('Y/m/d H:i:s', intval($expired_date)) . '|';
+			$quantity = MaeTick_Woocommerce_Order_Itemmeta::get_quantity($order_item_id);
+			$used_ticket_quantity = MaeTick_Woocommerce_Order_Itemmeta::get_used_ticket_quantity($order_item_id);
+			echo "date : " . date('Y/m/d H:i:s', intval($expired_date)) . '|';
+			echo "<br>";
+			echo "quantity : " . $quantity;
+			echo "<br>";
+			echo "used_ticket_quantity : " . $used_ticket_quantity;
 		}
 	});
 }
