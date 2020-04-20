@@ -1,20 +1,22 @@
 <?php
+require_once( dirname( __FILE__ ) . '/class.maetic_woocommerce_order_itemmeta.php' );
+
 class MaeTick_Postmeta {
 
-//	/**
-//	 * 注文が存在するかつ、Maeticプロダクトか確認。
-//	 * @param $orderId
-//	 *
-//	 * @return bool
-//	 */
-//	public static function is_orderId_valid($orderId){
-//    	$order = get_post($orderId);
-//		if(is_null($order)){
-//			return false;
-//		};
-//		//		&& time() <= MaeTick_Postmeta::get_expired_date($orderId)
-//		return MaeTick_Postmeta::is_orderId_maetic_product($orderId);
-//	}
+	/**
+	 * 注文が存在するかつ、Maeticプロダクトか確認。
+	 * @param $orderId
+	 *
+	 * @return bool
+	 */
+	public static function is_orderItemId_valid($order_item_id){
+		$product_id = MaeTick_Woocommerce_Order_Itemmeta::get_product_id_from_order_item_id($order_item_id);
+		$is_maetic_product = MaeTick_Postmeta::is_maetic_product($product_id);
+		$expired_date = MaeTick_Woocommerce_Order_Itemmeta::get_expired_date($order_item_id);
+		$left_ticket = MaeTick_Woocommerce_Order_Itemmeta::has_ticket_qty_left($order_item_id);
+
+		return $is_maetic_product==="yes" && $expired_date >= time() && $left_ticket;
+	}
 
 	public static function get_expired_period($product_id){
 		$expired_period = get_post_meta($product_id, 'maetic_expired_period', true);
