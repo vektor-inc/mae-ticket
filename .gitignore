@@ -8,6 +8,4 @@ node_modules/
 *.zip
 dist/
 sftp-config.json
-wordpress/
-
 /vendor/

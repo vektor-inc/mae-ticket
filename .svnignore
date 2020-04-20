@@ -1,0 +1,14 @@
+.DS_Store
+phpcs.xml
+phpunit.xml
+Thumbs.db
+wp-cli.local.yml
+node_modules/
+*.tar.gz
+*.zip
+dist/
+sftp-config.json
+.wp-env.json
+
+gulpfile.js
+package*.json

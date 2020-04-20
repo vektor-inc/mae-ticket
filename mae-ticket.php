@@ -13,9 +13,10 @@ if ( !defined('ABSPATH') ) {
     die();
 }
 
-require_once( dirname( __FILE__ ) . '/class.maetic_front_controller.php' );
-require_once( dirname( __FILE__ ) . '/class.maetic_qrcode.php' );
-require_once( dirname( __FILE__ ) . '/class.maetic_base64qrcode.php' );
+require_once( 'functions.php' );
+require_once( 'class.maetic_front_controller.php' );
+require_once( 'class.maetic_qrcode.php' );
+require_once( 'class.maetic_base64qrcode.php' );
 require_once( dirname( __FILE__ ) . '/model/class.maetic_postmeta.php' );
 require_once( dirname( __FILE__ ) . '/model/class.maetic_woocommerce_order_itemmeta.php' );
 require_once( dirname( __FILE__ ) . '/model/class.maetic_woocommerce_order_items.php' );
@@ -54,14 +55,6 @@ require_once( dirname( __FILE__ ) . '/model/class.maetic_woocommerce_order_items
 //		}
 //	});
 //}
-
-
-$is_valid = MaeTick_Postmeta::is_orderId_valid(20);
-$expired_date = MaeTick_Postmeta::get_expired_date(18);
-
-echo date('Y/m/d H:i:s', $expired_date);
-var_dump($is_valid);
-
 
 MaeTick_Front_Controller::init();
 register_activation_hook( __FILE__, array( 'MaeTick_Front_Controller', 'set_rewrite_rules') );
