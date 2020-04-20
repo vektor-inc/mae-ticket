@@ -67,3 +67,7 @@ function maet_register_scripts() {
     );
     wp_enqueue_script( 'maetic-form' );
 }
+
+function maetic_get_random_value() {
+    return random_int(0, 16);
+}

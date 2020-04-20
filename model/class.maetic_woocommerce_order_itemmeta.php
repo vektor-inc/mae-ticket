@@ -3,21 +3,21 @@ require_once( dirname( __FILE__ ) . '/class.maetic_postmeta.php' );
 
 class MaeTick_Woocommerce_Order_Itemmeta extends MaeTick_Postmeta{
 
-    public static function init() {
-	    add_filter( 'woocommerce_product_data_tabs', array( __CLASS__, 'maetic_product_tab'), 10, 1 );
-	    add_action( 'woocommerce_product_data_panels', array( __CLASS__, 'maetic_product_tab_content'), 10, 0 );
+	public static function init() {
+		add_filter( 'woocommerce_product_data_tabs', array( __CLASS__, 'maetic_product_tab'), 10, 1 );
+		add_action( 'woocommerce_product_data_panels', array( __CLASS__, 'maetic_product_tab_content'), 10, 0 );
 		add_action( 'woocommerce_process_product_meta', array( __CLASS__, 'save_maetic_product_options_field'),10, 1 );
-    }
+	}
 
-    public static function maetic_product_tab($tabs) {
-    	// Key should be exactly the same as in the class product_type
-	    $tabs['simple'] = array(
-	    	'label'	 => __( 'Maetic', 'mae-ticket' ),
-		    'target' => 'maetic_product_options',
-		    'class'  => ('show_if_maetic_product'),
-		    );
-	    return $tabs;
-    }
+	public static function maetic_product_tab($tabs) {
+		// Key should be exactly the same as in the class product_type
+		$tabs['simple'] = array(
+			'label'	 => __( 'Maetic', 'mae-ticket' ),
+			'target' => 'maetic_product_options',
+			'class'  => ('show_if_maetic_product'),
+			);
+		return $tabs;
+	}
 
 	public static function maetic_product_tab_content() {
 		// Dont forget to change the id in the div with your target of your product tab
@@ -99,7 +99,36 @@ class MaeTick_Woocommerce_Order_Itemmeta extends MaeTick_Postmeta{
 	}
 
 	public static function update_used_ticket_quantity($order_item_id,$count){
-		return wc_update_order_item_meta($order_item_id,'maetic_used_ticket_quantity',$count);
+		return wc_update_order_item_meta( $order_item_id, 'maetic_used_ticket_quantity', $count );
+	}
+
+
+	public static function get_ticket_id( $ticket_id ) {
+		global $wpdb;
+		$table_name = $wpdb->prefix . 'maetic_ticket_id';
+
+		$r = $wpdb->get_results(
+			$wpdb->prepare(
+				"
+					SELECT `order_item_id`
+					FROM `vk_woocommerce_order_itemmeta`
+					WHERE
+						`meta_key` = %s
+						AND
+							`meta_value` LIKE %s
+					;
+				",
+				$table_name,
+				$ticket_id
+			),
+			ARRAY_N
+		);
+
+		if ( count($r) == 0 ) {
+			return false;
+		}
+
+		return $r[0][0];
 	}
 
 }
