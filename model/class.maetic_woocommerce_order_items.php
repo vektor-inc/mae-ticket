@@ -43,6 +43,19 @@ class MaeTick_Woocommerce_Order_Items {
 		MaeTick_Woocommerce_Order_Itemmeta::use( $this->ID, $quantity );
 	}
 
+	public function ticket_code() {
+		$code = wc_get_order_item_meta( $this->ID, 'maetic_ticket_id');
+		if ( empty( $code ) ) {
+			$code = self::generate_ticket_id( $this->ID );
+		}
+		return $code;
+	}
+
+	public function ticket_url( ) {
+		return home_url( 'qr/'. $this->ticket_code() );
+	}
+
+
 	public static function get_order_from_ticket_id( $ticket_id ) {
 		$r = MaeTick_Woocommerce_Order_Itemmeta::get_ticket_id( $ticket_id );
 		if ( !empty($r) ) {

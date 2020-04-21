@@ -111,6 +111,11 @@ class MaeTick_Front_Controller {
 				self::http404();
 			}
 
+			$ticket = MaeTick_Woocommerce_Order_Items::get_order_from_ticket_id( $code_var );
+			if ( empty( $ticket ) ) {
+				self::http404();
+			}
+
 			if ( $action_var ) {
 				if ( $_SERVER["REQUEST_METHOD"] != 'POST' ) {
 					self::http404();
@@ -124,21 +129,25 @@ class MaeTick_Front_Controller {
 				check_admin_referer( 'maetic_qr_' .$action_var. '_' .$code );
 
 				if ( $action_var == 'use' ) {
+					send_ticket_email($ticket, 'd16gp13@gmail.com' );
+
 					wp_safe_redirect( '/qr/' . $code );
 				}else if ( $action_var == 'reverse' ) {
 					wp_safe_redirect( '/qr/' . $code );
 				}
 			}
 
-			$ticket = MaeTick_Woocommerce_Order_Items::get_order_from_ticket_id( $code_var );
-
-			if ( empty( $ticket ) ) {
-				self::http404();
-			}
-
+			// send_ticket_email($ticket, 'imamura@vektor-inc.co.jp' );
+			// send_ticket_email($ticket, 'd16gp13@gmail.com' );
+			// wp_mail('imamura@vektor-inc.co.jp','subject', 'message');
 			include( maetic_get_template( 'code-page' ) );
 
 			die();
 		}
 	}
 }
+
+
+add_action('wp_mail_failed', function($err){
+	var_dump($err);
+}, 10, 1);

@@ -13,6 +13,7 @@
                 <dt>expired date</dt>
                 <dd><?php $ticket->expired_date(); ?>
             </dd>
+            <?php echo $ticket->ticket_url(); ?>
         </div>
 
         <hr/>
@@ -21,7 +22,7 @@
             <form method="POST" action="/qr/<?php echo $code_var; ?>/use" >
                 <input type="hidden" name="maetic_code" value="<?php echo $code_var; ?>" />
                 <?php wp_nonce_field( 'maetic_qr_use_'. $code_var ); ?>
-                <input type="number" min="0" max="<?php echo $ticket->quantity(); ?>" value="1" />
+                <input type="number" min="1" max="<?php echo $ticket->quantity(); ?>" value="1" />
                 <button class="btn-sticky">use</button>
             </form>
 
