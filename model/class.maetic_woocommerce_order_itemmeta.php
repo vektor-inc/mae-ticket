@@ -1,6 +1,6 @@
 <?php
 require_once( dirname( __FILE__ ) . '/class.maetic_postmeta.php' );
-
+define('LOG_USE', 'USE');
 class MaeTick_Woocommerce_Order_Itemmeta extends MaeTick_Postmeta{
 
 	public static function init() {
@@ -53,7 +53,7 @@ class MaeTick_Woocommerce_Order_Itemmeta extends MaeTick_Postmeta{
 		endif;
 	}
 
-	public static function get_expired_date($order_item_id){
+	public static function get_expired_date( $order_item_id ){
 
 		$order_id   = MaeTick_Woocommerce_Order_Itemmeta::get_order_id_from_order_item_id($order_item_id);
 		$ordered_date = MaeTick_Postmeta::get_ordered_date($order_id);
@@ -78,7 +78,7 @@ class MaeTick_Woocommerce_Order_Itemmeta extends MaeTick_Postmeta{
 	}
 
 	public static function get_quantity($order_item_id){
-		return MaeTick_Woocommerce_Order_Itemmeta::get_order_item_meta($order_item_id,'_qty');
+		return self::get_order_item_meta($order_item_id,'_qty');
 	}
 
 	public static function get_used_ticket_quantity($order_item_id){
@@ -93,8 +93,8 @@ class MaeTick_Woocommerce_Order_Itemmeta extends MaeTick_Postmeta{
 	}
 
 	public static function has_ticket_qty_left($order_item_id){
-		$quantity = MaeTick_Woocommerce_Order_Itemmeta::get_quantity($order_item_id);
-		$used_ticket_quantity = MaeTick_Woocommerce_Order_Itemmeta::get_used_ticket_quantity($order_item_id);
+		$quantity = self::get_quantity($order_item_id);
+		$used_ticket_quantity = self::get_used_ticket_quantity($order_item_id);
 		return $quantity - $used_ticket_quantity > 0;
 	}
 
@@ -102,23 +102,46 @@ class MaeTick_Woocommerce_Order_Itemmeta extends MaeTick_Postmeta{
 		return wc_update_order_item_meta( $order_item_id, 'maetic_used_ticket_quantity', $count );
 	}
 
+	public static function use( $order_item_id, $count ) {
+		$left = self::has_ticket_qty_left( $order_item_id ) - intval( $count );
+
+		if ( $left < 0 ) {
+			throw new WP_Error( 'invalid quantity' );
+		}
+		$payload = array(
+			'count' => $count
+		);
+		self::log( $order_item_id, LOG_USE, $payload );
+		self::update_used_ticket_quantity( $order_item_id, $left );
+	}
+
+	public static function log( $order_item_id, $type, $values=array() ){
+		$values['type'] = $type;
+		$values['time'] = time();
+		$values['user'] = get_current_user_id();
+		return wc_add_order_item_meta( $order_item_id, 'maetic_log', $values, false );
+	}
+
+	public static function logs( $order_item_id ) {
+		return wc_get_order_item_meta( $order_item_id, 'maetic_log' );
+	}
 
 	public static function get_ticket_id( $ticket_id ) {
 		global $wpdb;
-		$table_name = $wpdb->prefix . 'maetic_ticket_id';
+		$table_name = $wpdb->prefix . 'woocommerce_order_itemmeta';
 
 		$r = $wpdb->get_results(
 			$wpdb->prepare(
 				"
 					SELECT `order_item_id`
-					FROM `vk_woocommerce_order_itemmeta`
+					FROM `$table_name`
 					WHERE
 						`meta_key` = %s
 						AND
-							`meta_value` LIKE %s
+							`meta_value` = %s
 					;
 				",
-				$table_name,
+				'maetic_ticket_id',
 				$ticket_id
 			),
 			ARRAY_N

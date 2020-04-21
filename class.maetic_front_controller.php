@@ -130,6 +130,12 @@ class MaeTick_Front_Controller {
 				}
 			}
 
+			$ticket = MaeTick_Woocommerce_Order_Items::get_order_from_ticket_id( $code_var );
+
+			if ( empty( $ticket ) ) {
+				self::http404();
+			}
+
 			include( maetic_get_template( 'code-page' ) );
 
 			die();

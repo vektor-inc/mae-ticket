@@ -31,9 +31,9 @@ function maetic_get_template_part( $slug ) {
 
 function maetic_code_strip( $code ){
      $code = preg_replace( '|[^0-9]+|', '', $code );
-    while( strlen($code) < 16 ) {
-        $code = '0' . $code;
-    }
+    // while( strlen($code) < 16 ) {
+    //     $code = '0' . $code;
+    // }
 
     return $code;
 }

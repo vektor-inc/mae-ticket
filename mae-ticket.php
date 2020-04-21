@@ -26,45 +26,5 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 
 }
 
-
-//モデルのサンプルコード
-add_action( 'woocommerce_after_register_post_type',function (){
-	$expired_period = MaeTick_Postmeta::get_expired_period(1156);
-	echo $expired_period;
-
-	$maetic_product = MaeTick_Postmeta::is_maetic_product(1156);
-	echo "isMaetic : " . $maetic_product;
-	echo "<br>";
-
-
-	// $r = MaeTick_Woocommerce_Order_Items::generate_ticket_id(1156);
-	// var_dump($r);
-	$r  = MaeTick_Woocommerce_Order_Itemmeta::get_ticket_id(15);
-	var_dump($r);
-
-	$order_items_id = MaeTick_Woocommerce_Order_Items::get_order_items_id(30);
-	if ( empty( $order_items_id ) ) {
-		return false;
-	}
-
-	foreach ($order_items_id as $order_item_id){
-
-		$valid = MaeTick_Postmeta::is_orderItemId_valid($order_item_id);
-		echo "valid : " . var_dump($valid);
-
-		$update = MaeTick_Woocommerce_Order_Itemmeta::update_used_ticket_quantity($order_item_id,0);
-
-		$expired_date = MaeTick_Woocommerce_Order_Itemmeta::get_expired_date($order_item_id);
-		$quantity = MaeTick_Woocommerce_Order_Itemmeta::get_quantity($order_item_id);
-		$used_ticket_quantity = MaeTick_Woocommerce_Order_Itemmeta::get_used_ticket_quantity($order_item_id);
-		echo "<br>";
-		echo "date : " . date('Y/m/d H:i:s', intval($expired_date)) . '|';
-		echo "<br>";
-		echo "quantity : " . $quantity;
-		echo "<br>";
-		echo "used_ticket_quantity : " . $used_ticket_quantity;
-	}
-});
-
 MaeTick_Front_Controller::init();
 register_activation_hook( __FILE__, array( 'MaeTick_Front_Controller', 'set_rewrite_rules') );
