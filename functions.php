@@ -75,6 +75,13 @@ function maetic_get_random_value() {
     return random_int(0, 16);
 }
 
+add_action( 'woocommerce_payment_complete', 'maetic_payment_complete', 10, 1 );
+function maetic_payment_complete( $order_id ) {
+    error_log("---------------------------");
+    error_log( $order_id );
+    $order = new WC_Order( $order_id );
+}
+
 
 function send_ticket_email( $ticket, $user_email, $args=array() ) {
     array_push($args, 'Content-Type: text/html; charset=ISO-2022-JP');
@@ -97,10 +104,11 @@ function send_ticket_email( $ticket, $user_email, $args=array() ) {
   <meta name="viewport" content="width=device-width">
   <title>$subject</title>
   <style type="text/css">
+    body{color:#fff}
     .wrap{padding:1em;max-width:600px;margin:auto;text-align:center}
     #header{background-color:red;color:#fff;}
     #footer{border-top:1px solid #333;background-color:#aaa;}
-    #code{font-size:2em;font-weight:bold;font-family:sans-serif;}
+    #code{font-size:3em;font-weight:bold;font-family:sans-serif;}
     #c_w{border-bottom:solid 1px #333;padding:0.3em;}
     #qr{padding:2em;background-color:#fff;}
   </style>

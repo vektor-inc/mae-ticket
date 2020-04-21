@@ -63,13 +63,17 @@ class MaeTick_Woocommerce_Order_Itemmeta extends MaeTick_Postmeta{
 		return $ordered_date + (intval($expired_period)*86400);//期限切れ期間(日)×1日(秒)
 	}
 
+	public static function item_object( $order_item_id ) {
+		return new WC_Order_Item_Product($order_item_id);
+	}
+
 	public static function get_order_id_from_order_item_id($order_item_id){
-		$item = new WC_Order_Item_Product($order_item_id);
+		$item = self::item_object($order_item_id);
 		return $item->get_order_id();
 	}
 
 	public static function get_product_id_from_order_item_id($order_item_id){
-		$item = new WC_Order_Item_Product($order_item_id);
+		$item = self::item_object($order_item_id);
 		return $item->get_product_id();
 	}
 
@@ -108,6 +112,7 @@ class MaeTick_Woocommerce_Order_Itemmeta extends MaeTick_Postmeta{
 		if ( $left < 0 ) {
 			throw new WP_Error( 'invalid quantity' );
 		}
+
 		$payload = array(
 			'count' => $count
 		);

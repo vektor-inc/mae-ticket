@@ -2,12 +2,18 @@
 class MaeTick_Woocommerce_Order_Items {
 	public $ID;
 	public $product;
+	public $order;
 	public $logs;
 
 	public function __construct( $post_id ) {
 		$this->ID = $post_id;
+		$this->get_metas();
+	}
+
+	public function get_metas() {
 		$this->product = $this->_product();
 		$this->logs = $this->_logs();
+		$this->order = $this->_order();
 	}
 
 	public function quantity() {
@@ -37,6 +43,10 @@ class MaeTick_Woocommerce_Order_Items {
 			return false;
 		}
 		return get_post( $product_id, 'OBJECT' );
+	}
+
+	private function _order() {
+		return get_post( MaeTick_Woocommerce_Order_Itemmeta::get_order_id_from_order_item_id( $this->ID ), 'OBJECT');
 	}
 
 	public function use( $quantity ) {
