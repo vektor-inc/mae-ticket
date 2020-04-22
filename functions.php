@@ -121,12 +121,15 @@ function maetic_add_qr_code( $order, $sent_to_admin, $plain_text, $email ){
     if ( MaeTick_Order::has_ticket( $order->get_id() ) ) {
         error_log("famas-----");
         $ticket_order = new MaeTick_Order( $order->get_id(), $order );
+        $size = 128;
+        $s = $size . "px";
+
         echo <<<EOL
 <style>
 #code{font-size:2em;font-weight:bold;font-family:sans-serif;}
 #c_w{border-bottom:solid 1px #333;padding:0.3em;text-align:center;width:100%;}
 #qr{text-align: center;}
-#qr_w{padding:2em;background-color:#fff;border: solid 1px #000}
+#qr_w{padding:2em;background-color:#fff;}
 </style>
 EOL;
 
@@ -134,11 +137,8 @@ EOL;
         $code = maetic_get_separated_code( $ticket_order->get_ticket_code() );
         echo '<div id="c_w"><span id="code">'. $code .'</span></div>';
 
-        $size = 128;
         $attributes = array(
             'alt' => "QR Code",
-            'width' => $size . "px",
-            'height' => $size . "px"
         );
 
         $qr = MaeTick_QrCode::getImgTag( $ticket_order->ticket_url(), $size, 'M', $attributes );

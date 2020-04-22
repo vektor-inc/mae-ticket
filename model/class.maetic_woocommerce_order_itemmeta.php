@@ -1,7 +1,7 @@
 <?php
-require_once( dirname( __FILE__ ) . '/class.maetic_postmeta.php' );
 define('LOG_USE', 'USE');
-class MaeTick_Woocommerce_Order_Itemmeta extends MaeTick_Postmeta{
+
+class MaeTick_Woocommerce_Order_Itemmeta {
 
 	public static function init() {
 		add_filter( 'woocommerce_product_data_tabs', array( __CLASS__, 'maetic_product_tab'), 10, 1 );
@@ -130,33 +130,4 @@ class MaeTick_Woocommerce_Order_Itemmeta extends MaeTick_Postmeta{
 	public static function logs( $order_item_id ) {
 		return wc_get_order_item_meta( $order_item_id, 'maetic_log' );
 	}
-
-	public static function get_ticket_id( $ticket_id ) {
-		global $wpdb;
-		$table_name = $wpdb->prefix . 'woocommerce_order_itemmeta';
-
-		$r = $wpdb->get_results(
-			$wpdb->prepare(
-				"
-					SELECT `order_item_id`
-					FROM `$table_name`
-					WHERE
-						`meta_key` = %s
-						AND
-							`meta_value` = %s
-					;
-				",
-				'maetic_ticket_id',
-				$ticket_id
-			),
-			ARRAY_N
-		);
-
-		if ( count($r) == 0 ) {
-			return false;
-		}
-
-		return $r[0][0];
-	}
-
 }
