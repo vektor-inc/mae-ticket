@@ -40,6 +40,18 @@ class MaeTick_Order {
 		return 1;
 	}
 
+	public function tickets() {
+		$tickets = array();
+
+		foreach( $this->order->get_items() as $item_id => $item ) {
+			// var_dump($item);
+			if ( self::is_maetic_product( $item->get_product_id() ) == 'yes' ) {
+				$tickets[] = new Maetic_Ticket( $item_id, $item );
+			}
+		}
+
+		return $tickets;
+	}
 	// public function get_ticket_code() {
 	//  return get_post_meta( $this->ID, self::TICKET_META_NAME, true );
 	// }
@@ -72,6 +84,7 @@ class MaeTick_Order {
 
 	public static function get_order_from_ticket_id( $ticket_id ) {
 		$r = self::search_order_from_ticket_code( $ticket_id );
+
 		if ( !empty($r) ) {
 			$order = new MaeTick_Order( $r );
 			$order->get_order();
@@ -154,5 +167,35 @@ class MaeTick_Order {
 		}else{
 			return $_date_completed;
 		}
+	}
+
+}
+
+class Maetic_Ticket {
+	public $ID;
+	public $item;
+	public $expire_datetime;
+
+	public function __construct( $item_id, $item=null ) {
+		$this->ID = $item_id;
+		if ( !empty($item) ) {
+			$this->item = $item;
+		}
+	}
+
+	public function get_title() {
+		return get_the_title( $this->item->get_product_id() );
+	}
+
+	public function get_quantity() {
+		return $this->item->get_quantity();
+	}
+
+	public function get_rest_quantity() {
+		return $this->item->get_quantity();
+	}
+
+	public function refresh() {
+
 	}
 }

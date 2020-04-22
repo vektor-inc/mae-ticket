@@ -116,6 +116,12 @@ body.maetic {
         text-align: center;
     }
 
+    .ticket {
+        border: solid black 1px;
+        border-left: green solid 30px;
+        margin-bottom: 3em;
+    }
+
     ._message {
         max-width: 30em;
         margin: 3em auto;
