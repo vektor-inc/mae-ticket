@@ -9,7 +9,7 @@ class MaeTick_Base64QrCode extends MaeTick_QrCode {
         if ( !empty($classes) ) {
             $cls = ' class="'. $classes . '"';
         }
-        return '<img'. $cls . ' src="data:' . $type . ';base64,' . $data . '" />';
+        return '<img'. $cls . ' src=\'data:' . $type . ';base64,' . $data . '\' />';
     }
 
     public static function getBody( $code, $size, $quality ) {

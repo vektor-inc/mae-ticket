@@ -1,98 +1,108 @@
 <?php
-class MaeTick_Woocommerce_Order_Items {
+
+class MaeTick_Order {
+	const TICKET_META_NAME = 'maetic_ticket_id';
 	public $ID;
-	public $product;
 	public $order;
-	public $logs;
 
-	public function __construct( $post_id ) {
-		$this->ID = $post_id;
-		$this->get_metas();
-	}
+	public function __construct( $order_id, $order=null ) {
+		$this->ID = $order_id;
 
-	public function get_metas() {
-		$this->product = $this->_product();
-		$this->logs = $this->_logs();
-		$this->order = $this->_order();
-	}
-
-	public function quantity() {
-		return MaeTick_Woocommerce_Order_Itemmeta::has_ticket_qty_left( $this->ID );
-	}
-
-	public function used_quantity() {
-		return MaeTick_Woocommerce_Order_Itemmeta::get_used_ticket_quantity( $this->ID );
-	}
-
-	public function all_quantity() {
-		return MaeTick_Woocommerce_Order_Itemmeta::get_quantity( $this->ID );
-	}
-
-	public function expired_date() {
-		return MaeTick_Woocommerce_Order_Itemmeta::get_expired_date( $this->ID );
-	}
-
-	private function _logs() {
-		return MaeTick_Woocommerce_Order_Itemmeta::logs( $this->ID );
-	}
-
-	private function _product() {
-		$product_id = MaeTick_Woocommerce_Order_Itemmeta::get_product_id_from_order_item_id( $this->ID );
-
-		if ( empty( $product_id ) ) {
-			return false;
+		if ( !is_null( $order ) ) {
+			$this->order = $order;
 		}
-		return get_post( $product_id, 'OBJECT' );
 	}
 
-	private function _order() {
-		return get_post( MaeTick_Woocommerce_Order_Itemmeta::get_order_id_from_order_item_id( $this->ID ), 'OBJECT');
+	public function get_order() {
+		if ( empty( $this->order ) ) {
+			$this->order = new WC_Order( $this->ID );
+		}
+		return $this->order;
 	}
 
-	public function use( $quantity ) {
-		MaeTick_Woocommerce_Order_Itemmeta::use( $this->ID, $quantity );
-	}
-
-	public function ticket_code() {
-		$code = wc_get_order_item_meta( $this->ID, 'maetic_ticket_id');
+	public function get_ticket_code() {
+		$code = get_post_meta( $this->ID, self::TICKET_META_NAME, true );
 		if ( empty( $code ) ) {
-			$code = self::generate_ticket_id( $this->ID );
+			$code = $this->set_ticket_code();
 		}
 		return $code;
 	}
 
 	public function ticket_url( ) {
-		return home_url( 'qr/'. $this->ticket_code() );
+		return home_url( 'qr/'. $this->get_ticket_code() );
 	}
 
+	public function set_ticket_code() {
+		return self::generate_ticket_code( $this->ID );
+	}
 
-	public static function get_order_from_ticket_id( $ticket_id ) {
+	public function get_ticket_expired_time() {
+		return 1;
+	}
+
+	// public function get_ticket_code() {
+	// 	return get_post_meta( $this->ID, self::TICKET_META_NAME, true );
+	// }
+
+	public static function get_order_from_ticket_code( $ticket_id ) {
 		$r = MaeTick_Woocommerce_Order_Itemmeta::get_ticket_id( $ticket_id );
 		if ( !empty($r) ) {
 			return new MaeTick_Woocommerce_Order_Items( $r );
 		}
 	}
 
-	public static function generate_ticket_id( $order_id ) {
-		$ticket_id = maetic_get_random_value();
-		wc_update_order_item_meta( $order_id, 'maetic_ticket_id', $ticket_id );
-		return $ticket_id;
+	public static function generate_ticket_code( $order_id ) {
+		$ticket_code = strval( maetic_add_pad( maetic_get_random_value() ) );
+		update_post_meta( $order_id, self::TICKET_META_NAME, $ticket_code );
+		return $ticket_code;
 	}
 
-	public static function get_order_items_id( $order_id ){
-		$order = wc_get_order($order_id);
+	public static function has_ticket( $order_id ) {
+		$order = new WC_Order( $order_id );
 
-		if ( empty($order) ) {
-			return array();
+		foreach( $order->get_items() as $item_id => $order ) {
+			if ( MaeTick_Postmeta::is_maetic_product( $order->get_product_id() ) == 'yes' ) {
+				$in_ticket = true;
+				return $order;
+			}
 		}
 
-		$order_items = $order->get_items();
-		$order_items_id =[];
+		return false;
+	}
 
-		foreach ($order_items as $order_item_id => $order_item) {
-			array_push($order_items_id,$order_item_id);
+	public static function get_order_from_ticket_id( $ticket_id ) {
+		$r = self::search_order_from_ticket_code( $ticket_id );
+		if ( !empty($r) ) {
+			$order = new MaeTick_Order( $r );
+			$order->get_order();
+			return $order;
+		}
+	}
+
+	public static function search_order_from_ticket_code( $ticket_id ) {
+		global $wpdb;
+
+		$r = $wpdb->get_results(
+			$wpdb->prepare(
+				"
+					SELECT `post_id`
+					FROM `$wpdb->postmeta`
+					WHERE
+						`meta_key` = %s
+						AND
+							`meta_value` = %s
+					;
+				",
+				self::TICKET_META_NAME,
+				$ticket_id
+			),
+			ARRAY_N
+		);
+
+		if ( count($r) == 0 ) {
+			return null;
 		}
 
-		return $order_items_id;
+		return $r[0][0];
 	}
 }

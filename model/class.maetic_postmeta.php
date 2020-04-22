@@ -1,6 +1,8 @@
 <?php
 require_once( dirname( __FILE__ ) . '/class.maetic_woocommerce_order_itemmeta.php' );
 
+
+
 class MaeTick_Postmeta {
 
 	/**
@@ -13,7 +15,7 @@ class MaeTick_Postmeta {
 		$product_id = MaeTick_Woocommerce_Order_Itemmeta::get_product_id_from_order_item_id($order_item_id);
 		$is_maetic_product = MaeTick_Postmeta::is_maetic_product($product_id);
 		$expired_date = MaeTick_Woocommerce_Order_Itemmeta::get_expired_date($order_item_id);
-		$left_ticket = MaeTick_Woocommerce_Order_Itemmeta::has_ticket_qty_left($order_item_id);
+		$left_ticket = MaeTick_Woocommerce_Order_Itemmeta::has_ticket_qty_left($orderis_maetic_product_item_id);
 
 		return $is_maetic_product==="yes" && $expired_date >= time() && $left_ticket;
 	}

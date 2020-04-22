@@ -34,7 +34,7 @@ function maetic_code_strip( $code ){
     return $code;
 }
 
-function maetic_code_add_pad( $code ) {
+function maetic_add_pad( $code ) {
     while( strlen($code) < 16 ) {
         $code = '0' . $code;
     }
@@ -72,68 +72,78 @@ function maet_register_scripts() {
 }
 
 function maetic_get_random_value() {
-    return random_int(0, 16);
+    return random_int( 0, pow(10, 16) - 1 );
 }
 
 add_action( 'woocommerce_payment_complete', 'maetic_payment_complete', 10, 1 );
 function maetic_payment_complete( $order_id ) {
     error_log("---------------------------");
     error_log( $order_id );
-    $order = new WC_Order( $order_id );
+    var_dump("-------------------------------");
+
+    if ( $in_ticket ) {
+        $ticket_order = new MaeTick_Order( $order_id, $order );
+        $ticket_code = $ticket_order->set_ticket_code();
+    }
 }
 
+add_action('wp_head', function(){
+    // maetic_payment_complete(1166);
+    $order = new WC_Order(1181);
+    if ( MaeTick_Order::has_ticket( $order->get_id() ) ) {
+        error_log("message");
+        var_dump($order);
+    //     var_dump($ticket_order)
+        $ticket_order = new MaeTick_Order( $order->get_id(), $order );
 
-function send_ticket_email( $ticket, $user_email, $args=array() ) {
-    array_push($args, 'Content-Type: text/html; charset=ISO-2022-JP');
-    $title = get_bloginfo('name');
-    $subject ="[$title] チケットの送信";
+        $size = 128;
+        $attributes = array(
+            'alt' => "QR Code",
+            'width' => $size . "px",
+            'height' => $size . "px"
+        );
 
-    $qr = MaeTick_QrCode::getImgTag( $ticket->ticket_url(), 256, 'M' );
-    $code = maetic_get_separated_code($ticket->ticket_code());
-    $site_url = site_url();
-    $ticket_quantity = $ticket->all_quantity();
-    $ticket_expired_date = $ticket->expired_date();
-    $ticket_title = $ticket->product->post_title;
+        $qr = MaeTick_QrCode::getImgTag( $ticket_order->ticket_url(), $size, 'M', $attributes );
+        var_dump($qr);
+    }
 
-    $body = <<<EOL
-<!doctype html>
-<html lang="en">
-<head>
-  <meta http-equiv="Content-Type" content="text/html;>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width">
-  <title>$subject</title>
-  <style type="text/css">
-    body{color:#fff}
-    .wrap{padding:1em;max-width:600px;margin:auto;text-align:center}
-    #header{background-color:red;color:#fff;}
-    #footer{border-top:1px solid #333;background-color:#aaa;}
-    #code{font-size:3em;font-weight:bold;font-family:sans-serif;}
-    #c_w{border-bottom:solid 1px #333;padding:0.3em;}
-    #qr{padding:2em;background-color:#fff;}
-  </style>
-</head>
-<body>
-<div id="header"><div class="wrap">
-<h1>Ticket Information</h1>
-</div></div>
-<div id="content"><div class="wrap">
-    <p>チケットの詳細です。お越しの際にこちらのQRコードを提示するか、下記の番号をお伝えください。</p>
-    <h2>$ticket_title</h2>
-    <div id="c_w"><span id="code">$code</span></div>
-    <div id="qr">$qr</div>
-    <div id="description">
-        チケット数: $ticket_quantity 枚<br/>
-        有効期限: $ticket_expired_date
-    </div>
-</div></div>
-<div id="footer"><div class="wrap">
-<ul>
-    <li><a href="$title">$site_url</a></li>
-</ul>
-</div></div>
-</html>
+    $r=MaeTick_Order::get_order_from_ticket_id('2903910494195477');
+    var_dump($r);
+});
+
+add_action('woocommerce_email_order_details', 'maetic_add_qr_code', 10, 4);
+function maetic_add_qr_code( $order, $sent_to_admin, $plain_text, $email ){
+
+    if ($order->get_status() != 'completed' ) {
+        return;
+    }
+
+    if ( MaeTick_Order::has_ticket( $order->get_id() ) ) {
+        error_log("famas-----");
+        $ticket_order = new MaeTick_Order( $order->get_id(), $order );
+        echo <<<EOL
+<style>
+#code{font-size:2em;font-weight:bold;font-family:sans-serif;}
+#c_w{border-bottom:solid 1px #333;padding:0.3em;text-align:center;width:100%;}
+#qr{text-align: center;}
+#qr_w{padding:2em;background-color:#fff;border: solid 1px #000}
+</style>
 EOL;
 
-    wp_mail([$user_email], $subject, $body, $args);
+        echo "<p>チケットの詳細です。お越しの際にこちらのQRコードを提示するか、<br/>下記の番号をお伝えください。</p>";
+        $code = maetic_get_separated_code( $ticket_order->get_ticket_code() );
+        echo '<div id="c_w"><span id="code">'. $code .'</span></div>';
+
+        $size = 128;
+        $attributes = array(
+            'alt' => "QR Code",
+            'width' => $size . "px",
+            'height' => $size . "px"
+        );
+
+        $qr = MaeTick_QrCode::getImgTag( $ticket_order->ticket_url(), $size, 'M', $attributes );
+
+        echo '<div id="qr"><span id="qr_w">'. $qr. '</span></div>';
+
+    }
 }
