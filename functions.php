@@ -50,8 +50,8 @@ function maetic_get_separated_code( $code, $separator='-' ) {
     return implode( $separator, $buf );
 }
 
-add_action( 'wp_enqueue_scripts', 'maet_register_scripts' , 30, 0 );
-function maet_register_scripts() {
+add_action( 'wp_enqueue_scripts', 'maetic_register_scripts' , 30, 0 );
+function maetic_register_scripts() {
     wp_register_style(
         'maetic',
         plugins_url( 'assets/css/style.css', __FILE__ ),
@@ -82,30 +82,6 @@ function maetic_payment_complete( $order_id ) {
         $ticket_code = $ticket_order->get_ticket_code();
     }
 }
-
-// add_action('wp_head', function(){
-//     // maetic_payment_complete(1166);
-//     $order = new WC_Order(1181);
-//     if ( MaeTick_Order::has_ticket( $order->get_id() ) ) {
-//         error_log("message");
-//         var_dump($order);
-//     //     var_dump($ticket_order)
-//         $ticket_order = new MaeTick_Order( $order->get_id(), $order );
-
-//         $size = 128;
-//         $attributes = array(
-//             'alt' => "QR Code",
-//             'width' => $size . "px",
-//             'height' => $size . "px"
-//         );
-
-//         $qr = MaeTick_QrCode::getImgTag( $ticket_order->ticket_url(), $size, 'M', $attributes );
-//         var_dump($qr);
-//     }
-
-//     $r=MaeTick_Order::get_order_from_ticket_id('2903910494195477');
-//     var_dump($r);
-// });
 
 add_action('woocommerce_email_order_details', 'maetic_add_qr_code', 10, 4);
 function maetic_add_qr_code( $order, $sent_to_admin, $plain_text, $email ){
