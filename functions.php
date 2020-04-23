@@ -75,10 +75,17 @@ function maetic_get_random_value() {
     return random_int( 0, pow(10, 16) - 1 );
 }
 
+function maetic_get_qr_url( $path ) {
+    return get_home_url() .'/qr'. $path;
+}
+
 add_action( 'woocommerce_payment_complete', 'maetic_payment_complete', 10, 1 );
 function maetic_payment_complete( $order_id ) {
-    if ( $in_ticket ) {
+    if ( MaeTick_Order::is_maetic_product( $order_id ) ) {
         $ticket_order = new MaeTick_Order( $order_id, $order );
+        if ( !$ticket_order->is_completed() ) {
+            return;
+        }
         $ticket_code = $ticket_order->get_ticket_code();
     }
 }
@@ -91,7 +98,6 @@ function maetic_add_qr_code( $order, $sent_to_admin, $plain_text, $email ){
     }
 
     if ( MaeTick_Order::has_ticket( $order->get_id() ) ) {
-        error_log("famas-----");
         $ticket_order = new MaeTick_Order( $order->get_id(), $order );
         $size = 128;
         $s = $size . "px";
@@ -116,6 +122,5 @@ EOL;
         $qr = MaeTick_QrCode::getImgTag( $ticket_order->ticket_url(), $size, 'M', $attributes );
 
         echo '<div id="qr"><span id="qr_w">'. $qr. '</span></div>';
-
     }
 }

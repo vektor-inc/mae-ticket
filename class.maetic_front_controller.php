@@ -80,7 +80,7 @@ class MaeTick_Front_Controller {
 				&& isset($_GET['number-4'])
 			) {
 				$code = $_GET['number-1'].$_GET['number-2'].$_GET['number-3'].$_GET['number-4'];
-				$location = get_home_url() . "/qr/$code";
+				$location = maetic_get_qr_url("/$code");
 				wp_safe_redirect( $location, 302 );
 			}
 
@@ -106,6 +106,8 @@ class MaeTick_Front_Controller {
 				$classes[] = 'maetic';
 				return $classes;
 			}, 10, 1 );
+
+			remove_action( 'wp_head', '_wp_render_title_tag', 1);
 
 			if ( ! self::is_edit_ticket() ) {
 				self::http404();

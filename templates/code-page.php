@@ -1,6 +1,9 @@
 <?php maetic_get_template_part( 'header' ); ?>
 
 <div class="container">
+    <div class="maetic_header">
+        /<a href="<?php echo maetic_get_qr_url(''); ?>">qr</a>
+    </div>
     <div id="maetic_code_page">
         <div class="info">
             <span class="_code"><?php echo maetic_get_separated_code( $code_var ); ?></span>
@@ -17,7 +20,7 @@
         </div>
 
         <div class="_tickets">
-            <form method="POST" action="use">
+            <form method="POST" action="<?php echo maetic_get_qr_url("/$code_var/use"); ?>">
                 <input type="hidden" name="maetic_code" value="<?php echo $code_var; ?>" />
                 <?php wp_nonce_field( 'maetic_qr_use_'. $code_var ); ?>
 

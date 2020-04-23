@@ -1,6 +1,6 @@
 
 <div id="maetick_input">
-    <form method="GET" id="maetic_form">
+    <form method="GET" id="maetic_form" action="<?php echo maetic_get_qr_url(''); ?>">
 
         <?php do_action('maet_input_before'); ?>
 

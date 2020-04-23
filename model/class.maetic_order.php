@@ -10,7 +10,13 @@ class MaeTick_Order {
 
 		if ( !is_null( $order ) ) {
 			$this->order = $order;
+		} else {
+			$this->get_order();
 		}
+	}
+
+	public function is_completed() {
+		return $this->order->is_paid();
 	}
 
 	public function get_order() {
@@ -29,7 +35,7 @@ class MaeTick_Order {
 	}
 
 	public function ticket_url( ) {
-		return home_url( 'qr/'. $this->get_ticket_code() );
+		return maetic_get_qr_url( '/'. $this->get_ticket_code() );
 	}
 
 	public function set_ticket_code() {
