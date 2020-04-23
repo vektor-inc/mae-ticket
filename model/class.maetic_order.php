@@ -44,17 +44,24 @@ class MaeTick_Order {
 		$tickets = array();
 
 		foreach( $this->order->get_items() as $item_id => $item ) {
-			// var_dump($item);
 			if ( self::is_maetic_product( $item->get_product_id() ) == 'yes' ) {
-				$tickets[] = new Maetic_Ticket( $item_id, $item );
+				$tickets[$item_id] = new Maetic_Ticket( $item_id, $item );
 			}
 		}
 
 		return $tickets;
 	}
-	// public function get_ticket_code() {
-	//  return get_post_meta( $this->ID, self::TICKET_META_NAME, true );
-	// }
+
+	public function use_tickets( $count ) {
+		$tickets = $this->tickets();
+		foreach ( $count as $id => $c ) {
+			$c = intval( $c );
+			if ( $c <= 0 ) {
+				continue;
+			}
+			$tickets[ $id ]->use($c);
+		}
+	}
 
 	public static function get_order_from_ticket_code( $ticket_id ) {
 		$r = MaeTick_Woocommerce_Order_Itemmeta::get_ticket_id( $ticket_id );
@@ -169,33 +176,4 @@ class MaeTick_Order {
 		}
 	}
 
-}
-
-class Maetic_Ticket {
-	public $ID;
-	public $item;
-	public $expire_datetime;
-
-	public function __construct( $item_id, $item=null ) {
-		$this->ID = $item_id;
-		if ( !empty($item) ) {
-			$this->item = $item;
-		}
-	}
-
-	public function get_title() {
-		return get_the_title( $this->item->get_product_id() );
-	}
-
-	public function get_quantity() {
-		return $this->item->get_quantity();
-	}
-
-	public function get_rest_quantity() {
-		return $this->item->get_quantity();
-	}
-
-	public function refresh() {
-
-	}
 }

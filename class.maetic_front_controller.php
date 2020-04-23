@@ -79,7 +79,7 @@ class MaeTick_Front_Controller {
 				&& isset($_GET['number-3'])
 				&& isset($_GET['number-4'])
 			) {
-				$code = $_GET['number-1'].$_GET['number-1'].$_GET['number-1'].$_GET['number-1'];
+				$code = $_GET['number-1'].$_GET['number-2'].$_GET['number-3'].$_GET['number-4'];
 				$location = get_home_url() . "/qr/$code";
 				wp_safe_redirect( $location, 302 );
 			}
@@ -113,8 +113,6 @@ class MaeTick_Front_Controller {
 
 			$order = MaeTick_Order::get_order_from_ticket_id( $code_var );
 
-			error_log($code_var);
-
 			if ( empty( $order ) ) {
 				self::http404();
 			}
@@ -132,9 +130,7 @@ class MaeTick_Front_Controller {
 				check_admin_referer( 'maetic_qr_' .$action_var. '_' .$code );
 
 				if ( $action_var == 'use' ) {
-
-					wp_safe_redirect( '/qr/' . $code );
-				}else if ( $action_var == 'reverse' ) {
+					$order->use_tickets($_POST['count']);
 					wp_safe_redirect( '/qr/' . $code );
 				}
 			}

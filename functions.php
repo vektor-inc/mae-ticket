@@ -45,7 +45,7 @@ function maetic_get_separated_code( $code, $separator='-' ) {
     $block = ceil( strlen($code) / 4 );
     $buf = array();
     for($i=0;$i<$block;$i++){
-        $buf[] = substr( $code, $i, 4 );
+        $buf[] = substr( $code, $i * 4, 4 );
     }
     return implode( $separator, $buf );
 }
@@ -77,39 +77,35 @@ function maetic_get_random_value() {
 
 add_action( 'woocommerce_payment_complete', 'maetic_payment_complete', 10, 1 );
 function maetic_payment_complete( $order_id ) {
-    error_log("---------------------------");
-    error_log( $order_id );
-    var_dump("-------------------------------");
-
     if ( $in_ticket ) {
         $ticket_order = new MaeTick_Order( $order_id, $order );
-        $ticket_code = $ticket_order->set_ticket_code();
+        $ticket_code = $ticket_order->get_ticket_code();
     }
 }
 
-add_action('wp_head', function(){
-    // maetic_payment_complete(1166);
-    $order = new WC_Order(1181);
-    if ( MaeTick_Order::has_ticket( $order->get_id() ) ) {
-        error_log("message");
-        var_dump($order);
-    //     var_dump($ticket_order)
-        $ticket_order = new MaeTick_Order( $order->get_id(), $order );
+// add_action('wp_head', function(){
+//     // maetic_payment_complete(1166);
+//     $order = new WC_Order(1181);
+//     if ( MaeTick_Order::has_ticket( $order->get_id() ) ) {
+//         error_log("message");
+//         var_dump($order);
+//     //     var_dump($ticket_order)
+//         $ticket_order = new MaeTick_Order( $order->get_id(), $order );
 
-        $size = 128;
-        $attributes = array(
-            'alt' => "QR Code",
-            'width' => $size . "px",
-            'height' => $size . "px"
-        );
+//         $size = 128;
+//         $attributes = array(
+//             'alt' => "QR Code",
+//             'width' => $size . "px",
+//             'height' => $size . "px"
+//         );
 
-        $qr = MaeTick_QrCode::getImgTag( $ticket_order->ticket_url(), $size, 'M', $attributes );
-        var_dump($qr);
-    }
+//         $qr = MaeTick_QrCode::getImgTag( $ticket_order->ticket_url(), $size, 'M', $attributes );
+//         var_dump($qr);
+//     }
 
-    $r=MaeTick_Order::get_order_from_ticket_id('2903910494195477');
-    var_dump($r);
-});
+//     $r=MaeTick_Order::get_order_from_ticket_id('2903910494195477');
+//     var_dump($r);
+// });
 
 add_action('woocommerce_email_order_details', 'maetic_add_qr_code', 10, 4);
 function maetic_add_qr_code( $order, $sent_to_admin, $plain_text, $email ){
