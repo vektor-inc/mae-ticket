@@ -24,13 +24,14 @@ class MaeTick_QrCode {
         return self::API_BASE . '?' . implode( '&', $options );
     }
 
-    public static function getImgTag( $code, $size, $quality, $additional_cllasses=array() ) {
+    public static function getImgTag( $code, $size, $quality='M', $attributes=array() ) {
         $url = self::createUrl( $code, $size, $quality );
-        $classes = implode( ' ', $additional_cllasses );
-        $cls = '';
-        if ( !empty($classes) ) {
-            $cls = ' class="'. $classes . '"';
+
+        $attr = '';
+        foreach ( $attributes as $k => $v ) {
+            $attr .= $k . '="' . $v .'" ';
         }
-        return '<img'. $cls . ' src="'. $url .'" />';
+
+        return '<img '. $attr . 'src="'. $url .'" />';
     }
 }

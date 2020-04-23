@@ -78,3 +78,64 @@
     }
 })(document, 'maetick_input', 4, ['number-1','number-2','number-3','number-4'])
 ;
+((document) => {
+    window.addEventListener('load', () => {
+
+        let parent = document.getElementById('maetic_code_page')
+        if(!parent) return;
+
+        Array.prototype.forEach.call(
+            parent.getElementsByClassName('ticket'),
+            (ticket) => {
+                let number = ticket.getElementsByClassName('_number')
+                if (!number) return;
+
+                number = number[0]
+                let plus = null
+                let minas = null
+
+                let updateValue = () => {
+                    if(number.value >= number.max){
+                        number.value = number.max
+                        plus.setAttribute('disabled', 'disabled')
+                        plus.classList.add('disabled')
+                    }else{
+                        plus.removeAttribute('disabled')
+                        plus.classList.remove('disabled')
+                    }
+                    if(number.value <= number.min){
+                        number.value = number.min
+                        minas.setAttribute('disabled', 'disabled')
+                        minas.classList.add('disabled')
+                    }else{
+                        minas.removeAttribute('disabled')
+                        minas.classList.remove('disabled')
+                    }
+                }
+
+                let buttons = ticket.getElementsByClassName('_control');
+                let role = '';
+                for(let i=0;i<buttons.length;i++){
+                    let role = buttons[i].getAttribute('role')
+                    if(role=='plus') plus = buttons[i];
+                    if(role=='minas') minas = buttons[i];
+                }
+
+                plus && plus.addEventListener('click', (e)=>{
+                    e.preventDefault();
+                    number.value = Number(number.value) + 1
+                    updateValue()
+                }, false)
+
+                minas && minas.addEventListener('click', (e)=>{
+                    e.preventDefault();
+                    number.value = Number(number.value) - 1
+                    updateValue()
+                }, false)
+
+                number.addEventListener('change', updateValue, false)
+                updateValue()
+            }
+        );
+    }, false)
+})(document);

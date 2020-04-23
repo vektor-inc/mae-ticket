@@ -1,15 +1,15 @@
 <?php
 
 class MaeTick_Base64QrCode extends MaeTick_QrCode {
-    public static function getImgTag( $code, $size, $quality , $additional_cllasses=array() ) {
+
+    public static function getImgTag( $code, $size, $quality='M', $attributes=array() ) {
         list( $type, $data ) = self::getBody( $code, $size, $quality );
 
-        $classes = implode( ' ', $additional_cllasses );
-        $cls = '';
-        if ( !empty($classes) ) {
-            $cls = ' class="'. $classes . '"';
+        $attr = '';
+        foreach ( $attributes as $k => $v ) {
+            $attr .= $k . '="' . $v .'" ';
         }
-        return '<img'. $cls . ' src="data:' . $type . ';base64,' . $data . '" />';
+        return '<img '. $attr . 'src=\'data:' . $type . ';base64,' . $data . '\' />';
     }
 
     public static function getBody( $code, $size, $quality ) {
