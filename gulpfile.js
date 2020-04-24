@@ -5,7 +5,6 @@ const plumber = require('gulp-plumber')
 const babel = require('gulp-babel')
 const jsmin = require('gulp-uglify')
 const rename = require('gulp-rename');
-const plugin_name = 'mae-ticket';
 
 let error_stop = true
 
