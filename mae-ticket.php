@@ -32,6 +32,10 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 
 	if ( is_admin() ) {
 		Maetic_Admin::init();
+
+		add_action( 'admin_head', function() {
+			echo '<link rel="stylesheet" media="all" href="' . plugins_url( '', __FILE__ ) . '/assets/css/editor.css" />';
+		});
 	}
 }
 

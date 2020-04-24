@@ -85,8 +85,9 @@ class Maetic_Admin {
 		$ticket_order = new Maetic_Order( get_the_ID() );
 		$ticket_order->get_order();
 
-		echo '<span class="maetic_code">'. maetic_get_separated_code( $ticket_order->get_ticket_code() ) . '</span>';
+		echo '<span>code: </span><span class="maetic_code">'. maetic_get_separated_code( $ticket_order->get_ticket_code() ) . '</span>';
 		echo '<ul>';
+
 		foreach ( $ticket_order->tickets() as $id => $ticket ) {
 			echo '<li>';
 			echo $ticket->get_title();
