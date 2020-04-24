@@ -7,8 +7,6 @@
     "gulp": "gulp",
     "build": "gulp default",
     "watch": "gulp watch",
-    "start": "npx wp-env start",
-    "stop": "npx wp-env stop",
     "dist": "bin/dist",
     "makepot": "docker-compose run wp wp --allow-root i18n make-pot . languages/mae-ticket.pot --domain='mae-ticket'"
   },
@@ -24,8 +22,6 @@
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
-    "@wordpress/env": "^1.1.0",
-    "@wordpress/scripts": "^7.2.0",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
     "gulp-cssmin": "^0.2.0",
