@@ -1,4 +1,9 @@
 <?php
+
+if ( !defined('ABSPATH') ) {
+	die();
+}
+
 define('LOG_USE', 'USE');
 
 class MaeTick_Woocommerce_Order_Itemmeta {

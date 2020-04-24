@@ -1,5 +1,9 @@
 <?php
 
+if ( !defined('ABSPATH') ) {
+    die();
+}
+
 class MaeTick_Base64QrCode extends MaeTick_QrCode {
 
     public static function getImgTag( $code, $size, $quality='M', $attributes=array() ) {

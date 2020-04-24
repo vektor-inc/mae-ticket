@@ -1,5 +1,9 @@
 <?php
 
+if ( !defined('ABSPATH') ) {
+	die();
+}
+
 class MaeTick_Order {
 	const TICKET_META_NAME = 'maetic_ticket_id';
 	public $ID;

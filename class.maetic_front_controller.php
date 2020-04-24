@@ -1,5 +1,9 @@
 <?php
 
+if ( !defined('ABSPATH') ) {
+	die();
+}
+
 class MaeTick_Front_Controller {
 	const ACTION_VAR = 'action_code';
 	const CODE_VAR = 'ticket_code';

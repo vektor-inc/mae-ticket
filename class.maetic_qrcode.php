@@ -1,5 +1,9 @@
 <?php
 
+if ( !defined('ABSPATH') ) {
+    die();
+}
+
 class MaeTick_QrCode {
     const API_BASE = 'https://chart.googleapis.com/chart';
 

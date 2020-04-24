@@ -1,5 +1,9 @@
 <?php
 
+if ( !defined('ABSPATH') ) {
+    die();
+}
+
 class Maetic_Ticket {
     public $ID;
     public $item;
