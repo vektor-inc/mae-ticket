@@ -10,21 +10,27 @@
  */
 
 if ( !defined('ABSPATH') ) {
-    die();
+	die();
 }
 
+// common functions
 require_once( 'functions.php' );
-require_once( 'class.maetic_front_controller.php' );
 require_once( 'class.maetic_qrcode.php' );
-require_once( 'class.maetic_base64qrcode.php' );
 require_once( dirname( __FILE__ ) . '/model/class.maetic_woocommerce_order_itemmeta.php' );
 require_once( dirname( __FILE__ ) . '/model/class.maetic_order.php' );
 require_once( dirname( __FILE__ ) . '/model/class.maetic_ticket.php' );
 
-if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
-	MaeTick_Woocommerce_Order_Itemmeta::init();
+require_once( 'class.maetic_front_controller.php' );
+require_once( 'class.maetic_core.php' );
+require_once( 'class.maetic_admin.php' );
 
+if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+	MaeTick_Front_Controller::init();
+	MaeticCore::init();
+
+	if ( is_admin() ) {
+		MaeticAdmin::init();
+	}
 }
 
-MaeTick_Front_Controller::init();
 register_activation_hook( __FILE__, array( 'MaeTick_Front_Controller', 'set_rewrite_rules') );
