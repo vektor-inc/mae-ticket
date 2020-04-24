@@ -28,10 +28,10 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 	add_action( 'wp_enqueue_scripts', 'maetic_register_scripts' , 30, 0 );
 
 	MaeTick_Front_Controller::init();
-	MaeticCore::init();
+	Maetic_Core::init();
 
 	if ( is_admin() ) {
-		MaeticAdmin::init();
+		Maetic_Admin::init();
 	}
 }
 

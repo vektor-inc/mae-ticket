@@ -4,7 +4,7 @@ if ( !defined('ABSPATH') ) {
 	die();
 }
 
-class MaeticAdmin {
+class Maetic_Admin {
 	const WC_ORDER_POST_TYPE = 'shop_order';
 
 	public static function init() {
@@ -77,12 +77,12 @@ class MaeticAdmin {
 	}
 
 	public static function meta_box() {
-		if ( ! MaeTick_Order::has_ticket( get_the_ID() ) ) {
+		if ( ! Maetic_Order::has_ticket( get_the_ID() ) ) {
 			echo __( "this isn't ticket order.", 'mae-ticket' );
 			return;
 		}
 
-		$ticket_order = new MaeTick_Order( get_the_ID() );
+		$ticket_order = new Maetic_Order( get_the_ID() );
 		$ticket_order->get_order();
 
 		echo '<span class="maetic_code">'. maetic_get_separated_code( $ticket_order->get_ticket_code() ) . '</span>';

@@ -117,7 +117,7 @@ class MaeTick_Front_Controller {
 				self::http404();
 			}
 
-			$order = MaeTick_Order::get_order_from_ticket_id( $code_var );
+			$order = Maetic_Order::get_order_from_ticket_id( $code_var );
 
 			if ( empty( $order ) ) {
 				self::http404();

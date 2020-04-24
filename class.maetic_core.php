@@ -4,7 +4,7 @@ if ( !defined('ABSPATH') ) {
 	die();
 }
 
-class MaeticCore {
+class Maetic_Core {
 
 	public static function init() {
 		add_action( 'woocommerce_payment_complete', array( __CLASS__, 'payment_complete'), 10, 1 );
@@ -12,8 +12,8 @@ class MaeticCore {
 	}
 
 	public static function payment_complete( $order_id ) {
-		if ( MaeTick_Order::is_maetic_product( $order_id ) ) {
-			$ticket_order = new MaeTick_Order( $order_id, $order );
+		if ( Maetic_Order::is_maetic_product( $order_id ) ) {
+			$ticket_order = new Maetic_Order( $order_id, $order );
 			if ( !$ticket_order->is_completed() ) {
 				return;
 			}
@@ -27,8 +27,8 @@ class MaeticCore {
 			return;
 		}
 
-		if ( MaeTick_Order::has_ticket( $order->get_id() ) ) {
-			$ticket_order = new MaeTick_Order( $order->get_id(), $order );
+		if ( Maetic_Order::has_ticket( $order->get_id() ) ) {
+			$ticket_order = new Maetic_Order( $order->get_id(), $order );
 			$size = 128;
 			$s = $size . "px";
 
@@ -49,7 +49,7 @@ EOL;
 				'alt' => "QR Code",
 			);
 
-			$qr = MaeTick_QrCode::getImgTag( $ticket_order->ticket_url(), $size, 'M', $attributes );
+			$qr = Maetic_QrCode::getImgTag( $ticket_order->ticket_url(), $size, 'M', $attributes );
 
 			echo '<div id="qr"><span id="qr_w">'. $qr. '</span></div>';
 		}
