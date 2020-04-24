@@ -9,6 +9,8 @@ node_modules/
 dist/
 sftp-config.json
 .wp-env.json
+Dockerfile
+docker-compose.yml
 
 gulpfile.js
 package*.json

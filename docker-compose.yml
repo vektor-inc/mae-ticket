@@ -1,0 +1,10 @@
+version: '3'
+services:
+  wp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/var/www/html
+    command: wp --allow-root i18n make-pot . languages/mae-ticket.pot --domain='mae-ticket'
+

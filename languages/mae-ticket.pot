@@ -1,0 +1,51 @@
+# Copyright (C) 2020 Vektor, Inc.
+# This file is distributed under the same license as the maeticket plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: maeticket 0.0.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/html\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2020-04-24T04:59:27+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.4.0\n"
+"X-Domain: mae-ticket\n"
+
+#. Plugin Name of the plugin
+msgid "maeticket"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://github.com/vektor-inc/mae-ticket"
+msgstr ""
+
+#. Author of the plugin
+msgid "Vektor, Inc."
+msgstr ""
+
+#: class.maetic_admin.php:16
+msgid "Maetic"
+msgstr ""
+
+#: class.maetic_admin.php:32
+msgid "Enable Maetic Product"
+msgstr ""
+
+#: class.maetic_admin.php:39
+msgid "Expired Period (Day)"
+msgstr ""
+
+#: class.maetic_admin.php:41
+msgid "Enter the number of days the virtual ticket is valid for."
+msgstr ""
+
+#: class.maetic_admin.php:67
+msgid "maetic"
+msgstr ""
+
+#: class.maetic_admin.php:77
+msgid "this isn't ticket order."
+msgstr ""

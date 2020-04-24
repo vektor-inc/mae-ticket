@@ -1,0 +1,53 @@
+# Copyright (C) 2020 Vektor, Inc.
+# This file is distributed under the same license as the maeticket plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: maeticket 0.0.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/html\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2020-04-24 14:01+0900\n"
+"PO-Revision-Date: 2020-04-24 14:09+0900\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"X-Domain: mae-ticket\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: ja_JP\n"
+
+#. Plugin Name of the plugin
+msgid "maeticket"
+msgstr "前チケ"
+
+#. Plugin URI of the plugin
+msgid "https://github.com/vektor-inc/mae-ticket"
+msgstr "https://github.com/vektor-inc/mae-ticket"
+
+#. Author of the plugin
+msgid "Vektor, Inc."
+msgstr "Vektor, Inc."
+
+#: class.maetic_admin.php:16
+msgid "Maetic"
+msgstr "Maetic"
+
+#: class.maetic_admin.php:32
+msgid "Enable Maetic Product"
+msgstr "チケットとして使用する"
+
+#: class.maetic_admin.php:39
+msgid "Expired Period (Day)"
+msgstr "有効期限 (日)"
+
+#: class.maetic_admin.php:41
+msgid "Enter the number of days the virtual ticket is valid for."
+msgstr "チケットの有効期限日数を入力してください。"
+
+#: class.maetic_admin.php:67
+msgid "maetic"
+msgstr "maetic"
+
+#: class.maetic_admin.php:77
+msgid "this isn't ticket order."
+msgstr "この注文にはチケットがありません"

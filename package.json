@@ -8,7 +8,8 @@
     "build": "gulp default",
     "watch": "gulp watch",
     "start": "npx wp-env start",
-    "stop": "npx wp-env stop"
+    "stop": "npx wp-env stop",
+    "makepot": "docker-compose run wp wp --allow-root i18n make-pot . languages/mae-ticket.pot --domain='mae-ticket'"
   },
   "repository": {
     "type": "git",
