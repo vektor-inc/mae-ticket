@@ -9,6 +9,7 @@
     "watch": "gulp watch",
     "start": "npx wp-env start",
     "stop": "npx wp-env stop",
+    "dist": "bin/dist",
     "makepot": "docker-compose run wp wp --allow-root i18n make-pot . languages/mae-ticket.pot --domain='mae-ticket'"
   },
   "repository": {
