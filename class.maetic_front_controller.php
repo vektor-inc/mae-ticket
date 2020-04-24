@@ -1,5 +1,9 @@
 <?php
 
+if ( !defined('ABSPATH') ) {
+	die();
+}
+
 class MaeTick_Front_Controller {
 	const ACTION_VAR = 'action_code';
 	const CODE_VAR = 'ticket_code';
@@ -113,7 +117,7 @@ class MaeTick_Front_Controller {
 				self::http404();
 			}
 
-			$order = MaeTick_Order::get_order_from_ticket_id( $code_var );
+			$order = Maetic_Order::get_order_from_ticket_id( $code_var );
 
 			if ( empty( $order ) ) {
 				self::http404();

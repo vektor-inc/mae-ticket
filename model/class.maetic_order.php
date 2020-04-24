@@ -1,6 +1,10 @@
 <?php
 
-class MaeTick_Order {
+if ( !defined('ABSPATH') ) {
+	die();
+}
+
+class Maetic_Order {
 	const TICKET_META_NAME = 'maetic_ticket_id';
 	public $ID;
 	public $order;
@@ -99,7 +103,7 @@ class MaeTick_Order {
 		$r = self::search_order_from_ticket_code( $ticket_id );
 
 		if ( !empty($r) ) {
-			$order = new MaeTick_Order( $r );
+			$order = new Maetic_Order( $r );
 			$order->get_order();
 			return $order;
 		}

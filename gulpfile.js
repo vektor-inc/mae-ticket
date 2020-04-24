@@ -19,7 +19,8 @@ function src(list) {
 gulp.task('sass', ()=>{
   return src(
     [
-      'assets/_scss/style.scss'
+      'assets/_scss/style.scss',
+      'assets/_scss/editor.scss',
     ]
   )
   .pipe(sass())

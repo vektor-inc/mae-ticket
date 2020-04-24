@@ -1,11 +1,11 @@
+node_modules/
+dist/
+.wp-env.json
 .DS_Store
 phpcs.xml
 phpunit.xml
 Thumbs.db
 wp-cli.local.yml
-node_modules/
+sftp-config.json
 *.tar.gz
 *.zip
-dist/
-sftp-config.json
-/vendor/
