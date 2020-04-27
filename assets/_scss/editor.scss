@@ -5,4 +5,27 @@
         font-family: "san-serif";
     }
 
+    table {
+        list-style: none;
+    }
+
+    .tickets {
+
+        li {
+            padding-left: 0.5em;
+            border-left: green solid 1px;
+            margin-bottom: 1em;
+        }
+    }
+
+    ._info {
+
+    }
+
+    .__logs {
+        padding-left: 1em;
+        li {
+
+        }
+    }
 }
