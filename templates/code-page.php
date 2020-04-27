@@ -8,14 +8,14 @@
         <div class="info">
             <span class="_code"><?php echo maetic_get_separated_code( $code_var ); ?></span>
 
-            <h2>注文番号: <?php echo $order->ID; ?></h2>
+            <h2><?php echo __( 'Order ID', 'mae-ticket' ); ?>: <?php echo $order->ID; ?></h2>
 
-            <a href="<?php echo admin_url('post.php?post='. $order->ID .'&action=edit'); ?>">Edit</a>
+            <a href="<?php echo admin_url('post.php?post='. $order->ID .'&action=edit'); ?>"><?php echo __( 'Edit', 'mae-ticket' ); ?></a>
             <ul>
-                <li>paid? - <?php echo $order->order->is_paid()? 'yes': 'no'; ?></li>
-                <li>name - <?php echo $order->order->get_billing_first_name(); ?> <?php echo $order->order->get_billing_last_name(); ?></li>
-                <li>email - <?php echo $order->order->get_billing_email(); ?></li>
-                <li>completed date - <?php echo $order->order->get_date_completed(); ?></li>
+                <li><?php echo __( 'payd?', 'mae-ticket' ); ?> - <?php echo $order->order->is_paid()? __( 'yes', 'mae-ticket' ): __( 'no', 'mae-ticket' ); ?></li>
+                <li><?php echo __( 'name', 'mae-ticket' ); ?> - <?php echo $order->order->get_billing_first_name(); ?> <?php echo $order->order->get_billing_last_name(); ?></li>
+                <li><?php echo __( 'email', 'mae-ticket' ); ?> - <?php echo $order->order->get_billing_email(); ?></li>
+                <li><?php echo __( 'pay complete time', 'mae-ticket' ); ?> - <?php echo $order->order->get_date_completed()->date( 'Y/m/d' ); ?></li>
             </ul>
         </div>
 
@@ -27,12 +27,12 @@
             <?php foreach($order->tickets() as $t): ?>
                 <div class="ticket">
                     <dl>
-                        <dt>name</dt>
+                        <dt><?php echo __( 'name', 'mae-ticket' ); ?></dt>
                         <dd><?php echo $t->get_title(); ?></dd>
 
-                        <dt>quantity</dt>
+                        <dt><?php echo __( 'quantity', 'mae-ticket' ); ?></dt>
                         <dd><?php echo $t->get_rest_quantity(); ?>/<?php echo $t->get_quantity(); ?></dd>
-                        <dt>expire</dt>
+                        <dt><?php echo __( 'expire time', 'mae-ticket' ); ?></dt>
                         <dd><?php
                             $ex = $t->get_expire_date();
                             if ($ex) {
@@ -48,10 +48,10 @@
                     <button class="_control" role="minas">-</button>
 
                     <div class="_log">
-                        <h3>logs</h3>
+                        <h3><?php echo __( 'Logs', 'mae-ticket' ); ?></h3>
                         <ul>
                             <?php foreach( $t->get_logs() as $log ): ?>
-                                <li><?php echo $log['time']; ?> - <?php echo $log['type']; ?> - <?php echo $log['count']; ?></li>
+                                <li><?php echo $log['date']->format('Y/m/d'); ?> - <?php echo $log['type']; ?> - <?php echo $log['count']; ?></li>
                             <?php endforeach; ?>
                         </ul>
                     </div>

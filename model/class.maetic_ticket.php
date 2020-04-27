@@ -41,6 +41,16 @@ class Maetic_Ticket {
 	}
 
 	public function get_logs() {
-		return MaeTick_Woocommerce_Order_Itemmeta::logs( $this->ID );
+		$l =  MaeTick_Woocommerce_Order_Itemmeta::logs( $this->ID );
+		$d = new WC_DATETime();
+		$d->SetTimezone( wp_timezone() );
+
+		for( $i=0;$i<count($l);$i++ ){
+			$e = clone $d;
+			$e->SetTimeStamp( $l[$i]['time'] );
+			$l[$i]['date'] = $e;
+		}
+
+		return $l;
 	}
 }

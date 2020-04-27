@@ -85,14 +85,21 @@ class Maetic_Admin {
 		$ticket_order = new Maetic_Order( get_the_ID() );
 		$ticket_order->get_order();
 
-		echo '<span>code: </span><span class="maetic_code">'. maetic_get_separated_code( $ticket_order->get_ticket_code() ) . '</span>';
-		echo '<ul>';
+		echo '<span>' . __( 'Ticket Code', 'mae-ticket' ) . ': </span><span class="maetic_code">'. maetic_get_separated_code( $ticket_order->get_ticket_code() ) . '</span>';
+		echo '<ul class="tickets">';
 
 		foreach ( $ticket_order->tickets() as $id => $ticket ) {
 			echo '<li>';
+			echo '<p class="_info">';
 			echo $ticket->get_title();
-			echo ' - ';
-			echo $ticket->get_rest_quantity(). ' rest';
+			echo '(' . $ticket->get_rest_quantity(). ')';
+			echo '</p>';
+				$logs = $ticket->get_logs();
+				echo '<ul class="__logs">';
+				foreach ( $logs as $log ) {
+					echo '<li>' . $log['date']->format('Y/m/d H:M') . ' - ' . $log['type'] . ' - ' . $log['count'] . '</li>';
+				}
+				echo '</ul>';
 			echo '</li>';
 		}
 		echo '</ul>';
