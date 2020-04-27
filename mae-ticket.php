@@ -42,6 +42,10 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 		add_action( 'admin_head', function() {
 			echo '<link rel="stylesheet" media="all" href="' . plugins_url( '/assets/css/editor.css', __FILE__ ) . '?ver=' . MAETIC_VERSION . '" />';
 		});
+
+		## registration action
+		# set rewrite rule
+		register_activation_hook( __FILE__, array( 'MaeTick_Front_Controller', 'set_rewrite_rules') );
 	}
 }
 
@@ -78,6 +82,3 @@ add_action(
 );
 
 
-## registration action
-# set rewrite rule
-register_activation_hook( __FILE__, array( 'MaeTick_Front_Controller', 'set_rewrite_rules') );

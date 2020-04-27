@@ -15,7 +15,7 @@ tmp=$(mktemp -d)
 
 [[ -e ${dist_dir} ]] || mkdir ${dist_dir}
 
-rsync -av ${PLUGIN_DIR} ${tmp}/${PLUGIN_NAME} --exclude-from='.svnignore'
+rsync -av ${PLUGIN_DIR}/ ${tmp}/${PLUGIN_NAME}/ --exclude-from='.svnignore'
 
 [[ -e "${ZIPBALL}" ]] && rm -r ${ZIPBALL}
 [[ -e "${TARBALL}" ]] && rm -r ${TARBALL}
