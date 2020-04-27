@@ -4,7 +4,7 @@ set -ex
 
 PLUGIN_NAME='mae-ticket'
 PLUGIN_DIR=$(cd $(dirname $(dirname $0)); pwd)
-CURRENT_VERSION=$(cat mae-ticket.php|grep -i version|sed -E 's/^[ *]*Version: *([^ ]*) *$/\1/i')
+CURRENT_VERSION=$(cat mae-ticket.php|grep -i version|head -n 1|sed -E 's/^[ *]*Version: *([^ ]*) *$/\1/i')
 
 dist_dir=${PLUGIN_DIR}/dist
 
