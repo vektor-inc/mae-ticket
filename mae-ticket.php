@@ -13,6 +13,8 @@ if ( !defined('ABSPATH') ) {
 	die();
 }
 
+const MAETIC_VERSION = '0.0.1';
+
 // common functions
 require_once( 'functions.php' );
 require_once( 'class.maetic_qrcode.php' );
@@ -34,7 +36,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 		Maetic_Admin::init();
 
 		add_action( 'admin_head', function() {
-			echo '<link rel="stylesheet" media="all" href="' . plugins_url( '', __FILE__ ) . '/assets/css/editor.css" />';
+			echo '<link rel="stylesheet" media="all" href="' . plugins_url( '/assets/css/editor.css', __FILE__ ) . '?ver=' . MAETIC_VERSION . '" />';
 		});
 	}
 }
@@ -44,18 +46,19 @@ function maetic_register_scripts() {
 		'maetic',
 		plugins_url( 'assets/css/style.css', __FILE__ ),
 		array(),
-		'1',
+		MAETIC_VERSION,
 		'all'
 	);
-	wp_enqueue_style( 'maetic');
 
 	wp_register_script(
 		'maetic-form',
 		plugins_url( 'assets/js/form.min.js', __FILE__ ),
 		array(),
-		'1',
+		MAETIC_VERSION,
 		true
 	);
+
+	wp_enqueue_style( 'maetic');
 	wp_enqueue_script( 'maetic-form' );
 }
 
