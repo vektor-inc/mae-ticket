@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: maeticket 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/html\n"
-"POT-Creation-Date: 2020-04-28 15:37+0900\n"
-"PO-Revision-Date: 2020-04-28 15:38+0900\n"
+"POT-Creation-Date: 2020-04-28 16:22+0900\n"
+"PO-Revision-Date: 2020-04-28 16:22+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja_JP\n"
@@ -28,13 +28,14 @@ msgstr "https://github.com/vektor-inc/mae-ticket"
 msgid "Vektor, Inc."
 msgstr "Vektor, Inc."
 
-#: class.maetic_admin.php:40
-msgid "parmalink updated."
-msgstr "URL設定を更新しました。"
-
+#: class.maetic_admin.php:24 class.maetic_admin.php:25
 #: class.maetic_admin.php:53 class.maetic_admin.php:65 pages/admin_menu.php:1
 msgid "Maetic"
 msgstr "Maetic"
+
+#: class.maetic_admin.php:40
+msgid "parmalink updated."
+msgstr "URL設定を更新しました。"
 
 #: class.maetic_admin.php:81
 msgid "Enable Maetic Product"
@@ -56,10 +57,6 @@ msgstr "maetic"
 msgid "this isn't ticket order."
 msgstr "この注文にはチケットがありません"
 
-#: class.maetic_admin.php:134
-msgid "Ticket Code"
-msgstr "チケットID"
-
 #: pages/admin_menu.php:6 pages/dashboard.php:1
 msgid "Go Input Code Page."
 msgstr "チケットID入力画面へ"
@@ -67,6 +64,18 @@ msgstr "チケットID入力画面へ"
 #: pages/admin_menu.php:11
 msgid "reset url parmalink"
 msgstr "URL設定を更新する"
+
+#: pages/order-item-metabox.php:1 pages/order-metabox.php:1
+msgid "Ticket Code"
+msgstr "チケットID"
+
+#: pages/order-item-metabox.php:4 pages/order-metabox.php:4
+msgid "go ticket page"
+msgstr "チケット画面へ移動"
+
+#: pages/order-item-metabox.php:13 pages/order-metabox.php:13
+msgid "tickets"
+msgstr "枚"
 
 #: templates/code-page.php:11
 msgid "Order ID"

@@ -21,8 +21,8 @@ class Maetic_Admin {
 	public static function add_admin_page() {
 		add_submenu_page(
 			'woocommerce',
-			__( 'Maetic', 'textdomain' ),
-			__( 'Maetic', 'textdomain' ),
+			__( 'Maetic', 'mae-ticket' ),
+			__( 'Maetic', 'mae-ticket' ),
 			"administrator",
 			"maetic",
 			array( __CLASS__, 'admin_page' )
@@ -131,23 +131,7 @@ class Maetic_Admin {
 		$ticket_order = new Maetic_Order( get_the_ID() );
 		$ticket_order->get_order();
 
-		echo '<span>' . __( 'Ticket Code', 'mae-ticket' ) . ': </span><span class="maetic_code">'. maetic_get_separated_code( $ticket_order->get_ticket_code() ) . '</span>';
-		echo '<ul class="tickets">';
+		include( dirname( __FILE__ ) . '/pages/order-metabox.php' );
 
-		foreach ( $ticket_order->tickets() as $id => $ticket ) {
-			echo '<li>';
-			echo '<p class="_info">';
-			echo $ticket->get_title();
-			echo '(' . $ticket->get_rest_quantity(). ')';
-			echo '</p>';
-				$logs = $ticket->get_logs();
-				echo '<ul class="__logs">';
-				foreach ( $logs as $log ) {
-					echo '<li>' . $log['date']->format('Y/m/d H:M') . ' - ' . $log['type'] . ' - ' . $log['count'] . '</li>';
-				}
-				echo '</ul>';
-			echo '</li>';
-		}
-		echo '</ul>';
 	}
 }

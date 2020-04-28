@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-04-28T06:37:23+00:00\n"
+"POT-Creation-Date: 2020-04-28T07:21:51+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: mae-ticket\n"
@@ -26,14 +26,16 @@ msgstr ""
 msgid "Vektor, Inc."
 msgstr ""
 
-#: class.maetic_admin.php:40
-msgid "parmalink updated."
-msgstr ""
-
+#: class.maetic_admin.php:24
+#: class.maetic_admin.php:25
 #: class.maetic_admin.php:53
 #: class.maetic_admin.php:65
 #: pages/admin_menu.php:1
 msgid "Maetic"
+msgstr ""
+
+#: class.maetic_admin.php:40
+msgid "parmalink updated."
 msgstr ""
 
 #: class.maetic_admin.php:81
@@ -56,10 +58,6 @@ msgstr ""
 msgid "this isn't ticket order."
 msgstr ""
 
-#: class.maetic_admin.php:134
-msgid "Ticket Code"
-msgstr ""
-
 #: pages/admin_menu.php:6
 #: pages/dashboard.php:1
 msgid "Go Input Code Page."
@@ -67,6 +65,21 @@ msgstr ""
 
 #: pages/admin_menu.php:11
 msgid "reset url parmalink"
+msgstr ""
+
+#: pages/order-item-metabox.php:1
+#: pages/order-metabox.php:1
+msgid "Ticket Code"
+msgstr ""
+
+#: pages/order-item-metabox.php:4
+#: pages/order-metabox.php:4
+msgid "go ticket page"
+msgstr ""
+
+#: pages/order-item-metabox.php:13
+#: pages/order-metabox.php:13
+msgid "tickets"
 msgstr ""
 
 #: templates/code-page.php:11
