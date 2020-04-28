@@ -29,3 +29,22 @@
         }
     }
 }
+
+// dashboard
+#maetic_dashboard {
+    .inside {
+        margin-top: 0px;
+        padding-top: 11px;
+        background-color: #2ad43f;
+        color: #fff;
+    }
+}
+
+#maetic_noticebox {
+    .notice {
+        padding: 19px 12px;
+        span {
+            margin: .5em .5em 0 0;
+        }
+    }
+}

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: maeticket 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/html\n"
-"POT-Creation-Date: 2020-04-27 12:54+0900\n"
-"PO-Revision-Date: 2020-04-27 12:55+0900\n"
+"POT-Creation-Date: 2020-04-28 15:37+0900\n"
+"PO-Revision-Date: 2020-04-28 15:38+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja_JP\n"
@@ -28,29 +28,45 @@ msgstr "https://github.com/vektor-inc/mae-ticket"
 msgid "Vektor, Inc."
 msgstr "Vektor, Inc."
 
-#: class.maetic_admin.php:20
+#: class.maetic_admin.php:40
+msgid "parmalink updated."
+msgstr "URL設定を更新しました。"
+
+#: class.maetic_admin.php:53 class.maetic_admin.php:65 pages/admin_menu.php:1
 msgid "Maetic"
 msgstr "Maetic"
 
-#: class.maetic_admin.php:36
+#: class.maetic_admin.php:81
 msgid "Enable Maetic Product"
 msgstr "チケットとして使用する"
 
-#: class.maetic_admin.php:43
+#: class.maetic_admin.php:88
 msgid "Expired Period (Day)"
 msgstr "有効期限 (日)"
 
-#: class.maetic_admin.php:45
+#: class.maetic_admin.php:90
 msgid "Enter the number of days the virtual ticket is valid for."
 msgstr "チケットの有効期限日数を入力してください。"
 
-#: class.maetic_admin.php:71
+#: class.maetic_admin.php:117
 msgid "maetic"
 msgstr "maetic"
 
-#: class.maetic_admin.php:81
+#: class.maetic_admin.php:127
 msgid "this isn't ticket order."
 msgstr "この注文にはチケットがありません"
+
+#: class.maetic_admin.php:134
+msgid "Ticket Code"
+msgstr "チケットID"
+
+#: pages/admin_menu.php:6 pages/dashboard.php:1
+msgid "Go Input Code Page."
+msgstr "チケットID入力画面へ"
+
+#: pages/admin_menu.php:11
+msgid "reset url parmalink"
+msgstr "URL設定を更新する"
 
 #: templates/code-page.php:11
 msgid "Order ID"
