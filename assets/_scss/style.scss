@@ -1,8 +1,63 @@
 $success_color: green;
 $error_color: red;
 $focus_color: #333;
-$break_point: 1200px;
+$key_color: #f08319;
+$key_color_dark:#e67200;
+$link_color: #337ab7;
+$translucent_gray_color:rgba(0,0,0,.03);
 
+$xs-max: 575.98px;
+$sm-max: 767.98px;
+$md-max: 991.98px;
+$lg-max: 1199.98px;
+
+$sm-min: 576px;
+$md-min: 768px;
+$lg-min: 992px;
+$xl-min: 1200px;
+
+@mixin fontawesome_icon {
+    font-family: "Font Awesome 5 Free";
+    font-weight: bold;
+    margin-right: 5px;
+}
+@mixin btn_default{
+    border: 1px solid $link_color;
+    color: $link_color;
+    border-radius: 5px;
+}
+@mixin btn_default_hover {
+    border: 1px solid $link_color;
+    background-color: $link_color;
+    color: #fff;
+    text-decoration: none;
+}
+
+/*-------------------------------------------*/
+/*  common
+/*-------------------------------------------*/
+#maetick_input,
+#maetic_code_page{
+    input[type=submit]{
+        &.btn{
+            margin: 0 auto;
+            display: block;
+            width: 100%;
+            padding: .5em 2.5em;
+            font-size: 1.2em;
+            letter-spacing: 3px;
+            @media (min-width: $md-min){
+                width: auto;
+                font-size: 1em;
+            }
+        }
+
+    }
+}
+
+/*-------------------------------------------*/
+/*  #maetick_input
+/*-------------------------------------------*/
 #maetick_input {
     input[type=number]::-webkit-inner-spin-button,
     input[type=number]::-webkit-outer-spin-button {
@@ -13,34 +68,34 @@ $break_point: 1200px;
     ._input_wrp {
         min-width: 24em;
         display: flex;
-        border-top: solid #444 1px;
         padding: .1em;
         margin-bottom: 1em;
-
+        position: relative;
         input[type=number] {
             width: 100%;
+            font-size: 1.5em;
             background: none;
-            padding: .1em;
-            font-size: 2em;
+            padding: .1em;          
             display: inline;
             font-weight: bold;
             text-align: center;
             color: #333;
             font-family: sans-serif;
-
             border: none;
             border-radius: 0;
-            border-bottom: solid #333 2px;
-
+            border: solid #e9e9e9 2px;
             box-shadow: none;
+            @media (min-width: $xl-min){
+                font-size: 1.75em;
+            }
             &:focus {
-                border-bottom: solid $focus_color 2px;
+                border: solid $focus_color 2px;
             }
             &.ok {
-                border-bottom: solid $success_color 2px;
+                border: solid $success_color 2px;
             }
             &.error {
-                border-bottom: solid $error_color 2px;
+                border: solid $error_color 2px;
             }
             &::placeholder {
                 opacity: 0.2;
@@ -55,28 +110,21 @@ $break_point: 1200px;
 
     .__border {
         padding: 0em .2em;
-    }
-
-    ._submit {
-        width: 100%;
-        text-align: center;
-        padding: .3em;
-        font-size: 2em;
-
-    }
-
-    @media screen and (min-width: $break_point) {
-        .__border {
+        margin-top: 0.8em;
+        color: #ccc;
+        font-weight: bold;
+        @media (min-width: $xl-min){
+            margin-top: 1.3em;
             padding: 0em .5em;
         }
-        ._submit {
-            width: auto;
-            padding: .3em 1em;
-            font-size: 1em;
-        }
+ 
     }
+
 }
 
+/*-------------------------------------------*/
+/* #maetic_code_page 
+/*-------------------------------------------*/
 #maetic_code_page {
 
     ._control form{
@@ -100,26 +148,164 @@ $break_point: 1200px;
 }
 
 body.maetic {
-    background-color: #eee;
+    @media (min-width: $xl-min){
+        background-color: $translucent_gray_color;
+    }
+    .container {
+        max-width: 1024px;      
+        padding: 1em;
+        background: #fff;
+        position: relative;
+        @media (min-width: $xl-min){
+            padding: 2.5em 2em;
+            margin: 3em auto;
+        }
+        .maetic_header{
+            @include btn_default;
+            display: inline;
+            padding: .2em 1em;
+            pointer-events: auto;
+            cursor: pointer;
 
+            @media (min-width: $md-min){
+                position: absolute;
+                top: 3em;
+            }
+            &::before{
+                @include fontawesome_icon;
+                content: '\f0a8';
+                margin-right: 4px;
+            }
+            a{
+                
+            }
+            &:hover{
+                @include btn_default_hover;
+
+                a,a:hover{
+                    color: #fff;
+                    text-decoration: none;
+                }
+            }
+        }
+        h2, .mainSection-title {
+            border-top-color: $key_color;
+        }
+        h3:after, .subSection-title:after {
+            border-bottom-color: $key_color;
+        }
+        input{
+            &.btn-primary{
+                background-color:  $key_color;
+                border-color:  $key_color_dark;
+                &:focus,&:hover{
+                    background-color:  $key_color_dark;
+                    border-color:  $key_color_dark;
+                }
+            }
+        }
+
+    }
     .info {
         ._code {
-            font-family: sans-serif;
-            font-size: 2em;
+            font-size: 1.9em;
+            margin-top: 0.7em;
             font-weight: bold;
+            display: block;
+            font-family: sans-serif;
+            text-align: center;
+            @media (min-width: $md-min){
+                margin-top: 0;
+                font-size: 2.2em;
+                text-align: center;
+            }
+        }
+        a{
+            @include btn_default;
+            display: inline;
+            padding: .2em 1em;
+            margin-bottom: 10em;
+            pointer-events: auto;
+            cursor: pointer;
+            &::before{
+                @include fontawesome_icon;
+                content: "\f044";
+            }
+            &:hover{
+                @include btn_default_hover;
+            }
+            
+        }
+        ul{
+            list-style: none;
+            padding-left: 0;
+            li{
+                position: relative;
+                &::before {
+
+                    content: "■";
+                    color:$key_color;
+                    padding-right: .2em;
+                  }
+            }
         }
     }
 
-    .container {
-        max-width: 1024px;
-        margin: 3em auto;
-        text-align: center;
-    }
 
+
+
+    input[type=number]{
+        &.form-control {
+            margin-bottom: 0.5em;
+        }
+    }
+    button {
+        background-color: $link_color;
+        border: 1px solid $link_color;
+        color: #fff;
+        border-radius: .25rem;
+        width: 30px;
+        height: 30px;
+    }
     .ticket {
-        border: solid black 1px;
-        border-left: green solid 30px;
-        margin-bottom: 3em;
+        border: solid #ddd 1px;
+        border-top: $key_color solid 3px;
+        margin: 3em 0;
+        padding: 1em;
+        @media (min-width: $sm-min){
+            padding: 1.5em;
+        }
+        dl{
+            border-top: 1px dotted #ccc;
+            dt{
+
+                background: $translucent_gray_color;
+                text-align: center;
+                font-weight: normal;
+                @media (min-width: $sm-min){
+                    float: left;
+                    clear: left;
+                    width: 20%;
+                }
+            }
+            dd{
+                text-align: center;
+                @media (min-width: $sm-min){
+                    margin: 0 0 0 20%;
+                    text-align: left;
+                }
+            }
+            dt,dd{
+                border-left:none;
+                border-bottom: 1px dotted #ccc;
+                padding: 1em;
+                margin-bottom: 0;
+            }
+        }
+        ._log{
+            margin-top:2em;
+        }
+
     }
 
     ._message {
@@ -133,3 +319,4 @@ body.maetic {
         }
     }
 }
+
