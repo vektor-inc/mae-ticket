@@ -130,23 +130,9 @@ $xl-min: 1200px;
 /*-------------------------------------------*/
 /*  common
 /*-------------------------------------------*/
-button, input, optgroup, select, textarea {
-    margin: 0;
-    font-size: 1em;
-    line-height: 1em;
-    font-weight: normal;
-}
 *, ::after, ::before {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-}
-li {
-    margin-bottom: .8em;
-    line-height: 1.65em;
-}
-dl, ol, ul {
-    margin-top: 1.5em;
-    margin-bottom: 1.2em;
 }
 
 body.maetic {
@@ -170,6 +156,12 @@ body.maetic {
                 font-size: 1em;
             }
 
+    }
+    button, input, optgroup, select, textarea {
+        margin: 0;
+        font-size: 1em;
+        line-height: 1em;
+        font-weight: normal;
     }
 }
 
@@ -200,9 +192,9 @@ body.maetic {
         }
         .maetic_header a{
             @include btn_default;
+            z-index: 100;
             display: inline;
             padding: .2em 1em;
-            pointer-events: auto;
             cursor: pointer;
 
             @media (min-width: $md-min){
@@ -214,9 +206,6 @@ body.maetic {
                 content: '\f0a8';
                 margin-right: 4px;
             }
-            a{
-                
-            }
             &:hover{
                 @include btn_default_hover;
 
@@ -227,7 +216,7 @@ body.maetic {
             }
         }
         h2, h3, h4, h5, h6 {
-            margin: 1.5em 0 1.2em;
+            margin: 1.8em 0 1.2em;
             clear: both;
             font-weight: normal;
             line-height: 1.4;
@@ -266,17 +255,38 @@ body.maetic {
     }
     .info {
         ._code {
-            font-size: 1.9em;
+            position: relative;
+            font-size: 2em;
             margin-top: 0.7em;
             font-weight: bold;
             display: block;
             font-family: sans-serif;
             text-align: center;
-            @media (min-width: $md-min){
+
+            @media (min-width: $xl-min){
                 margin-top: 0;
                 font-size: 2.2em;
                 text-align: center;
             }
+           
+
+            &::after{
+                content: "";
+                display: block;
+                position: absolute;
+                top: 45px;
+                left: 50%;
+                width: 0;
+                height: 0;
+                transform: translateX(-50%);
+                border: 20px solid transparent;
+                border-top: 20px solid #ddd;
+                border-bottom-width: 0;
+                @media (min-width: $lg-min){
+                    top: 55px;
+                }
+            }
+
         }
         a{
             @include btn_default;
@@ -299,6 +309,8 @@ body.maetic {
             padding-left: 0;
             li{
                 position: relative;
+                margin-bottom: .8em;
+                line-height: 1.65em;
                 &::before {
 
                     content: "■";
@@ -306,6 +318,10 @@ body.maetic {
                     padding-right: .2em;
                   }
             }
+        }
+        dl, ol, ul {
+            margin-top: 1.5em;
+            margin-bottom: 1.2em;
         }
     }
 
@@ -319,6 +335,7 @@ body.maetic {
             display: inline;
             padding: .375rem 1.5rem;
             line-height: 1.5;
+            height: calc(1.5em + .75rem + 2px);
         }
     }
     button {
