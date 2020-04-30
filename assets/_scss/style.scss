@@ -475,6 +475,20 @@ body.maetic {
     top: 0;
     width: 100%;
     height: 100%;
+    opacity: 1;
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    animation-name: fadeIn;
+    animation-duration: 0.3s;
+    animation-timing-function: ease-out;
 
     ._wrap {
         display:block;
@@ -486,5 +500,6 @@ body.maetic {
 
     &.hide {
         display: none;
+        opacity: 0;
     }
 }
