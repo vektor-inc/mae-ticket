@@ -96,8 +96,9 @@
         let parent = document.getElementById('maetic_code_page')
         if(!parent) return;
 
+        let disabled = 'disabled';
         Array.prototype.forEach.call(
-            parent.getElementsByClassName('ticket'),
+            document.getElementsByClassName('_number_input'),
             (ticket) => {
                 let number = ticket.getElementsByClassName('_number')
                 if (!number) return;
@@ -109,19 +110,19 @@
                 let updateValue = () => {
                     if(number.value >= number.max){
                         number.value = number.max
-                        plus.setAttribute('disabled', 'disabled')
-                        plus.classList.add('disabled')
+                        plus.setAttribute(disabled, disabled)
+                        plus.classList.add(disabled)
                     }else{
-                        plus.removeAttribute('disabled')
-                        plus.classList.remove('disabled')
+                        plus.removeAttribute(disabled)
+                        plus.classList.remove(disabled)
                     }
                     if(number.value <= number.min){
                         number.value = number.min
-                        minas.setAttribute('disabled', 'disabled')
-                        minas.classList.add('disabled')
+                        minas.setAttribute(disabled, disabled)
+                        minas.classList.add(disabled)
                     }else{
-                        minas.removeAttribute('disabled')
-                        minas.classList.remove('disabled')
+                        minas.removeAttribute(disabled)
+                        minas.classList.remove(disabled)
                     }
                 }
 
@@ -151,3 +152,33 @@
         );
     }, false)
 })(document);
+
+((window, document) => {
+    window.addEventListener('DOMContentLoaded', ()=>{
+        let parent = document.getElementById('overbox')
+        if(!parent) return;
+
+        document.getElementById('revert_sw').addEventListener('click', (e)=>{
+            parent.classList.remove('hide');
+            parent.style.height = document.body.clientHeight + 'px';
+            document.getElementById('orerwrap').style.marginTop = window.pageYOffset + 'px';
+        }, false);
+
+        let hide = () => parent.classList.add('hide')
+
+        parent.addEventListener('click', (e)=>{
+            if(e.target == parent) hide()
+        }, false)
+
+        Array.prototype.forEach.call(
+            parent.getElementsByClassName('revert_cancel'),
+            (elem)=>{
+                elem.addEventListener('click', hide, false);
+            }
+        )
+
+        window.addEventListener('keydown', (e)=>{
+            if(e.keyCode == 27) hide()
+        }, false);
+    }, false)
+})(window, document);

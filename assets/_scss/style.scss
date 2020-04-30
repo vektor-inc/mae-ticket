@@ -352,13 +352,10 @@ body.maetic {
         border: 1px solid $link_color;
         color: #fff;
         border-radius: .25rem;
-        width: 35px;
-        height: 35px;
         margin-left: 5px;
         padding: 0;
         @media (min-width: $lg-min){
-            width: 38px;
-            height: 38px;
+            padding: 0.5em 1em;
         }
     }
 
@@ -397,10 +394,44 @@ body.maetic {
                 margin-bottom: 0;
             }
         }
-        ._log{
+        ._log {
             margin-top:2em;
         }
+        ._use {
+            p {
+                padding-left: 2em;
+            }
+        }
+        .__input {
+            text-align: right;
+        }
+        ._control {
+            width: 3em;
 
+            &.disabled {
+                background-color: #a5aabb;
+                border-color: #a5aabb;
+            }
+        }
+        ._number {
+            width: 4em;
+            font-size: 1.2em;
+            text-align: right;
+        }
+    }
+
+    ._submit {
+        background-color: $link_color;
+        border: 1px solid $link_color;
+        color: #fff;
+        border-radius: .25rem;
+        height: 35px;
+        margin-left: 5px;
+        padding: 0 1em;
+    }
+    ._submit_wrap {
+        width: 100%;
+        text-align: center;
     }
 
     ._message {
@@ -420,6 +451,7 @@ body.maetic {
     background-color: #333;
     padding: .5em 1em;
     text-align: right;
+    min-height:2em;
 
     button {
         background-color: $key_color;
@@ -434,5 +466,25 @@ body.maetic {
             background-color:  $key_color_dark;
             border-color:  $key_color_dark;
         }
+    }
+}
+
+#overbox {
+    background: rgba(3, 3, 3, 0.5);
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+    ._wrap {
+        display:block;
+        max-width: 50em;
+        padding: 2em;
+        margin: 0 auto;
+        background-color: #fff;
+    }
+
+    &.hide {
+        display: none;
     }
 }

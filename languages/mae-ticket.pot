@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-04-30T04:12:41+00:00\n"
+"POT-Creation-Date: 2020-04-30T10:04:30+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: mae-ticket\n"
@@ -58,6 +58,14 @@ msgstr ""
 msgid "this isn't ticket order."
 msgstr ""
 
+#: model/class.maetic_woocommerce_order_itemmeta.php:95
+msgid "USE"
+msgstr ""
+
+#: model/class.maetic_woocommerce_order_itemmeta.php:96
+msgid "REVERT"
+msgstr ""
+
 #: pages/admin_menu.php:6
 #: pages/dashboard.php:1
 msgid "Go Input Code Page."
@@ -95,41 +103,73 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
-#: templates/code-page.php:15
-msgid "payd?"
-msgstr ""
-
-#: templates/code-page.php:15
-msgid "yes"
-msgstr ""
-
-#: templates/code-page.php:15
-msgid "no"
+#: templates/code-page.php:14
+msgid "Revert Mode"
 msgstr ""
 
 #: templates/code-page.php:16
-#: templates/code-page.php:30
-msgid "name"
+msgid "payd?"
+msgstr ""
+
+#: templates/code-page.php:16
+msgid "yes"
+msgstr ""
+
+#: templates/code-page.php:16
+msgid "no"
 msgstr ""
 
 #: templates/code-page.php:17
-msgid "email"
+#: templates/code-page.php:31
+#: templates/code-page.php:90
+msgid "name"
 msgstr ""
 
 #: templates/code-page.php:18
+msgid "email"
+msgstr ""
+
+#: templates/code-page.php:19
 msgid "pay complete time"
 msgstr ""
 
-#: templates/code-page.php:33
+#: templates/code-page.php:34
+#: templates/code-page.php:93
 msgid "quantity"
 msgstr ""
 
-#: templates/code-page.php:35
+#: templates/code-page.php:36
+#: templates/code-page.php:95
 msgid "expire time"
 msgstr ""
 
-#: templates/code-page.php:51
+#: templates/code-page.php:49
+msgid "Use"
+msgstr ""
+
+#: templates/code-page.php:57
+msgid "use is unavailable"
+msgstr ""
+
+#: templates/code-page.php:62
 msgid "Logs"
+msgstr ""
+
+#: templates/code-page.php:73
+msgid "use it"
+msgstr ""
+
+#: templates/code-page.php:83
+msgid "Revert"
+msgstr ""
+
+#: templates/code-page.php:114
+msgid "revert"
+msgstr ""
+
+#: templates/code-page.php:115
+#: templates/input-form.php:23
+msgid "reset"
 msgstr ""
 
 #: templates/input-form.php:7
@@ -138,8 +178,4 @@ msgstr ""
 
 #: templates/input-form.php:22
 msgid "check"
-msgstr ""
-
-#: templates/input-form.php:23
-msgid "reset"
 msgstr ""
