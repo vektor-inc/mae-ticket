@@ -1,6 +1,7 @@
 ;
 ((document, parent, max, inputs) => {
-    if(!document.getElementById(parent)) return;
+    let form = document.getElementById(parent);
+    if(!form) return;
 
     let
         numbers = [],
@@ -71,12 +72,23 @@
             }
         })
 
+        form.addEventListener('reset', (e)=>{
+            Array.prototype.forEach.call(
+                numbers,
+                (elem) => {
+                    elem.classList.remove('ok', 'error')
+                }
+            )
+            numbers[0].select()
+            numbers[0].focus()
+        }, false)
+
         window.addEventListener('DOMContentLoaded', ()=>{
             numbers[0].select()
             numbers[0].focus()
         }, false)
     }
-})(document, 'maetick_input', 4, ['number-1','number-2','number-3','number-4'])
+})(document, 'maetic_form', 4, ['number-1','number-2','number-3','number-4'])
 ;
 ((document) => {
     window.addEventListener('load', () => {

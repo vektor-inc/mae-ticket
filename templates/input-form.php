@@ -4,7 +4,7 @@
 
         <?php do_action('maet_input_before'); ?>
 
-        <h2><?php _e('Input ticket code', 'maetic'); ?></h2>
+        <h2><?php _e('Input ticket code', 'mae-ticket'); ?></h2>
 
         <div class="_input_wrp">
             <input type="number" name="number-1" id="number-1" placeholder="0000" />
@@ -18,7 +18,9 @@
 
         <?php do_action('maet_input_after'); ?>
 
-        <input type="submit" class="_submit" value="確認" />
-
+        <div class="_input_wrp">
+            <input type="submit" class="_submit _button" value="<?php _e( 'check', 'mae-ticket' ); ?>" />
+            <input type="reset" class="_clear _button" value="<?php _e( 'reset', 'mae-ticket' ); ?>" />
+        </div>
     </form>
 </div>

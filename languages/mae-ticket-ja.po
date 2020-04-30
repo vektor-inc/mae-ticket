@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: maeticket 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/html\n"
-"POT-Creation-Date: 2020-04-28 16:22+0900\n"
-"PO-Revision-Date: 2020-04-28 16:22+0900\n"
+"POT-Creation-Date: 2020-04-30 13:12+0900\n"
+"PO-Revision-Date: 2020-04-30 13:13+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja_JP\n"
@@ -65,17 +65,25 @@ msgstr "チケットID入力画面へ"
 msgid "reset url parmalink"
 msgstr "URL設定を更新する"
 
-#: pages/order-item-metabox.php:1 pages/order-metabox.php:1
+#: pages/order-metabox.php:1
 msgid "Ticket Code"
 msgstr "チケットID"
 
-#: pages/order-item-metabox.php:4 pages/order-metabox.php:4
+#: pages/order-metabox.php:4
 msgid "go ticket page"
 msgstr "チケット画面へ移動"
 
-#: pages/order-item-metabox.php:13 pages/order-metabox.php:13
+#: pages/order-metabox.php:13
 msgid "tickets"
 msgstr "枚"
+
+#: templates/404.php:6
+msgid "oops... that url is not found... "
+msgstr "お探しのURLが存在しないようです"
+
+#: templates/404.php:10
+msgid "go site"
+msgstr "トップページ"
 
 #: templates/code-page.php:11
 msgid "Order ID"
@@ -120,3 +128,15 @@ msgstr "有効期限"
 #: templates/code-page.php:51
 msgid "Logs"
 msgstr "履歴"
+
+#: templates/input-form.php:7
+msgid "Input ticket code"
+msgstr "チケットIDを入力"
+
+#: templates/input-form.php:22
+msgid "check"
+msgstr ""
+
+#: templates/input-form.php:23
+msgid "reset"
+msgstr ""

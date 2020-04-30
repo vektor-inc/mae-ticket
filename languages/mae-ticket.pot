@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-04-28T07:21:51+00:00\n"
+"POT-Creation-Date: 2020-04-30T04:12:41+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: mae-ticket\n"
@@ -67,19 +67,24 @@ msgstr ""
 msgid "reset url parmalink"
 msgstr ""
 
-#: pages/order-item-metabox.php:1
 #: pages/order-metabox.php:1
 msgid "Ticket Code"
 msgstr ""
 
-#: pages/order-item-metabox.php:4
 #: pages/order-metabox.php:4
 msgid "go ticket page"
 msgstr ""
 
-#: pages/order-item-metabox.php:13
 #: pages/order-metabox.php:13
 msgid "tickets"
+msgstr ""
+
+#: templates/404.php:6
+msgid "oops... that url is not found... "
+msgstr ""
+
+#: templates/404.php:10
+msgid "go site"
 msgstr ""
 
 #: templates/code-page.php:11
@@ -125,4 +130,16 @@ msgstr ""
 
 #: templates/code-page.php:51
 msgid "Logs"
+msgstr ""
+
+#: templates/input-form.php:7
+msgid "Input ticket code"
+msgstr ""
+
+#: templates/input-form.php:22
+msgid "check"
+msgstr ""
+
+#: templates/input-form.php:23
+msgid "reset"
 msgstr ""
