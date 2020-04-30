@@ -2,7 +2,7 @@
 
 <div class="container">
     <div class="maetic_header">
-        /<a href="<?php echo maetic_get_qr_url(''); ?>">qr</a>
+    <a href="<?php echo maetic_get_qr_url(''); ?>">/qr</a>
     </div>
     <div id="maetic_code_page">
         <div class="info">
