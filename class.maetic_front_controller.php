@@ -124,6 +124,7 @@ class MaeTick_Front_Controller {
 			}
 
 			if ( $action_var ) {
+				var_dump($_POST);
 				if ( $_SERVER["REQUEST_METHOD"] != 'POST' ) {
 					self::http404();
 				}
@@ -137,6 +138,10 @@ class MaeTick_Front_Controller {
 
 				if ( $action_var == 'use' ) {
 					$order->use_tickets($_POST['count']);
+					wp_safe_redirect( '/qr/' . $code );
+				}
+				if ( $action_var == 'revert' ) {
+					$order->revert_tickets($_POST['count']);
 					wp_safe_redirect( '/qr/' . $code );
 				}
 			}

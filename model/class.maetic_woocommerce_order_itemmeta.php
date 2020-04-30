@@ -4,10 +4,10 @@ if ( !defined('ABSPATH') ) {
 	die();
 }
 
-define('LOG_USE', 'USE');
-
 class MaeTick_Woocommerce_Order_Itemmeta {
 	const QUANTITY_META_NAME = 'maetic_used_ticket_quantity';
+	const USE = 'USE';
+	const REVERT = 'REVERT';
 
 	public static function item_object( $order_item_id ) {
 		return new WC_Order_Item_Product($order_item_id);
@@ -61,7 +61,21 @@ class MaeTick_Woocommerce_Order_Itemmeta {
 		$payload = array(
 			'count' => $count
 		);
-		self::log( $order_item_id, LOG_USE, $payload );
+		self::log( $order_item_id, self::USE, $payload );
+		self::update_used_ticket_quantity( $order_item_id, $sum );
+	}
+
+	public static function revert( $order_item_id, $count ) {
+		$sum = self::get_used_ticket_quantity( $order_item_id ) - intval( $count );
+
+		if ( $sum < 0 ) {
+			throw new WP_Error( 'invalid quantity' );
+		}
+
+		$payload = array(
+			'count' => $count
+		);
+		self::log( $order_item_id, self::REVERT, $payload );
 		self::update_used_ticket_quantity( $order_item_id, $sum );
 	}
 
@@ -75,4 +89,9 @@ class MaeTick_Woocommerce_Order_Itemmeta {
 	public static function logs( $order_item_id ) {
 		return wc_get_order_item_meta( $order_item_id, 'maetic_log', false );
 	}
+}
+
+function maetic_dummy(){
+	__( 'USE', 'mae-ticket' );
+	__( 'REVERT', 'mae-ticket' );
 }

@@ -32,12 +32,20 @@ class Maetic_Ticket {
 		return $this->item->get_quantity();
 	}
 
+	public function get_used_quantity() {
+		return intval( MaeTick_Woocommerce_Order_Itemmeta::get_used_ticket_quantity( $this->ID ) );
+	}
+
 	public function get_rest_quantity() {
 		return intval( MaeTick_Woocommerce_Order_Itemmeta::has_ticket_qty_left( $this->ID ) );
 	}
 
 	public function use( $count ) {
 		return MaeTick_Woocommerce_Order_Itemmeta::use( $this->ID, $count );
+	}
+
+	public function revert( $count ) {
+		return MaeTick_Woocommerce_Order_Itemmeta::revert( $this->ID, $count );
 	}
 
 	public function get_logs() {

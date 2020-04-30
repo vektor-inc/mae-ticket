@@ -69,7 +69,17 @@ class Maetic_Order {
 			if ( $c <= 0 ) {
 				continue;
 			}
-			$tickets[ $id ]->use($c);
+			$tickets[ $id ]->use( $c );
+		}
+	}
+	public function revert_tickets( $count ) {
+		$tickets = $this->tickets();
+		foreach ( $count as $id => $c ) {
+			$c = intval( $c );
+			if ( $c <= 0 ) {
+				continue;
+			}
+			$tickets[ $id ]->revert( $c );
 		}
 	}
 

@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-04-27T03:54:23+00:00\n"
+"POT-Creation-Date: 2020-04-30T10:04:30+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: mae-ticket\n"
@@ -26,28 +26,73 @@ msgstr ""
 msgid "Vektor, Inc."
 msgstr ""
 
-#: class.maetic_admin.php:20
+#: class.maetic_admin.php:24
+#: class.maetic_admin.php:25
+#: class.maetic_admin.php:53
+#: class.maetic_admin.php:65
+#: pages/admin_menu.php:1
 msgid "Maetic"
 msgstr ""
 
-#: class.maetic_admin.php:36
-msgid "Enable Maetic Product"
-msgstr ""
-
-#: class.maetic_admin.php:43
-msgid "Expired Period (Day)"
-msgstr ""
-
-#: class.maetic_admin.php:45
-msgid "Enter the number of days the virtual ticket is valid for."
-msgstr ""
-
-#: class.maetic_admin.php:71
-msgid "maetic"
+#: class.maetic_admin.php:40
+msgid "parmalink updated."
 msgstr ""
 
 #: class.maetic_admin.php:81
+msgid "Enable Maetic Product"
+msgstr ""
+
+#: class.maetic_admin.php:88
+msgid "Expired Period (Day)"
+msgstr ""
+
+#: class.maetic_admin.php:90
+msgid "Enter the number of days the virtual ticket is valid for."
+msgstr ""
+
+#: class.maetic_admin.php:117
+msgid "maetic"
+msgstr ""
+
+#: class.maetic_admin.php:127
 msgid "this isn't ticket order."
+msgstr ""
+
+#: model/class.maetic_woocommerce_order_itemmeta.php:95
+msgid "USE"
+msgstr ""
+
+#: model/class.maetic_woocommerce_order_itemmeta.php:96
+msgid "REVERT"
+msgstr ""
+
+#: pages/admin_menu.php:6
+#: pages/dashboard.php:1
+msgid "Go Input Code Page."
+msgstr ""
+
+#: pages/admin_menu.php:11
+msgid "reset url parmalink"
+msgstr ""
+
+#: pages/order-metabox.php:1
+msgid "Ticket Code"
+msgstr ""
+
+#: pages/order-metabox.php:4
+msgid "go ticket page"
+msgstr ""
+
+#: pages/order-metabox.php:13
+msgid "tickets"
+msgstr ""
+
+#: templates/404.php:6
+msgid "oops... that url is not found... "
+msgstr ""
+
+#: templates/404.php:10
+msgid "go site"
 msgstr ""
 
 #: templates/code-page.php:11
@@ -58,39 +103,79 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
-#: templates/code-page.php:15
-msgid "payd?"
-msgstr ""
-
-#: templates/code-page.php:15
-msgid "yes"
-msgstr ""
-
-#: templates/code-page.php:15
-msgid "no"
+#: templates/code-page.php:14
+msgid "Revert Mode"
 msgstr ""
 
 #: templates/code-page.php:16
-#: templates/code-page.php:30
-msgid "name"
+msgid "payd?"
+msgstr ""
+
+#: templates/code-page.php:16
+msgid "yes"
+msgstr ""
+
+#: templates/code-page.php:16
+msgid "no"
 msgstr ""
 
 #: templates/code-page.php:17
-msgid "email"
+#: templates/code-page.php:31
+#: templates/code-page.php:90
+msgid "name"
 msgstr ""
 
 #: templates/code-page.php:18
+msgid "email"
+msgstr ""
+
+#: templates/code-page.php:19
 msgid "pay complete time"
 msgstr ""
 
-#: templates/code-page.php:33
+#: templates/code-page.php:34
+#: templates/code-page.php:93
 msgid "quantity"
 msgstr ""
 
-#: templates/code-page.php:35
+#: templates/code-page.php:36
+#: templates/code-page.php:95
 msgid "expire time"
 msgstr ""
 
-#: templates/code-page.php:51
+#: templates/code-page.php:49
+msgid "Use"
+msgstr ""
+
+#: templates/code-page.php:57
+msgid "use is unavailable"
+msgstr ""
+
+#: templates/code-page.php:62
 msgid "Logs"
+msgstr ""
+
+#: templates/code-page.php:73
+msgid "use it"
+msgstr ""
+
+#: templates/code-page.php:83
+msgid "Revert"
+msgstr ""
+
+#: templates/code-page.php:114
+msgid "revert"
+msgstr ""
+
+#: templates/code-page.php:115
+#: templates/input-form.php:23
+msgid "reset"
+msgstr ""
+
+#: templates/input-form.php:7
+msgid "Input ticket code"
+msgstr ""
+
+#: templates/input-form.php:22
+msgid "check"
 msgstr ""

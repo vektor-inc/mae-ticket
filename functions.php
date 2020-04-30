@@ -58,6 +58,6 @@ function maetic_get_random_value() {
 	return random_int( 0, pow(10, 16) - 1 );
 }
 
-function maetic_get_qr_url( $path ) {
+function maetic_get_qr_url( $path='/' ) {
 	return get_home_url() .'/qr'. $path;
 }
