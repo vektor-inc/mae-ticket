@@ -23,8 +23,8 @@ class Maetic_Admin {
 			'woocommerce',
 			__( 'Maetic', 'mae-ticket' ),
 			__( 'Maetic', 'mae-ticket' ),
-			"administrator",
-			"maetic",
+			'activate_plugin',
+			'maetic',
 			array( __CLASS__, 'admin_page' )
 		);
 	}
