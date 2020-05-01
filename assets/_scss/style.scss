@@ -27,6 +27,7 @@ $xl-min: 1200px;
     border: 1px solid $link_color;
     color: $link_color;
     border-radius: 5px;
+    padding: .5em 1em;
 }
 @mixin btn_default_hover {
     border: 1px solid $link_color;
@@ -34,7 +35,13 @@ $xl-min: 1200px;
     color: #fff;
     text-decoration: none;
 }
-
+@mixin input_btn{
+    border-radius: .25rem;
+    padding: .8em 1.5em;
+    border-width: 1px;
+    border-style: solid;
+    margin: 0 3px;
+}
 
 
 /*-------------------------------------------*/
@@ -50,6 +57,7 @@ $xl-min: 1200px;
     ._input_wrp {
         min-width: 24em;
         display: flex;
+        justify-content: center;
         padding: .1em;
         margin-bottom: 2em;
         position: relative;
@@ -139,6 +147,7 @@ $xl-min: 1200px;
 }
 
 body.maetic {
+    margin: 0;
     ._button {
             color: #fff;
             margin: 0 auto;
@@ -153,8 +162,9 @@ body.maetic {
             border-radius: 5px;
 
             &:focus,&:hover{
-                background-color:  $key_color_dark;
-                border-color:  $key_color_dark;
+                color: #fff;
+                background-color: $link_color;
+                border-color:$link_color;
             }
             @media (min-width: $md-min){
                 width: auto;
@@ -167,6 +177,7 @@ body.maetic {
         border-color:  $secondary_color_dark;
 
         &:focus,&:hover{
+            color: #fff;
             background-color:  $secondary_color_dark;
             border-color:  $secondary_color_dark;
         }
@@ -177,6 +188,21 @@ body.maetic {
         font-size: 1em;
         line-height: 1em;
         font-weight: normal;
+        font-family: inherit;
+    }
+    input[type=submit], input[type=reset]{
+        @include input_btn;
+    }
+    input[type=submit] {
+        background-color: $link_color;
+        border-color: $link_color;
+        color: #fff;
+        
+    }
+    input[type=reset]{
+        border-color: $link_color;
+        color: $link_color;
+        background: #fff;
     }
 }
 
@@ -196,6 +222,40 @@ body.maetic {
         background-color: $translucent_gray_color;
     }
 
+    h2, h3, h4, h5, h6 {
+        margin: 1.8em 0 1.2em;
+        clear: both;
+        font-weight: normal;
+        line-height: 1.4;
+    }
+    h2 {
+        padding: .8em 0 .7em;
+        border-top: 2px solid $key_color;
+        border-bottom: 1px solid #e9e9e9;
+        font-size: 1.75em;
+        &:before,&:after{
+            content: none;
+        }
+        &:first-child{
+            margin-top: 0;
+        }
+    }
+    h3{
+        padding-bottom: 8px;
+        position: relative;
+        border-bottom: 1px solid #ccc;
+        font-size: 1.75em;
+        &:after {
+            content: ".";
+            line-height: 0;
+            display: block;
+            overflow: hidden;
+            position: absolute;
+            bottom: -1px;
+            width: 30%;
+            border-bottom: 1px solid $key_color;
+        }
+    }
     .container {
         max-width: 1024px;
         padding: 1em;
@@ -205,22 +265,19 @@ body.maetic {
             padding: 2.5em 2em;
             margin: 3em auto;
         }
+
         .maetic_header a{
             @include btn_default;
-            z-index: 100;
-            display: inline;
-            padding: .2em 1em;
+            
+            display: inline-block;          
             cursor: pointer;
-
-            @media (min-width: $md-min){
+            text-decoration: none;
+            @media (min-width: $xl-min){
                 position: absolute;
                 top: 3em;
+                z-index: 1;
             }
-            &::before{
-                @include fontawesome_icon;
-                content: '\f0a8';
-                margin-right: 4px;
-            }
+
             &:hover{
                 @include btn_default_hover;
 
@@ -230,53 +287,20 @@ body.maetic {
                 }
             }
         }
-        h2, h3, h4, h5, h6 {
-            margin: 1.8em 0 1.2em;
-            clear: both;
-            font-weight: normal;
-            line-height: 1.4;
-        }
-        h2 {
-            padding: .8em 0 .7em;
-            border-top: 2px solid $key_color;
-            border-bottom: 1px solid #e9e9e9;
-            font-size: 1.75em;
-            &:before,&:after{
-                content: none;
-            }
-            &:first-child{
-                margin-top: 0;
-            }
-        }
-        h3{
-            padding-bottom: 8px;
-            position: relative;
-            border-bottom: 1px solid #ccc;
-            font-size: 1.75em;
-            &:after {
-                content: ".";
-                line-height: 0;
-                display: block;
-                overflow: hidden;
-                position: absolute;
-                bottom: -1px;
-                width: 30%;
-                border-bottom: 1px solid $key_color;
-            }
-        }
+
     }
 
     .info {
         ._code {
             position: relative;
-            font-size: 2em;
+            font-size: 26px;
             margin-top: 0.7em;
             font-weight: bold;
             display: block;
             font-family: sans-serif;
             text-align: center;
 
-            @media (min-width: $xl-min){
+            @media (min-width: $md-min){
                 margin-top: 0;
                 font-size: 2.2em;
                 text-align: center;
@@ -303,14 +327,10 @@ body.maetic {
         a{
             @include btn_default;
             display: inline;
-            padding: .2em 1em;
             margin-bottom: 10em;
             pointer-events: auto;
             cursor: pointer;
-            &::before{
-                @include fontawesome_icon;
-                content: "\f044";
-            }
+            text-decoration: none;
             &:hover{
                 @include btn_default_hover;
             }
@@ -354,9 +374,8 @@ body.maetic {
         border-radius: .25rem;
         margin-left: 5px;
         padding: 0;
-        @media (min-width: $lg-min){
-            padding: 0.5em 1em;
-        }
+        padding: 0.8em 1em;
+
     }
 
     .ticket {
@@ -365,7 +384,7 @@ body.maetic {
         margin: 3em 0;
         padding: 1em;
         @media (min-width: $sm-min){
-            padding: 1.5em;
+            padding: 2em;
         }
         dl{
             border-top: 1px dotted #ccc;
@@ -374,6 +393,7 @@ body.maetic {
                 background: $translucent_gray_color;
                 text-align: center;
                 font-weight: normal;
+              
                 @media (min-width: $sm-min){
                     float: left;
                     clear: left;
@@ -388,6 +408,9 @@ body.maetic {
                 }
             }
             dt,dd{
+                @media (max-width: $sm-max){
+                    margin: 0;
+                }
                 border-left:none;
                 border-bottom: 1px dotted #ccc;
                 padding: 1em;
@@ -403,10 +426,15 @@ body.maetic {
             }
         }
         .__input {
-            text-align: right;
+            text-align: center;
+            @media (min-width: $sm-min){
+                text-align: right;
+            }
         }
         ._control {
-            width: 3em;
+            width: 2.5em;
+            text-align: center;
+            padding: .6em;
 
             &.disabled {
                 background-color: #a5aabb;
@@ -414,21 +442,19 @@ body.maetic {
             }
         }
         ._number {
-            width: 4em;
+            max-width: 4.5em;
             font-size: 1.2em;
-            text-align: right;
+            border: 1px solid #ccc;
+            padding: 5px 5px 5px 10px;
+            font-size: 14px;
+            border-radius: .25rem;
+            @media (min-width: $lg-min){
+                padding: 8px 5px 8px 10px;
+            }
         }
     }
 
-    ._submit {
-        background-color: $link_color;
-        border: 1px solid $link_color;
-        color: #fff;
-        border-radius: .25rem;
-        height: 35px;
-        margin-left: 5px;
-        padding: 0 1em;
-    }
+
     ._submit_wrap {
         width: 100%;
         text-align: center;
@@ -472,10 +498,13 @@ body.maetic {
 #overbox {
     background: rgba(3, 3, 3, 0.5);
     position: absolute;
-    top: 0;
+    top:0;
     width: 100%;
     height: 100%;
     opacity: 1;
+    @media (min-width: $xl-min){
+        padding-top: 1em;    
+    }
 
     @keyframes fadeIn {
         0% {
@@ -496,6 +525,9 @@ body.maetic {
         padding: 2em;
         margin: 0 auto;
         background-color: #fff;
+        form{
+            text-align: center;
+        }
     }
 
     &.hide {
