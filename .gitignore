@@ -9,3 +9,4 @@ wp-cli.local.yml
 sftp-config.json
 *.tar.gz
 *.zip
+*.before

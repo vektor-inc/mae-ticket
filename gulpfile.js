@@ -1,6 +1,6 @@
 const gulp = require('gulp')
 const sass = require('gulp-sass')
-const cssmin = require('gulp-cssmin')
+const cssmin = require('gulp-clean-css')
 const plumber = require('gulp-plumber')
 const babel = require('gulp-babel')
 const jsmin = require('gulp-uglify')

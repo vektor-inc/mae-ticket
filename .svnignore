@@ -1,4 +1,5 @@
 .git/
+.github/
 node_modules/
 _js/
 _scss/
@@ -21,3 +22,4 @@ package*.json
 *.tar.gz
 *.zip
 *.scss
+*.before
