@@ -1,0 +1,32 @@
+name: Compile test
+
+on:
+  push:
+    branches: [ master, develop ]
+  pull_request:
+    branches: [ master, develop ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: cp assets/css/editor.css editor.css.before
+    - run: cp assets/css/style.css style.css.before
+    - run: cp assets/js/form.min.js form.min.js.before
+    - run: npm ci
+    - run: npm run build
+    - run: diff assets/css/editor.css editor.css.before
+    - run: diff assets/css/style.css style.css.before
+    - run: diff assets/js/form.min.js form.min.js.before
+
