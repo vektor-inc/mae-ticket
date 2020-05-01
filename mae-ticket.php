@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:     maeticket
+ * Plugin Name:     MaeTicket
  * Plugin URI:      https://github.com/vektor-inc/mae-ticket
  * Description:
  * Author:          Vektor, Inc.

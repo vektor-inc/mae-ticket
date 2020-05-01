@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: maeticket 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/html\n"
-"POT-Creation-Date: 2020-04-30 19:04+0900\n"
-"PO-Revision-Date: 2020-04-30 19:05+0900\n"
+"POT-Creation-Date: 2020-05-01 15:38+0900\n"
+"PO-Revision-Date: 2020-05-01 15:39+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja_JP\n"
@@ -17,8 +17,11 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. Plugin Name of the plugin
-msgid "maeticket"
-msgstr "前チケ"
+#: class.maetic_admin.php:24 class.maetic_admin.php:25
+#: class.maetic_admin.php:53 class.maetic_admin.php:65 pages/admin_menu.php:1
+#: templates/header.php:7
+msgid "MaeTicket"
+msgstr "まえチケ"
 
 #. Plugin URI of the plugin
 msgid "https://github.com/vektor-inc/mae-ticket"
@@ -28,18 +31,13 @@ msgstr "https://github.com/vektor-inc/mae-ticket"
 msgid "Vektor, Inc."
 msgstr "Vektor, Inc."
 
-#: class.maetic_admin.php:24 class.maetic_admin.php:25
-#: class.maetic_admin.php:53 class.maetic_admin.php:65 pages/admin_menu.php:1
-msgid "Maetic"
-msgstr "Maetic"
-
 #: class.maetic_admin.php:40
 msgid "parmalink updated."
 msgstr "URL設定を更新しました。"
 
 #: class.maetic_admin.php:81
-msgid "Enable Maetic Product"
-msgstr "チケットとして使用する"
+msgid "Enable MaeTicket Product"
+msgstr "チケットとして設定"
 
 #: class.maetic_admin.php:88
 msgid "Expired Period (Day)"
@@ -51,7 +49,7 @@ msgstr "チケットの有効期限日数を入力してください。"
 
 #: class.maetic_admin.php:117
 msgid "maetic"
-msgstr "maetic"
+msgstr "まえチケ"
 
 #: class.maetic_admin.php:127
 msgid "this isn't ticket order."
@@ -173,3 +171,12 @@ msgstr "チケットIDを入力"
 #: templates/input-form.php:22
 msgid "check"
 msgstr "確認"
+
+#~ msgid "maeticket"
+#~ msgstr "前チケ"
+
+#~ msgid "Maetic"
+#~ msgstr "Maetic"
+
+#~ msgid "Enable Maetic Product"
+#~ msgstr "チケットとして使用する"

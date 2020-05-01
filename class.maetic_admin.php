@@ -21,8 +21,8 @@ class Maetic_Admin {
 	public static function add_admin_page() {
 		add_submenu_page(
 			'woocommerce',
-			__( 'Maetic', 'mae-ticket' ),
-			__( 'Maetic', 'mae-ticket' ),
+			__( 'MaeTicket', 'mae-ticket' ),
+			__( 'MaeTicket', 'mae-ticket' ),
 			'activate_plugin',
 			'maetic',
 			array( __CLASS__, 'admin_page' )
@@ -50,7 +50,7 @@ class Maetic_Admin {
 	public static function add_dashboard() {
 		wp_add_dashboard_widget(
 			'maetic_dashboard',
-			__( 'Maetic', 'mae-ticket' ),
+			__( 'MaeTicket', 'mae-ticket' ),
 			array( __CLASS__, 'show_dashboard' )
 		);
 	}
@@ -62,7 +62,7 @@ class Maetic_Admin {
 	public static function product_tab( $tabs ) {
 		// Key should be exactly the same as in the class product_type
 		$tabs['simple'] = array(
-			'label'  => __( 'Maetic', 'mae-ticket' ),
+			'label'  => __( 'MaeTicket', 'mae-ticket' ),
 			'target' => 'maetic_product_options',
 			'class'  => array( 'show_if_maetic_product' ),
 			);
@@ -78,7 +78,7 @@ class Maetic_Admin {
 			woocommerce_wp_checkbox(
 				array(
 					'id'    => 'enable_maetic_product',
-					'label' => __( 'Enable Maetic Product', 'mae-ticket' ),
+					'label' => __( 'Enable MaeTicket Product', 'mae-ticket' ),
 				)
 			);
 

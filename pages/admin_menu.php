@@ -1,4 +1,4 @@
-<h1 class="wp-heading-inline"><?php _e( 'Maetic', 'mae-ticket' ); ?>
+<h1 class="wp-heading-inline"><?php _e( 'MaeTicket', 'mae-ticket' ); ?>
 
 <br/>
 <br/>
