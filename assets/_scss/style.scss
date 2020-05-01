@@ -520,6 +520,9 @@ body.maetic {
     animation-timing-function: ease-out;
 
     ._wrap {
+        @media (max-width: $sm-max){
+            margin: 1em !important;    
+        }
         display:block;
         max-width: 50em;
         padding: 2em;
