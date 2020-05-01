@@ -13,21 +13,11 @@ class MaeTick_Front_Controller {
 		add_filter( 'query_vars', array( __CLASS__, 'query_vars'), 10, 1 );
 		add_action( 'init', array( __CLASS__, 'add_routes' ) );
 		add_action( 'template_redirect', array( __CLASS__, 'front_controller' ), 10, 1 );
-		// add_action( 'parse_query', array( ))
-		add_action( 'pre_get_posts', array( __CLASS__, 'pre_get_posts' ), 9, 1 );
 	}
 
 	public static function set_rewrite_rules() {
-		// add_action( 'init', array( __CLASS__, 'add_routes' ) );
-//        $this->manage_user_routes();
+		self::add_routes();
 		flush_rewrite_rules();
-	}
-
-	public static function pre_get_posts( $query ) {
-		$code = $query->get(self::CODE_VAR);
-		if( !empty($code) ) {
-			// $query->set( 'post_type', );
-		}
 	}
 
 	public static function add_routes() {
