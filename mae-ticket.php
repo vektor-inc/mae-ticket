@@ -66,3 +66,10 @@ add_action(
 );
 
 
+require 'plugin-update-checker/plugin-update-checker.php';
+$updater = Puc_v4_Factory::buildUpdateChecker(
+	'https://github.com/vektor-inc/mae-ticket',
+	__FILE__,
+	'mae-ticket'
+);
+$updater->setBranch( 'master' );
