@@ -16,10 +16,16 @@
 			
 			<button id="revert_sw"><?php echo __( 'Revert Mode', 'mae-ticket' ); ?></button>
 			<ul>
-				<li><?php echo __( 'payd?', 'mae-ticket' ); ?> - <?php echo $order->order->is_paid() ? __( 'yes', 'mae-ticket' ) : __( 'no', 'mae-ticket' ); ?></li>
-				<li><?php echo __( 'name', 'mae-ticket' ); ?> - <?php echo $order->order->get_billing_first_name(); ?> <?php echo $order->order->get_billing_last_name(); ?></li>
-				<li><?php echo __( 'email', 'mae-ticket' ); ?> - <?php echo $order->order->get_billing_email(); ?></li>
-				<li><?php echo __( 'pay complete time', 'mae-ticket' ); ?> - <?php echo $order->order->get_date_completed()->date( 'Y/m/d' ); ?></li>
+				<li><?php echo __( 'name', 'mae-ticket' ); ?> : 
+				<?php if ( get_locale() != 'ja' ) : ?>
+				<?php echo $order->order->get_billing_first_name() .' '. $order->order->get_billing_last_name(); ?>
+				<?php else : ?>
+					<?php echo $order->order->get_billing_last_name() .' '. $order->order->get_billing_first_name() ; ?>
+				<?php endif ;?>
+				</li>
+				<li><?php echo __( 'email', 'mae-ticket' ); ?> : <?php echo $order->order->get_billing_email(); ?></li>
+				<li><?php echo __( 'payd?', 'mae-ticket' ); ?> : <?php echo $order->order->is_paid() ? __( 'yes', 'mae-ticket' ) : __( 'no', 'mae-ticket' ); ?></li>
+				<li><?php echo __( 'pay complete time', 'mae-ticket' ); ?> : <?php echo $order->order->get_date_completed()->date( 'Y/m/d' ); ?></li>
 			</ul>
 		</div>
 
