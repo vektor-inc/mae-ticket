@@ -35,14 +35,51 @@ $xl-min: 1200px;
 	color: #fff;
 	text-decoration: none;
 }
-@mixin input_btn {
+@mixin btn_primary {
 	border-radius: 0.25rem;
 	padding: 0.8em 1.5em;
 	border-width: 1px;
 	border-style: solid;
 	margin: 0 3px;
 }
+/*-------------------------------------------*/
+/*  common
+/*-------------------------------------------*/
 
+.maetic {
+	._button {
+		color: #fff;
+		margin: 0 auto;
+		display: block;
+		width: 100%;
+		padding: 0.8em 2.5em;
+		font-size: 1.2em;
+		letter-spacing: 3px;
+		background-color: $key_color;
+		border-color: $key_color_dark;
+		font-weight: normal;
+		border-radius: 5px;
+		&:focus,
+		&:hover {
+			color: #fff;
+			background-color: $link_color;
+			border-color: $link_color;
+		}
+		@media (min-width: $md-min) {
+			width: auto;
+			font-size: 1em;
+		}
+		&-primary {
+			@include btn_primary;
+		}
+		&-default {
+			@include btn_default;
+			&:hover {
+				@include btn_default_hover;
+			}
+		}
+	}
+}
 /*-------------------------------------------*/
 /*  #maetick_input
 /*-------------------------------------------*/
@@ -52,7 +89,6 @@ $xl-min: 1200px;
 		-webkit-appearance: none;
 		margin: 0;
 	}
-
 	._input_wrp {
 		min-width: 24em;
 		display: flex;
@@ -118,7 +154,6 @@ $xl-min: 1200px;
 	._control form {
 		display: inline;
 	}
-
 	.btn-sticky {
 		display: inline-block;
 		padding: 0.5em 1em;
@@ -148,28 +183,6 @@ $xl-min: 1200px;
 body.maetic {
 	margin: 0;
 	._button {
-		color: #fff;
-		margin: 0 auto;
-		display: block;
-		width: 100%;
-		padding: 0.8em 2.5em;
-		font-size: 1.2em;
-		letter-spacing: 3px;
-		background-color: $key_color;
-		border-color: $key_color_dark;
-		font-weight: normal;
-		border-radius: 5px;
-
-		&:focus,
-		&:hover {
-			color: #fff;
-			background-color: $link_color;
-			border-color: $link_color;
-		}
-		@media (min-width: $md-min) {
-			width: auto;
-			font-size: 1em;
-		}
 	}
 
 	._clear {
@@ -197,7 +210,7 @@ body.maetic {
 	}
 	input[type="submit"],
 	input[type="reset"] {
-		@include input_btn;
+		@include btn_primary;
 	}
 	input[type="submit"] {
 		background-color: $link_color;

@@ -115,7 +115,7 @@
 				</div>
 			</div>
 			<?php endforeach; ?>
-			<input type="submit" class="_submit" value="<?php _e( 'revert', 'mae-ticket' ); ?>" />
+			<input type="submit" class="_submit  _button-primary" value="<?php _e( 'revert', 'mae-ticket' ); ?>" />
 			<input type="reset" id="revert_cancel" class="revert_cancel _reset" value="<?php _e( 'reset', 'mae-ticket' ); ?>" />
 		</form>
 	</div>
