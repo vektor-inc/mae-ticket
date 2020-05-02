@@ -70,21 +70,16 @@
 			margin-top: 0;
 		}
 	}
-	h3 {
-		padding-bottom: 8px;
+	h4 {
+		padding-bottom: 4px;
 		position: relative;
 		border-bottom: 1px solid #ccc;
-		margin-top: 1em;
-		font-size: 1.5em;
-		&:after {
-			content: ".";
-			line-height: 0;
-			display: block;
-			overflow: hidden;
-			position: absolute;
-			bottom: -1px;
-			width: 30%;
-			border-bottom: 1px solid $key_color;
+		margin: 1em 0 0.875rem;
+		font-size: 1rem;
+		&:before {
+			content: "■";
+			color: var(--mae-color-key, $key_color);
+			margin-right: 0.2rem;
 		}
 	}
 	.container {
@@ -226,27 +221,5 @@
 		.face {
 			width: 1em;
 		}
-	}
-}
-.table {
-	border-top: 1px dotted #ccc;
-	display: table;
-	border-collapse: collapse;
-	border-spacing: 0;
-	width: 100%;
-	th {
-		display: table-cell;
-		background: $translucent_gray_color;
-		font-weight: normal;
-		white-space: nowrap;
-	}
-	td {
-		display: table-cell;
-	}
-	th,
-	td {
-		border-left: none;
-		border-bottom: 1px dotted #ccc;
-		padding: 0.5em;
 	}
 }

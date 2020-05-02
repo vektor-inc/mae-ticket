@@ -58,7 +58,7 @@
 					</table>
 
 					<div class="_use">
-						<h3><?php echo __( 'Use', 'mae-ticket' ); ?></h3>
+						<h4><?php echo __( 'Use ticket', 'mae-ticket' ); ?></h3>
 						<?php if ( $t->get_rest_quantity() > 0 ) : ?>
 							<div class="__input _number_input">
 								<input type="number" class="_number" min="0" max="<?php echo $t->get_rest_quantity(); ?>" name="count[<?php echo $t->ID; ?>]" value="0" />
@@ -66,20 +66,25 @@
 								<button class="_control" role="minas">-</button>
 							</div>
 						<?php else : ?>
-							<p><?php _e( 'use is unavailable', 'mae-ticket' ); ?></p>
+							<p class="alert alert-danger"><?php _e( 'This ticket is already all used.', 'mae-ticket' ); ?></p>
 						<?php endif; ?>
-					</div>
+					</div><!-- [ /._use ] -->
 
 					<div class="_log">
-						<h3><?php echo __( 'Logs', 'mae-ticket' ); ?></h3>
+						<h4><?php echo __( 'Usage history', 'mae-ticket' ); ?></h3>
+						<?php if ( $t->get_logs() ) { ?>
 						<ul>
 							<?php foreach ( $t->get_logs() as $log ) : ?>
-								<li><?php echo $log['date']->format( 'Y/m/d' ); ?> - <?php echo _e( $log['type'], 'mae-ticket' ); ?> - <?php echo $log['count']; ?></li>
+								<li><?php echo $log['date']->format( 'Y.m.d' ); ?> - <?php echo _e( $log['type'], 'mae-ticket' ); ?> - <?php echo $log['count']; ?></li>
 							<?php endforeach; ?>
 						</ul>
-					</div>
+						<?php } else { ?>
+							<p><?php _e('This ticket has not been used yet.','mae-ticket' );?></p>
+						<?php } ?>
+					</div><!-- [ /._log ] -->
 
-				</div>
+				</div><!-- [ /.ticket_body ] -->
+				</div><!-- [ /.ticket ] -->
 			<?php endforeach; ?>
 
 				<div class="_submit_wrap">

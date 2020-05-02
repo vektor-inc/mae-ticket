@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: maeticket 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/html\n"
-"POT-Creation-Date: 2020-05-02 19:55+0900\n"
-"PO-Revision-Date: 2020-05-02 20:04+0900\n"
+"POT-Creation-Date: 2020-05-03 01:08+0900\n"
+"PO-Revision-Date: 2020-05-03 01:08+0900\n"
 "Last-Translator: \n"
 "Language-Team: mae ticket\n"
 "Language: ja_JP\n"
@@ -226,64 +226,63 @@ msgstr "注文管理"
 msgid "Revert Mode"
 msgstr "取り消しモード"
 
-#: templates/code-page.php:19 templates/code-page.php:40
-#: templates/code-page.php:101
+#: templates/code-page.php:19 templates/code-page.php:109
 msgid "name"
 msgstr "名前"
 
 #: templates/code-page.php:26
-msgid "email"
-msgstr "email"
-
-#: templates/code-page.php:27
 msgid "payd?"
 msgstr "支払い済み"
 
-#: templates/code-page.php:27
+#: templates/code-page.php:26
 msgid "yes"
 msgstr "はい"
 
-#: templates/code-page.php:27
+#: templates/code-page.php:26
 msgid "no"
 msgstr "いいえ"
 
-#: templates/code-page.php:28
+#: templates/code-page.php:27
 msgid "pay complete time"
 msgstr "支払い完了日時"
 
-#: templates/code-page.php:43 templates/code-page.php:104
+#: templates/code-page.php:42 templates/code-page.php:112
 msgid "quantity"
 msgstr "数量"
 
-#: templates/code-page.php:45 templates/code-page.php:106
+#: templates/code-page.php:46 templates/code-page.php:114
 msgid "expire time"
 msgstr "有効期限"
 
-#: templates/code-page.php:60
-msgid "Use"
-msgstr "使用"
+#: templates/code-page.php:61
+msgid "Use ticket"
+msgstr "チケットの使用"
 
-#: templates/code-page.php:68
-msgid "use is unavailable"
-msgstr "すべて使用済みです"
+#: templates/code-page.php:69
+msgid "This ticket is already all used."
+msgstr "このチケットは全て使用済みです。"
 
-#: templates/code-page.php:73
-msgid "Logs"
-msgstr "履歴"
+#: templates/code-page.php:74
+msgid "Usage history"
+msgstr "使用履歴"
 
-#: templates/code-page.php:84
+#: templates/code-page.php:82
+msgid "This ticket has not been used yet."
+msgstr "このチケットはまだ使用されていません。"
+
+#: templates/code-page.php:91
 msgid "use it"
 msgstr "使用する"
 
-#: templates/code-page.php:94
+#: templates/code-page.php:102
 msgid "Revert"
 msgstr "使用済みを取り消す"
 
-#: templates/code-page.php:127
+#: templates/code-page.php:135
 msgid "revert"
 msgstr "未使用にする"
 
-#: templates/code-page.php:128 templates/input-form.php:23
+#: templates/code-page.php:136 templates/input-form.php:23
 msgid "reset"
 msgstr "リセット"
 
@@ -294,6 +293,18 @@ msgstr "チケットIDを入力"
 #: templates/input-form.php:22
 msgid "check"
 msgstr "確認"
+
+#~ msgid "email"
+#~ msgstr "email"
+
+#~ msgid "Logs"
+#~ msgstr "履歴"
+
+#~ msgid "use is unavailable"
+#~ msgstr "すべて使用済みです"
+
+#~ msgid "Use"
+#~ msgstr "使用"
 
 #~ msgid "go site"
 #~ msgstr "トップページ"
@@ -309,9 +320,6 @@ msgstr "確認"
 
 #~ msgid "Vektor, Inc."
 #~ msgstr "Vektor, Inc."
-
-#~ msgid "maeticket"
-#~ msgstr "前チケ"
 
 #~ msgid "Maetic"
 #~ msgstr "Maetic"

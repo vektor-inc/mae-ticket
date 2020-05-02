@@ -1,0 +1,15 @@
+.maetic {
+	/*-------------------------------------------*/
+	/*  alert
+	/*-------------------------------------------*/
+	.alert {
+		border: 1px solid var(--mae-color-danger);
+		padding: 0.5rem 1em;
+		border-radius: 0.4rem;
+		&-danger {
+			border-color: #ebccd1;
+			background-color: #f2dede;
+			color: #a94442;
+		}
+	}
+}
