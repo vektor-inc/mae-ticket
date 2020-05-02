@@ -1,0 +1,33 @@
+/*-------------------------------------------*/
+/*  mixin
+/*-------------------------------------------*/
+@mixin fontawesome_icon {
+	font-family: "Font Awesome 5 Free";
+	font-weight: bold;
+	margin-right: 5px;
+}
+@mixin btn_default {
+	border: 1px solid $link_color;
+	color: $link_color;
+	border-radius: 5px;
+	padding: 0.5em 1em;
+	background-color: #fff;
+}
+@mixin btn_default_hover {
+	border: 1px solid $link_color;
+	background-color: $link_color;
+	color: #fff;
+}
+@mixin btn_primary {
+	border-radius: 0.25rem;
+	padding: 0.8em 1.5em;
+	border-width: 1px;
+	border-style: solid;
+	margin: 0 3px;
+	background-color: $key_color_dark;
+	border-color: $key_color;
+}
+@mixin btn_primary_hover {
+	background-color: $key_color;
+	border-color: $key_color_dark;
+}

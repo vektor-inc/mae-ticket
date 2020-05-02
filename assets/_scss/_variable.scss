@@ -1,0 +1,23 @@
+$success_color: green;
+$error_color: red;
+$focus_color: #333;
+$key_color: #f08319;
+$key_color_dark: #e67200;
+$secondary_color: #2f6798;
+$secondary_color_dark: #255580;
+$link_color: #337ab7;
+$translucent_gray_color: rgba(0, 0, 0, 0.03);
+
+$xs-max: 575.98px;
+$sm-max: 767.98px;
+$md-max: 991.98px;
+$lg-max: 1199.98px;
+
+$sm-min: 576px;
+$md-min: 768px;
+$lg-min: 992px;
+$xl-min: 1200px;
+
+:root {
+	--mae-color-key-dark: #e67200;
+}

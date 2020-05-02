@@ -1,0 +1,60 @@
+/*-------------------------------------------*/
+/*  ticket
+/*-------------------------------------------*/
+
+.ticket {
+	border: solid #ddd 1px;
+	border-top: $key_color solid 3px;
+	margin: 3em 0;
+	& &_title {
+		margin: 0;
+		background-color: var(--mae-color-key-dark, $key_color_dark);
+		padding: 0.5em 1em;
+		color: #fff;
+		font-size: 1.25rem;
+	}
+	&_body {
+		padding: 1em;
+		@media (min-width: $sm-min) {
+			padding: 2em;
+		}
+	}
+	._log {
+		margin-top: 2em;
+	}
+	._use {
+		p {
+			padding-left: 2em;
+		}
+	}
+	.__input {
+		text-align: center;
+		@media (min-width: $sm-min) {
+			text-align: right;
+		}
+	}
+	._control {
+		width: 2.5em;
+		text-align: center;
+		padding: 0.6em;
+
+		&.disabled {
+			background-color: #a5aabb;
+			border-color: #a5aabb;
+		}
+	}
+	._number {
+		width: 50%;
+		font-size: 1.2em;
+		border: 1px solid #ccc;
+		padding: 5px 5px 5px 10px;
+		font-size: 14px;
+		border-radius: 0.25rem;
+		@media (min-width: $md-min) {
+			width: 6em;
+		}
+		@media (min-width: $lg-min) {
+			padding: 8px 5px 8px 10px;
+		}
+	}
+}

@@ -10,7 +10,7 @@
 
 			<h2>
 			<?php echo __( 'Order ID', 'mae-ticket' ); ?>: <?php echo $order->ID; ?> 
-			<a href="<?php echo admin_url( 'post.php?post=' . $order->ID . '&action=edit' ); ?>" class="_button _button-default"><?php echo __( 'Edit', 'mae-ticket' ); ?></a>
+			<a href="<?php echo admin_url( 'post.php?post=' . $order->ID . '&action=edit' ); ?>" class="_button _button-default"><?php echo __( 'Order management', 'mae-ticket' ); ?></a>
 			</h2>
 
 			
@@ -36,14 +36,16 @@
 
 			<?php foreach ( $order->tickets() as $t ) : ?>
 				<div class="ticket">
-					<dl>
-						<dt><?php echo __( 'name', 'mae-ticket' ); ?></dt>
-						<dd><?php echo $t->get_title(); ?></dd>
-
-						<dt><?php echo __( 'quantity', 'mae-ticket' ); ?></dt>
-						<dd><?php echo $t->get_rest_quantity(); ?>/<?php echo $t->get_quantity(); ?></dd>
-						<dt><?php echo __( 'expire time', 'mae-ticket' ); ?></dt>
-						<dd>
+				<h3 class="ticket_title"><?php echo $t->get_title(); ?></h3>
+				<div class="ticket_body">
+					<table class="table">
+						<tr>
+						<th><?php echo __( 'quantity', 'mae-ticket' ); ?></th>
+						<td><?php echo $t->get_rest_quantity(); ?>/<?php echo $t->get_quantity(); ?></td>
+						</tr>
+						<tr>
+						<th><?php echo __( 'expire time', 'mae-ticket' ); ?></th>
+						<td>
 						<?php
 							$ex = $t->get_expire_date();
 						if ( $ex ) {
@@ -52,9 +54,9 @@
 							echo '-';
 						}
 						?>
-						</dd>
-
-					</dl>
+						</td>
+					</tr>
+					</table>
 
 					<div class="_use">
 						<h3><?php echo __( 'Use', 'mae-ticket' ); ?></h3>
@@ -77,6 +79,7 @@
 							<?php endforeach; ?>
 						</ul>
 					</div>
+
 				</div>
 			<?php endforeach; ?>
 
@@ -84,6 +87,7 @@
 					<input type="submit" class="_submit" value="<?php _e( 'use it', 'mae-ticket' ); ?>" />
 				</div>
 			</form>
+			</div>
 		</div>
 
 	</div>

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: maeticket 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/html\n"
-"POT-Creation-Date: 2020-05-02 17:53+0900\n"
-"PO-Revision-Date: 2020-05-02 17:54+0900\n"
+"POT-Creation-Date: 2020-05-02 19:55+0900\n"
+"PO-Revision-Date: 2020-05-02 20:04+0900\n"
 "Last-Translator: \n"
 "Language-Team: mae ticket\n"
 "Language: ja_JP\n"
@@ -21,7 +21,7 @@ msgstr ""
 
 #: class.maetic_admin.php:24 class.maetic_admin.php:25
 #: class.maetic_admin.php:53 class.maetic_admin.php:65 pages/admin_menu.php:1
-#: templates/header.php:7
+#: templates/header.php:7 templates/header.php:13
 msgid "MaeTicket"
 msgstr "まえチケ"
 
@@ -203,10 +203,10 @@ msgid "oops... that url is not found... "
 msgstr "お探しのURLが存在しないようです"
 
 #: templates/404.php:10
-msgid "go site"
-msgstr "トップページ"
+msgid "Go to home page"
+msgstr "ホームページへ移動"
 
-#: templates/404.php:13
+#: templates/404.php:14
 msgid "Login"
 msgstr "ログイン"
 
@@ -219,71 +219,71 @@ msgid "Order ID"
 msgstr "注文番号"
 
 #: templates/code-page.php:13
-msgid "Edit"
-msgstr "編集"
+msgid "Order management"
+msgstr "注文管理"
 
 #: templates/code-page.php:17
 msgid "Revert Mode"
 msgstr "取り消しモード"
 
-#: templates/code-page.php:19
-msgid "payd?"
-msgstr "支払い済み"
-
-#: templates/code-page.php:19
-msgid "yes"
-msgstr "はい"
-
-#: templates/code-page.php:19
-msgid "no"
-msgstr "いいえ"
-
-#: templates/code-page.php:20 templates/code-page.php:34
-#: templates/code-page.php:95
+#: templates/code-page.php:19 templates/code-page.php:40
+#: templates/code-page.php:101
 msgid "name"
 msgstr "名前"
 
-#: templates/code-page.php:21
+#: templates/code-page.php:26
 msgid "email"
 msgstr "email"
 
-#: templates/code-page.php:22
+#: templates/code-page.php:27
+msgid "payd?"
+msgstr "支払い済み"
+
+#: templates/code-page.php:27
+msgid "yes"
+msgstr "はい"
+
+#: templates/code-page.php:27
+msgid "no"
+msgstr "いいえ"
+
+#: templates/code-page.php:28
 msgid "pay complete time"
 msgstr "支払い完了日時"
 
-#: templates/code-page.php:37 templates/code-page.php:98
+#: templates/code-page.php:43 templates/code-page.php:104
 msgid "quantity"
 msgstr "数量"
 
-#: templates/code-page.php:39 templates/code-page.php:100
+#: templates/code-page.php:45 templates/code-page.php:106
 msgid "expire time"
 msgstr "有効期限"
 
-#: templates/code-page.php:54
+#: templates/code-page.php:60
 msgid "Use"
 msgstr "使用"
 
-#: templates/code-page.php:62
+#: templates/code-page.php:68
 msgid "use is unavailable"
 msgstr "すべて使用済みです"
 
-#: templates/code-page.php:67
+#: templates/code-page.php:73
 msgid "Logs"
 msgstr "履歴"
 
-#: templates/code-page.php:78
+#: templates/code-page.php:84
 msgid "use it"
 msgstr "使用する"
 
-#: templates/code-page.php:88
+#: templates/code-page.php:94
 msgid "Revert"
 msgstr "使用済みを取り消す"
 
-#: templates/code-page.php:121
+#: templates/code-page.php:127
 msgid "revert"
 msgstr "未使用にする"
 
-#: templates/code-page.php:122 templates/input-form.php:23
+#: templates/code-page.php:128 templates/input-form.php:23
 msgid "reset"
 msgstr "リセット"
 
@@ -294,6 +294,12 @@ msgstr "チケットIDを入力"
 #: templates/input-form.php:22
 msgid "check"
 msgstr "確認"
+
+#~ msgid "go site"
+#~ msgstr "トップページ"
+
+#~ msgid "Edit"
+#~ msgstr "編集"
 
 #~ msgid "Check ticket by ID"
 #~ msgstr "IDを入力してチケットを確認する"
