@@ -1,30 +1,38 @@
 <?php maetic_get_template_part( 'header' ); ?>
 
 <div class="container">
-	<div class="maetic_header">
-	<a href="<?php echo maetic_get_qr_url( '' ); ?>"><?php _e( 'Confirm by manually inputted ID', 'mae-ticket' ); ?></a>
+
+	<div class="ticketId-header">
+		<div class="ticketId-header_id">
+			<?php echo __( 'Ticket ID', 'mae-ticket' ); ?> : <?php echo maetic_get_separated_code( $code_var ); ?>
+		</div>
+		<a href="<?php echo maetic_get_qr_url( '' ); ?>" class="_button _button-default _button-sm _button-block"><?php _e( 'Confirm by manually inputted ID', 'mae-ticket' ); ?></a>
 	</div>
+
+
 	<div id="maetic_code_page">
 		<div class="info">
-			<span class="_code"><?php echo maetic_get_separated_code( $code_var ); ?></span>
-
 			<h2>
-			<?php echo __( 'Order ID', 'mae-ticket' ); ?>: <?php echo $order->ID; ?> 
+			<?php _e( 'Order ID', 'mae-ticket' ); ?>: <?php echo $order->ID; ?> 
 			<a href="<?php echo admin_url( 'post.php?post=' . $order->ID . '&action=edit' ); ?>" class="_button _button-default"><?php echo __( 'Order management', 'mae-ticket' ); ?></a>
 			</h2>
 
-			
-			<button id="revert_sw"><?php echo __( 'Revert Mode', 'mae-ticket' ); ?></button>
 			<ul>
-				<li><?php echo __( 'name', 'mae-ticket' ); ?> : 
+				<li><?php echo __( 'Name', 'mae-ticket' ); ?> : 
 				<?php if ( get_locale() != 'ja' ) : ?>
 					<?php echo $order->order->get_billing_first_name() . ' ' . $order->order->get_billing_last_name(); ?>
 				<?php else : ?>
 					<?php echo $order->order->get_billing_last_name() . ' ' . $order->order->get_billing_first_name(); ?>
 				<?php endif; ?>
 				</li>
-				<li><?php echo __( 'payd?', 'mae-ticket' ); ?> : <?php echo $order->order->is_paid() ? __( 'yes', 'mae-ticket' ) : __( 'no', 'mae-ticket' ); ?></li>
-				<li><?php echo __( 'pay complete time', 'mae-ticket' ); ?> : <?php echo $order->order->get_date_completed()->date( 'Y/m/d' ); ?></li>
+				<li><?php _e( 'Payd?', 'mae-ticket' ); ?> : 
+					<?php if ( $order->order->is_paid() ) {
+						echo $order->order->get_date_completed()->date( 'Y-m-d' );
+					} else {
+						_e( 'no', 'mae-ticket' );
+					}
+					?>
+				</li>
 			</ul>
 		</div>
 
@@ -75,7 +83,7 @@
 						<?php if ( $t->get_logs() ) { ?>
 						<ul>
 							<?php foreach ( $t->get_logs() as $log ) : ?>
-								<li><?php echo $log['date']->format( 'Y.m.d' ); ?> - <?php echo _e( $log['type'], 'mae-ticket' ); ?> - <?php echo $log['count']; ?></li>
+								<li><?php echo $log['date']->format( 'Y-m-d' ); ?> - <?php echo _e( $log['type'], 'mae-ticket' ); ?> - <?php echo $log['count']; ?></li>
 							<?php endforeach; ?>
 						</ul>
 						<?php } else { ?>
@@ -88,9 +96,12 @@
 			<?php endforeach; ?>
 
 				<div class="_submit_wrap">
-					<input type="submit" class="_submit" value="<?php _e( 'use it', 'mae-ticket' ); ?>" />
+					<input type="submit" class="_submit _button _button-primary _button-block" value="<?php _e( 'use it', 'mae-ticket' ); ?>" />
+					
 				</div>
+				
 			</form>
+			<button id="revert_sw" class="_button _button-default"><?php _e( 'Revert Mode', 'mae-ticket' ); ?></button>
 			</div>
 		</div>
 
@@ -98,7 +109,7 @@
 </div>
 
 <div id="overbox" class="hide">
-	<div class="_wrap" id="orerwrap">
+	<div class="_wrap revert" id="orerwrap">
 		<h3><?php _e( 'Revert', 'mae-ticket' ); ?></h3>
 		<form method="POST" action="<?php echo maetic_get_qr_url( "/$code_var/revert" ); ?>">
 			<input type="hidden" name="maetic_code" value="<?php echo $code_var; ?>" />

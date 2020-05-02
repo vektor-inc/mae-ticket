@@ -18,6 +18,7 @@
 	text-align: left;
 	font-size: 14px;
 	margin: 0;
+	background-color: #fcfcfc;
 	@media (min-width: $lg-min) {
 		font-size: 16px;
 	}
@@ -61,7 +62,7 @@
 		padding: 0.8em 0 0.7em;
 		border-top: 2px solid $key_color;
 		border-bottom: 1px solid #e9e9e9;
-		font-size: 1.75em;
+		font-size: 1.25rem;
 		&:before,
 		&:after {
 			content: none;
@@ -84,42 +85,41 @@
 	}
 	.container {
 		max-width: 1024px;
-		padding: 1em;
-		background: #fff;
+		padding: 1em 1em 3em;
 		position: relative;
 		@media (min-width: $xl-min) {
-			padding: 2.5em 2em;
+			padding: 2.5em 2em 3em;
 			margin: 3em auto;
 		}
 
-		.maetic_header a {
-			@include btn_default;
+		// .maetic_header a {
+		// 	@include btn_default;
 
-			display: inline-block;
-			cursor: pointer;
-			text-decoration: none;
-			@media (min-width: $xl-min) {
-				position: absolute;
-				top: 3em;
-				z-index: 1;
-			}
+		// 	display: inline-block;
+		// 	cursor: pointer;
+		// 	text-decoration: none;
+		// 	@media (min-width: $xl-min) {
+		// 		position: absolute;
+		// 		top: 3em;
+		// 		z-index: 1;
+		// 	}
 
-			&:hover {
-				@include btn_default_hover;
+		// 	&:hover {
+		// 		@include btn_default_hover;
 
-				a,
-				a:hover {
-					color: #fff;
-					text-decoration: none;
-				}
-			}
-		}
+		// 		a,
+		// 		a:hover {
+		// 			color: #fff;
+		// 			text-decoration: none;
+		// 		}
+		// 	}
+		// }
 	}
 
 	.info {
 		._code {
 			position: relative;
-			font-size: 26px;
+			font-size: 1.313em;
 			margin-top: 0.7em;
 			font-weight: bold;
 			display: block;
@@ -132,22 +132,22 @@
 				text-align: center;
 			}
 
-			&::after {
-				content: "";
-				display: block;
-				position: absolute;
-				top: 45px;
-				left: 50%;
-				width: 0;
-				height: 0;
-				transform: translateX(-50%);
-				border: 20px solid transparent;
-				border-top: 20px solid #ddd;
-				border-bottom-width: 0;
-				@media (min-width: $lg-min) {
-					top: 55px;
-				}
-			}
+			// &::after {
+			// 	content: "";
+			// 	display: block;
+			// 	position: absolute;
+			// 	top: 45px;
+			// 	left: 50%;
+			// 	width: 0;
+			// 	height: 0;
+			// 	transform: translateX(-50%);
+			// 	border: 20px solid transparent;
+			// 	border-top: 20px solid #ddd;
+			// 	border-bottom-width: 0;
+			// 	@media (min-width: $lg-min) {
+			// 		top: 55px;
+			// 	}
+			// }
 		}
 		a {
 			@include btn_default;
@@ -207,10 +207,10 @@
 		padding: 0;
 		padding: 0.8em 1em;
 	}
-	._submit_wrap {
-		width: 100%;
-		text-align: center;
-	}
+	// ._submit_wrap {
+	// 	width: 100%;
+	// 	text-align: center;
+	// }
 
 	._message {
 		max-width: 30em;
