@@ -28,6 +28,7 @@ $xl-min: 1200px;
 	color: $link_color;
 	border-radius: 5px;
 	padding: 0.5em 1em;
+	background-color: #fff;
 }
 @mixin btn_default_hover {
 	border: 1px solid $link_color;
@@ -53,9 +54,9 @@ $xl-min: 1200px;
 		display: block;
 		width: 100%;
 		padding: 0.8em 2.5em;
-		font-size: 1.2em;
+		font-size: 1rem;
 		letter-spacing: 3px;
-		background-color: $key_color;
+		// background-color: $key_color;
 		border-color: $key_color_dark;
 		font-weight: normal;
 		border-radius: 5px;
@@ -250,6 +251,7 @@ body.maetic {
 		clear: both;
 		font-weight: normal;
 		line-height: 1.4;
+		position: relative;
 	}
 	h2 {
 		padding: 0.8em 0 0.7em;
@@ -357,6 +359,11 @@ body.maetic {
 			&:hover {
 				@include btn_default_hover;
 			}
+		}
+		h2 ._button {
+			margin-left: 1em;
+			position: relative;
+			top: -3px;
 		}
 		ul {
 			list-style: none;

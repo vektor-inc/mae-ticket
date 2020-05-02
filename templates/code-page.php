@@ -2,15 +2,18 @@
 
 <div class="container">
 	<div class="maetic_header">
-	<a href="<?php echo maetic_get_qr_url( '' ); ?>">/qr</a>
+	<a href="<?php echo maetic_get_qr_url( '' ); ?>"><?php _e( 'Confirm by manually inputted ID', 'mae-ticket' );?></a>
 	</div>
 	<div id="maetic_code_page">
 		<div class="info">
 			<span class="_code"><?php echo maetic_get_separated_code( $code_var ); ?></span>
 
-			<h2><?php echo __( 'Order ID', 'mae-ticket' ); ?>: <?php echo $order->ID; ?></h2>
+			<h2>
+			<?php echo __( 'Order ID', 'mae-ticket' ); ?>: <?php echo $order->ID; ?> 
+			<a href="<?php echo admin_url( 'post.php?post=' . $order->ID . '&action=edit' ); ?>" class="_button _button-default"><?php echo __( 'Edit', 'mae-ticket' ); ?></a>
+			</h2>
 
-			<a href="<?php echo admin_url( 'post.php?post=' . $order->ID . '&action=edit' ); ?>"><?php echo __( 'Edit', 'mae-ticket' ); ?></a>
+			
 			<button id="revert_sw"><?php echo __( 'Revert Mode', 'mae-ticket' ); ?></button>
 			<ul>
 				<li><?php echo __( 'payd?', 'mae-ticket' ); ?> - <?php echo $order->order->is_paid() ? __( 'yes', 'mae-ticket' ) : __( 'no', 'mae-ticket' ); ?></li>

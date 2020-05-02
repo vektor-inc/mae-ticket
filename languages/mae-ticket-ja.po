@@ -4,32 +4,26 @@ msgid ""
 msgstr ""
 "Project-Id-Version: maeticket 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/html\n"
-"POT-Creation-Date: 2020-05-01 15:38+0900\n"
-"PO-Revision-Date: 2020-05-01 15:39+0900\n"
+"POT-Creation-Date: 2020-05-02 14:06+0900\n"
+"PO-Revision-Date: 2020-05-02 14:07+0900\n"
 "Last-Translator: \n"
-"Language-Team: \n"
+"Language-Team: mae ticket\n"
 "Language: ja_JP\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.3\n"
 "X-Domain: mae-ticket\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
 
-#. Plugin Name of the plugin
 #: class.maetic_admin.php:24 class.maetic_admin.php:25
 #: class.maetic_admin.php:53 class.maetic_admin.php:65 pages/admin_menu.php:1
 #: templates/header.php:7
 msgid "MaeTicket"
 msgstr "まえチケ"
-
-#. Plugin URI of the plugin
-msgid "https://github.com/vektor-inc/mae-ticket"
-msgstr "https://github.com/vektor-inc/mae-ticket"
-
-#. Author of the plugin
-msgid "Vektor, Inc."
-msgstr "Vektor, Inc."
 
 #: class.maetic_admin.php:40
 msgid "parmalink updated."
@@ -63,6 +57,103 @@ msgstr "使用"
 msgid "REVERT"
 msgstr "取り消し"
 
+#: node_modules/yargs-parser/index.js:301
+#, javascript-format
+msgid "Not enough arguments following: %s"
+msgstr ""
+
+#: node_modules/yargs-parser/index.js:449
+#, javascript-format
+msgid "Invalid JSON config file: %s"
+msgstr ""
+
+#: node_modules/yargs/lib/usage.js:169
+msgid "Commands:"
+msgstr ""
+
+#: node_modules/yargs/lib/usage.js:177 node_modules/yargs/lib/usage.js:407
+msgid "default:"
+msgstr ""
+
+#: node_modules/yargs/lib/usage.js:179
+msgid "aliases:"
+msgstr ""
+
+#: node_modules/yargs/lib/usage.js:241
+msgid "boolean"
+msgstr ""
+
+#: node_modules/yargs/lib/usage.js:242
+msgid "count"
+msgstr ""
+
+#: node_modules/yargs/lib/usage.js:243 node_modules/yargs/lib/usage.js:244
+msgid "string"
+msgstr ""
+
+#: node_modules/yargs/lib/usage.js:245
+msgid "array"
+msgstr ""
+
+#: node_modules/yargs/lib/usage.js:246
+msgid "number"
+msgstr ""
+
+#: node_modules/yargs/lib/usage.js:250
+msgid "required"
+msgstr ""
+
+#: node_modules/yargs/lib/usage.js:251
+msgid "choices:"
+msgstr ""
+
+#: node_modules/yargs/lib/usage.js:270
+msgid "Examples:"
+msgstr ""
+
+#: node_modules/yargs/lib/usage.js:385
+msgid "generated-value"
+msgstr ""
+
+#: node_modules/yargs/lib/validation.js:26
+#: node_modules/yargs/lib/validation.js:49
+#, javascript-format
+msgid "Not enough non-option arguments: got %s, need at least %s"
+msgstr ""
+
+#: node_modules/yargs/lib/validation.js:37
+#, javascript-format
+msgid "Too many non-option arguments: got %s, maximum of %s"
+msgstr ""
+
+#: node_modules/yargs/lib/validation.js:185
+msgid "Invalid values:"
+msgstr ""
+
+#: node_modules/yargs/lib/validation.js:188
+#, javascript-format
+msgid "Argument: %s, Given: %s, Choices: %s"
+msgstr ""
+
+#: node_modules/yargs/lib/validation.js:218
+#, javascript-format
+msgid "Argument check failed: %s"
+msgstr ""
+
+#: node_modules/yargs/lib/validation.js:283
+msgid "Implications failed:"
+msgstr ""
+
+#: node_modules/yargs/lib/validation.js:313
+#, javascript-format
+msgid "Arguments %s and %s are mutually exclusive"
+msgstr ""
+
+#: node_modules/yargs/lib/validation.js:332
+#, javascript-format
+msgid "Did you mean %s?"
+msgstr ""
+
 #: pages/admin_menu.php:6 pages/dashboard.php:1
 msgid "Go Input Code Page."
 msgstr "チケットID入力画面へ"
@@ -83,6 +174,30 @@ msgstr "チケット画面へ移動"
 msgid "tickets"
 msgstr "枚"
 
+#: plugin-update-checker/Puc/v4p9/Plugin/Ui.php:54
+msgid "View details"
+msgstr ""
+
+#: plugin-update-checker/Puc/v4p9/Plugin/Ui.php:77
+#, php-format
+msgid "More information about %s"
+msgstr ""
+
+#: plugin-update-checker/Puc/v4p9/Plugin/Ui.php:128
+msgid "Check for updates"
+msgstr ""
+
+#: plugin-update-checker/Puc/v4p9/Plugin/Ui.php:223
+#, php-format
+msgid "Unknown update checker status \"%s\""
+msgstr ""
+
+#: plugin-update-checker/Puc/v4p9/Vcs/PluginUpdateChecker.php:98
+#, fuzzy
+#| msgid "use is unavailable"
+msgid "There is no changelog available."
+msgstr "すべて使用済みです"
+
 #: templates/404.php:6
 msgid "oops... that url is not found... "
 msgstr "お探しのURLが存在しないようです"
@@ -90,6 +205,10 @@ msgstr "お探しのURLが存在しないようです"
 #: templates/404.php:10
 msgid "go site"
 msgstr "トップページ"
+
+#: templates/code-page.php:5
+msgid "Confirm by manually inputted ID"
+msgstr "IDを手入力して確認"
 
 #: templates/code-page.php:11
 msgid "Order ID"
@@ -116,7 +235,7 @@ msgid "no"
 msgstr "いいえ"
 
 #: templates/code-page.php:17 templates/code-page.php:31
-#: templates/code-page.php:90
+#: templates/code-page.php:92
 msgid "name"
 msgstr "名前"
 
@@ -128,39 +247,39 @@ msgstr "email"
 msgid "pay complete time"
 msgstr "支払い完了日時"
 
-#: templates/code-page.php:34 templates/code-page.php:93
+#: templates/code-page.php:34 templates/code-page.php:95
 msgid "quantity"
 msgstr "数量"
 
-#: templates/code-page.php:36 templates/code-page.php:95
+#: templates/code-page.php:36 templates/code-page.php:97
 msgid "expire time"
 msgstr "有効期限"
 
-#: templates/code-page.php:49
+#: templates/code-page.php:51
 msgid "Use"
 msgstr "使用"
 
-#: templates/code-page.php:57
+#: templates/code-page.php:59
 msgid "use is unavailable"
 msgstr "すべて使用済みです"
 
-#: templates/code-page.php:62
+#: templates/code-page.php:64
 msgid "Logs"
 msgstr "履歴"
 
-#: templates/code-page.php:73
+#: templates/code-page.php:75
 msgid "use it"
 msgstr "使用する"
 
-#: templates/code-page.php:83
+#: templates/code-page.php:85
 msgid "Revert"
 msgstr "使用済みを取り消す"
 
-#: templates/code-page.php:114
+#: templates/code-page.php:118
 msgid "revert"
 msgstr "未使用にする"
 
-#: templates/code-page.php:115 templates/input-form.php:23
+#: templates/code-page.php:119 templates/input-form.php:23
 msgid "reset"
 msgstr "リセット"
 
@@ -171,6 +290,15 @@ msgstr "チケットIDを入力"
 #: templates/input-form.php:22
 msgid "check"
 msgstr "確認"
+
+#~ msgid "Check ticket by ID"
+#~ msgstr "IDを入力してチケットを確認する"
+
+#~ msgid "https://github.com/vektor-inc/mae-ticket"
+#~ msgstr "https://github.com/vektor-inc/mae-ticket"
+
+#~ msgid "Vektor, Inc."
+#~ msgstr "Vektor, Inc."
 
 #~ msgid "maeticket"
 #~ msgstr "前チケ"
