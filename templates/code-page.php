@@ -2,7 +2,7 @@
 
 <div class="container">
 	<div class="maetic_header">
-	<a href="<?php echo maetic_get_qr_url( '' ); ?>"><?php _e( 'Confirm by manually inputted ID', 'mae-ticket' );?></a>
+	<a href="<?php echo maetic_get_qr_url( '' ); ?>"><?php _e( 'Confirm by manually inputted ID', 'mae-ticket' ); ?></a>
 	</div>
 	<div id="maetic_code_page">
 		<div class="info">
@@ -18,10 +18,10 @@
 			<ul>
 				<li><?php echo __( 'name', 'mae-ticket' ); ?> : 
 				<?php if ( get_locale() != 'ja' ) : ?>
-				<?php echo $order->order->get_billing_first_name() .' '. $order->order->get_billing_last_name(); ?>
+					<?php echo $order->order->get_billing_first_name() . ' ' . $order->order->get_billing_last_name(); ?>
 				<?php else : ?>
-					<?php echo $order->order->get_billing_last_name() .' '. $order->order->get_billing_first_name() ; ?>
-				<?php endif ;?>
+					<?php echo $order->order->get_billing_last_name() . ' ' . $order->order->get_billing_first_name(); ?>
+				<?php endif; ?>
 				</li>
 				<li><?php echo __( 'payd?', 'mae-ticket' ); ?> : <?php echo $order->order->is_paid() ? __( 'yes', 'mae-ticket' ) : __( 'no', 'mae-ticket' ); ?></li>
 				<li><?php echo __( 'pay complete time', 'mae-ticket' ); ?> : <?php echo $order->order->get_date_completed()->date( 'Y/m/d' ); ?></li>
