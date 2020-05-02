@@ -442,14 +442,17 @@ body.maetic {
             }
         }
         ._number {
-            max-width: 4.5em;
+            width: 50%;
             font-size: 1.2em;
             border: 1px solid #ccc;
             padding: 5px 5px 5px 10px;
             font-size: 14px;
             border-radius: .25rem;
+            @media (min-width: $md-min){
+                width: 6em;
+            }
             @media (min-width: $lg-min){
-                padding: 8px 5px 8px 10px;
+                padding: 8px 5px 8px 10px;                
             }
         }
     }
