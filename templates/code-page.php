@@ -23,7 +23,6 @@
 					<?php echo $order->order->get_billing_last_name() .' '. $order->order->get_billing_first_name() ; ?>
 				<?php endif ;?>
 				</li>
-				<li><?php echo __( 'email', 'mae-ticket' ); ?> : <?php echo $order->order->get_billing_email(); ?></li>
 				<li><?php echo __( 'payd?', 'mae-ticket' ); ?> : <?php echo $order->order->is_paid() ? __( 'yes', 'mae-ticket' ) : __( 'no', 'mae-ticket' ); ?></li>
 				<li><?php echo __( 'pay complete time', 'mae-ticket' ); ?> : <?php echo $order->order->get_date_completed()->date( 'Y/m/d' ); ?></li>
 			</ul>
