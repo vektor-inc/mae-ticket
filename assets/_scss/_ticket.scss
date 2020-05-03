@@ -17,6 +17,18 @@
 		padding: 0.5em 1em;
 		color: #fff;
 		font-size: 1.125rem;
+		position: relative;
+		&:before {
+			content: "TICKET";
+			font-family: Arial, Helvetica, sans-serif;
+			letter-spacing: 1em;
+			position: absolute;
+			color: #fff;
+			font-size: 0.875rem;
+			opacity: 0.4;
+			right: 0;
+			bottom: -3px;
+		}
 	}
 	&-status-used {
 		background-color: #f6f6f6;

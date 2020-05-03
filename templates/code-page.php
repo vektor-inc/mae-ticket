@@ -48,6 +48,7 @@
 			<?php foreach ( $order->tickets() as $t ) : ?>
 				<?php
 				$used = false;
+				$used_class = "";
 				if ( $t->get_rest_quantity() == 0 ) {
 					$used = true;
 					$used_class = " ticket-status-used";
@@ -131,7 +132,15 @@
 			<?php wp_nonce_field( 'maetic_qr_revert_' . $code_var ); ?>
 			<?php foreach ( $order->tickets() as $t ) : ?>
 
-				<div class="ticket">
+				<?php
+				$used = false;
+				$used_class = "";
+				if ( $t->get_rest_quantity() == 0 ) {
+					$used = true;
+					$used_class = " ticket-status-used";
+				}
+				?>
+				<div class="ticket<?php echo $used_class; ?>">
 				<h3 class="ticket_title"><?php echo $t->get_title(); ?></h3>
 				<div class="ticket_body">
 					<table class="table">
