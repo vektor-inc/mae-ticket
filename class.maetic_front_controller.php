@@ -135,13 +135,14 @@ class MaeTick_Front_Controller {
 				$code = $_POST['maetic_code'];
 				check_admin_referer( 'maetic_qr_' . $action_var . '_' . $code );
 
+				$url = maetic_get_qr_url( '/' . $code );
 				if ( $action_var == 'use' ) {
 					$order->use_tickets( $_POST['count'] );
-					wp_safe_redirect( '/qr/' . $code );
+					wp_safe_redirect( $url );
 				}
 				if ( $action_var == 'revert' ) {
 					$order->revert_tickets( $_POST['count'] );
-					wp_safe_redirect( '/qr/' . $code );
+					wp_safe_redirect( $url );
 				}
 			}
 
