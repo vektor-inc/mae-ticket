@@ -17,7 +17,7 @@
 		<div class="info">
 			<h2>
 			<?php _e( 'Order ID', 'mae-ticket' ); ?>: <?php echo $order->ID; ?> 
-			<a href="<?php echo admin_url( 'post.php?post=' . $order->ID . '&action=edit' ); ?>" class="_button _button-default"><?php echo __( 'Order management', 'mae-ticket' ); ?></a>
+			<a href="<?php echo admin_url( 'post.php?post=' . $order->ID . '&action=edit' ); ?>" class="_button _button-default _button-sm"><?php echo __( 'Order management', 'mae-ticket' ); ?></a>
 			</h2>
 
 			<ul>
@@ -46,7 +46,14 @@
 				<?php wp_nonce_field( 'maetic_qr_use_' . $code_var ); ?>
 
 			<?php foreach ( $order->tickets() as $t ) : ?>
-				<div class="ticket">
+				<?php
+				$used = false;
+				if ( $t->get_rest_quantity() == 0 ) {
+					$used = true;
+					$used_class = " ticket-status-used";
+				}
+				?>
+				<div class="ticket<?php echo $used_class; ?>">
 				<h3 class="ticket_title"><?php echo $t->get_title(); ?></h3>
 				<div class="ticket_body">
 					<table class="table">
@@ -72,7 +79,7 @@
 					<div class="_use">
 						<h4><?php echo __( 'Use ticket', 'mae-ticket' ); ?></h3>
 
-						<?php if ( $t->get_rest_quantity() > 0 ) : ?>
+						<?php if ( ! $used ) : ?>
 							<p><?php _e( 'Input number of use ticket in this form and press use it button.', 'mae-ticket' ); ?></p>
 							<div class="__input _number_input numberManage">
 								<input type="number" class="_number numberManage_number" min="0" max="<?php echo $t->get_rest_quantity(); ?>" name="count[<?php echo $t->ID; ?>]" value="0" />

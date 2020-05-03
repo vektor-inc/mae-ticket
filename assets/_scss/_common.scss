@@ -88,32 +88,9 @@
 		padding: 1em 1em 3em;
 		position: relative;
 		@media (min-width: $xl-min) {
-			padding: 2.5em 2em 3em;
-			margin: 3em auto;
+			margin-left: auto;
+			margin-right: auto;
 		}
-
-		// .maetic_header a {
-		// 	@include btn_default;
-
-		// 	display: inline-block;
-		// 	cursor: pointer;
-		// 	text-decoration: none;
-		// 	@media (min-width: $xl-min) {
-		// 		position: absolute;
-		// 		top: 3em;
-		// 		z-index: 1;
-		// 	}
-
-		// 	&:hover {
-		// 		@include btn_default_hover;
-
-		// 		a,
-		// 		a:hover {
-		// 			color: #fff;
-		// 			text-decoration: none;
-		// 		}
-		// 	}
-		// }
 	}
 
 	.info {
@@ -131,23 +108,6 @@
 				font-size: 2.2em;
 				text-align: center;
 			}
-
-			// &::after {
-			// 	content: "";
-			// 	display: block;
-			// 	position: absolute;
-			// 	top: 45px;
-			// 	left: 50%;
-			// 	width: 0;
-			// 	height: 0;
-			// 	transform: translateX(-50%);
-			// 	border: 20px solid transparent;
-			// 	border-top: 20px solid #ddd;
-			// 	border-bottom-width: 0;
-			// 	@media (min-width: $lg-min) {
-			// 		top: 55px;
-			// 	}
-			// }
 		}
 		a {
 			@include btn_default;
@@ -207,10 +167,6 @@
 		padding: 0;
 		padding: 0.8em 1em;
 	}
-	// ._submit_wrap {
-	// 	width: 100%;
-	// 	text-align: center;
-	// }
 
 	._message {
 		max-width: 30em;
