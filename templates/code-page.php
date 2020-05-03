@@ -6,7 +6,10 @@
 		<div class="ticketId-header_id">
 			<?php echo maetic_get_separated_code( $code_var ); ?>
 		</div>
-		<a href="<?php echo maetic_get_qr_url( '' ); ?>" class="_button _button-default _button-sm _button-wide"><?php _e( 'Input ticket ID', 'mae-ticket' ); ?></a>
+		<div class="_button-group">
+		<a href="<?php echo maetic_get_qr_url( '' ); ?>" class="_button _button-default _button-sm _button-block"><?php _e( 'Input ticket ID', 'mae-ticket' ); ?></a>
+		<button id="revert_sw" class="_button _button-default _button-sm _button-block"><?php _e( 'Cancel of use', 'mae-ticket' ); ?></button>
+		</div>
 	</div>
 
 
@@ -68,16 +71,17 @@
 
 					<div class="_use">
 						<h4><?php echo __( 'Use ticket', 'mae-ticket' ); ?></h3>
+
 						<?php if ( $t->get_rest_quantity() > 0 ) : ?>
+							<p><?php _e( 'Input number of use ticket in this form and press use it button.', 'mae-ticket' ); ?></p>
 							<div class="__input _number_input numberManage">
 								<input type="number" class="_number numberManage_number" min="0" max="<?php echo $t->get_rest_quantity(); ?>" name="count[<?php echo $t->ID; ?>]" value="0" />
 								<button class="_control numberManage_control _button _button-default" role="plus">+</button>
 								<button class="_control numberManage_control _button _button-default" role="minas">-</button>
-								<input type="submit" class="_button _button-primary numberManage_submit" value="<?php _e( 'use it', 'mae-ticket' ); ?>" />
+								<input type="submit" class="_button _button-primary numberManage_submit" value="<?php _e( 'Use it', 'mae-ticket' ); ?>" />
 							</div>
-
 						<?php else : ?>
-							<p class="alert alert-danger"><?php _e( 'This ticket is already all used.', 'mae-ticket' ); ?></p>
+							<p class="alert alert-danger"><?php _e( 'This ticket is already used.', 'mae-ticket' ); ?></p>
 						<?php endif; ?>
 					</div><!-- [ /._use ] -->
 
@@ -98,56 +102,78 @@
 				</div><!-- [ /.ticket ] -->
 			<?php endforeach; ?>
 
-				<div class="_submit_wrap">
-
-					
-				</div>
+			<input type="submit" class="_button _button-primary _button-wide" value="<?php _e( 'Use it', 'mae-ticket' ); ?>" />
 				
 			</form>
-			<button id="revert_sw" class="_button _button-default"><?php _e( 'Revert Mode', 'mae-ticket' ); ?></button>
 			</div>
 		</div>
 
 	</div>
 </div>
 
+<?php 
+/*
+取消処理
+----------------------------------*/
+?>
 <div id="overbox" class="hide">
 	<div class="_wrap revert" id="orerwrap">
-		<h3><?php _e( 'Revert', 'mae-ticket' ); ?></h3>
+	<input type="reset" id="revert_cancel" class="revert_cancel _reset  _button _button-default _button-block" value="<?php _e( 'Cancel', 'mae-ticket' ); ?>" />
 		<form method="POST" action="<?php echo maetic_get_qr_url( "/$code_var/revert" ); ?>">
 			<input type="hidden" name="maetic_code" value="<?php echo $code_var; ?>" />
 			<?php wp_nonce_field( 'maetic_qr_revert_' . $code_var ); ?>
 			<?php foreach ( $order->tickets() as $t ) : ?>
-			<div class="ticket">
-				<dl>
-					<dt><?php echo __( 'name', 'mae-ticket' ); ?></dt>
-					<dd><?php echo $t->get_title(); ?></dd>
 
-					<dt><?php echo __( 'quantity', 'mae-ticket' ); ?></dt>
-					<dd><?php echo $t->get_rest_quantity(); ?>/<?php echo $t->get_quantity(); ?></dd>
-					<dt><?php echo __( 'expire time', 'mae-ticket' ); ?></dt>
-					<dd>
-					<?php
-						$ex = $t->get_expire_date();
-					if ( $ex ) {
-						echo $ex->format( 'Y-m-d' );
-					} else {
-						echo '-';
-					}
-					?>
-					</dd>
+				<div class="ticket">
+				<h3 class="ticket_title"><?php echo $t->get_title(); ?></h3>
+				<div class="ticket_body">
+					<table class="table">
+						<tr>
+						<th><?php echo __( 'Quantity', 'mae-ticket' ); ?></th>
+						<td><?php echo $t->get_rest_quantity(); ?>/<?php echo $t->get_quantity(); ?></td>
+						</tr>
+						<tr>
+						<th><?php echo __( 'Expire time', 'mae-ticket' ); ?></th>
+						<td>
+						<?php
+							$ex = $t->get_expire_date();
+						if ( $ex ) {
+							echo $ex->format( 'Y-m-d' );
+						} else {
+							echo '-';
+						}
+						?>
+						</td>
+					</tr>
+					</table>
 
-				</dl>
+					<div class="_use">
+						<h4><?php echo __( 'Revert used ticket', 'mae-ticket' ); ?></h3>
 
-				<div class="__input _number_input">
-					<input type="number" class="_number" name="count[<?php echo $t->ID; ?>]" min="0" max="<?php echo $t->get_used_quantity(); ?>" value="0" />
-					<button class="_control" role="plus">+</button>
-					<button class="_control" role="minas">-</button>
-				</div>
-			</div>
+						<?php if ( $t->get_used_quantity() > 0 ) { ?>
+							<p><?php _e( 'Input number of revert ticket in this form.', 'mae-ticket' ); ?></p>
+							<div class="__input _number_input numberManage">
+								<input type="number" class="_number numberManage_number" min="0" max="<?php echo $t->get_used_quantity(); ?>" name="count[<?php echo $t->ID; ?>]" value="0" />
+								<button class="_control numberManage_control _button _button-default" role="plus">+</button>
+								<button class="_control numberManage_control _button _button-default" role="minas">-</button>
+								<input type="submit" class="_button _button-primary numberManage_submit" value="<?php _e( 'Revert', 'mae-ticket' ); ?>" />
+							</div>
+						<?php } else { ?>
+							<p class="alert alert-info"><?php _e( 'This ticket has not been used yet.', 'mae-ticket' ); ?></p>
+						<?php } ?>
+
+
+					</div><!-- [ /._use ] -->
+
+				</div><!-- [ /.ticket_body ] -->
+				</div><!-- [ /.ticket ] -->
+
 			<?php endforeach; ?>
-			<input type="submit" class="_submit  _button-primary" value="<?php _e( 'revert', 'mae-ticket' ); ?>" />
-			<input type="reset" id="revert_cancel" class="revert_cancel _reset" value="<?php _e( 'reset', 'mae-ticket' ); ?>" />
+
+			<div class="_button-group">
+			<input type="reset" id="revert_cancel" class="revert_cancel _reset  _button _button-default _button-block" value="<?php _e( 'Cancel', 'mae-ticket' ); ?>" />
+			<input type="submit" class="_submit _button _button-primary _button-block" value="<?php _e( 'Revert', 'mae-ticket' ); ?>" />
+			</div>
 		</form>
 	</div>
 </div>

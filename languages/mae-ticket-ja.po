@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: maeticket 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/html\n"
-"POT-Creation-Date: 2020-05-03 02:31+0900\n"
-"PO-Revision-Date: 2020-05-03 02:31+0900\n"
+"POT-Creation-Date: 2020-05-03 17:25+0900\n"
+"PO-Revision-Date: 2020-05-03 17:25+0900\n"
 "Last-Translator: \n"
 "Language-Team: mae ticket\n"
 "Language: ja_JP\n"
@@ -21,7 +21,7 @@ msgstr ""
 
 #: class.maetic_admin.php:24 class.maetic_admin.php:25
 #: class.maetic_admin.php:53 class.maetic_admin.php:65 pages/admin_menu.php:1
-#: templates/header.php:7 templates/header.php:13
+#: templates/header.php:7
 msgid "MaeTicket"
 msgstr "まえチケ"
 
@@ -210,85 +210,89 @@ msgstr "ホームページへ移動"
 msgid "Login"
 msgstr "ログイン"
 
-#: templates/code-page.php:5
-msgid "Confirm by manually inputted ID"
-msgstr "IDを手入力して確認"
-
 #: templates/code-page.php:10
-msgid "Order ID"
-msgstr "注文番号"
-
-#: templates/code-page.php:11
-msgid "Order management"
-msgstr "注文管理"
-
-#: templates/code-page.php:15
-msgid "Ticket ID"
-msgstr "チケットID"
-
-#: templates/code-page.php:16
 msgid "Input ticket ID"
 msgstr "チケットIDを入力"
 
-#: templates/code-page.php:17
+#: templates/code-page.php:11
+msgid "Cancel of use"
+msgstr "使用取消処理"
+
+#: templates/code-page.php:19
+msgid "Order ID"
+msgstr "注文番号"
+
+#: templates/code-page.php:20
+msgid "Order management"
+msgstr "注文管理"
+
+#: templates/code-page.php:24
 msgid "Name"
 msgstr "名前"
 
-#: templates/code-page.php:24
+#: templates/code-page.php:31
 msgid "Payd?"
 msgstr "支払い済み"
 
-#: templates/code-page.php:28
+#: templates/code-page.php:36
 msgid "no"
 msgstr "いいえ"
 
-#: templates/code-page.php:46 templates/code-page.php:119
+#: templates/code-page.php:54
 msgid "quantity"
 msgstr "数量"
 
-#: templates/code-page.php:50 templates/code-page.php:121
+#: templates/code-page.php:58
 msgid "expire time"
 msgstr "有効期限"
 
-#: templates/code-page.php:65
+#: templates/code-page.php:73
 msgid "Use ticket"
 msgstr "チケットの使用"
 
-#: templates/code-page.php:73
-msgid "This ticket is already all used."
-msgstr "このチケットは全て使用済みです。"
+#: templates/code-page.php:76
+msgid "Input number of use ticket in this form and press use it button."
+msgstr "利用するチケット枚数を入力して「使用する」ボタンを押してください。"
 
-#: templates/code-page.php:78
+#: templates/code-page.php:81 templates/code-page.php:105
+msgid "Use it"
+msgstr "使用する"
+
+#: templates/code-page.php:84
+msgid "This ticket is already used."
+msgstr "このチケットは使用済みです。"
+
+#: templates/code-page.php:89
 msgid "Usage history"
 msgstr "使用履歴"
 
-#: templates/code-page.php:86
+#: templates/code-page.php:97 templates/code-page.php:162
 msgid "This ticket has not been used yet."
 msgstr "このチケットはまだ使用されていません。"
 
-#: templates/code-page.php:95
-msgid "use it"
-msgstr "使用する"
+#: templates/code-page.php:121 templates/code-page.php:174
+msgid "Cancel"
+msgstr "キャンセル"
 
-#: templates/code-page.php:100
-msgid "Revert Mode"
-msgstr "取り消しモード"
+#: templates/code-page.php:132
+msgid "Quantity"
+msgstr "数量"
 
-#: templates/code-page.php:109
+#: templates/code-page.php:136
+msgid "Expire time"
+msgstr "有効期限"
+
+#: templates/code-page.php:151
+msgid "Revert used ticket"
+msgstr "使用済みチケットの取り消し"
+
+#: templates/code-page.php:154
+msgid "Input number of revert ticket in this form."
+msgstr "使用済みを取り消すチケット枚数を入力してください。"
+
+#: templates/code-page.php:159 templates/code-page.php:175
 msgid "Revert"
-msgstr "使用済みを取り消す"
-
-#: templates/code-page.php:116
-msgid "name"
-msgstr "名前"
-
-#: templates/code-page.php:142
-msgid "revert"
-msgstr "未使用にする"
-
-#: templates/code-page.php:143 templates/input-form.php:23
-msgid "reset"
-msgstr "リセット"
+msgstr "使用取消"
 
 #: templates/input-form.php:7
 msgid "Input ticket code"
@@ -297,6 +301,25 @@ msgstr "チケットIDを入力"
 #: templates/input-form.php:22
 msgid "check"
 msgstr "確認"
+
+#: templates/input-form.php:23
+msgid "reset"
+msgstr "リセット"
+
+#~ msgid "revert"
+#~ msgstr "未使用にする"
+
+#~ msgid "name"
+#~ msgstr "名前"
+
+#~ msgid "Revert Mode"
+#~ msgstr "取り消しモード"
+
+#~ msgid "Confirm by manually inputted ID"
+#~ msgstr "IDを手入力して確認"
+
+#~ msgid "Ticket ID"
+#~ msgstr "チケットID"
 
 #~ msgid "yes"
 #~ msgstr "はい"
