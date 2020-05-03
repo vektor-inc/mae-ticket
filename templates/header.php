@@ -10,5 +10,5 @@
 
 <body <?php body_class(); ?>>
 <header id="maetic_header" class="header">
-<h1 class="header_title" ><?php _e( 'MaeTicket', 'mae-ticket' ); ?></h1>
+<h1 class="header_title" ><?php echo bloginfo( 'name' ); ?></h1>
 </header>

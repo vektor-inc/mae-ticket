@@ -4,9 +4,9 @@
 
 	<div class="ticketId-header">
 		<div class="ticketId-header_id">
-			<?php echo __( 'Ticket ID', 'mae-ticket' ); ?> : <?php echo maetic_get_separated_code( $code_var ); ?>
+			<?php echo maetic_get_separated_code( $code_var ); ?>
 		</div>
-		<a href="<?php echo maetic_get_qr_url( '' ); ?>" class="_button _button-default _button-sm _button-block"><?php _e( 'Confirm by manually inputted ID', 'mae-ticket' ); ?></a>
+		<a href="<?php echo maetic_get_qr_url( '' ); ?>" class="_button _button-default _button-sm _button-wide"><?php _e( 'Input ticket ID', 'mae-ticket' ); ?></a>
 	</div>
 
 
@@ -26,7 +26,8 @@
 				<?php endif; ?>
 				</li>
 				<li><?php _e( 'Payd?', 'mae-ticket' ); ?> : 
-					<?php if ( $order->order->is_paid() ) {
+					<?php
+					if ( $order->order->is_paid() ) {
 						echo $order->order->get_date_completed()->date( 'Y-m-d' );
 					} else {
 						_e( 'no', 'mae-ticket' );
@@ -68,11 +69,13 @@
 					<div class="_use">
 						<h4><?php echo __( 'Use ticket', 'mae-ticket' ); ?></h3>
 						<?php if ( $t->get_rest_quantity() > 0 ) : ?>
-							<div class="__input _number_input">
-								<input type="number" class="_number" min="0" max="<?php echo $t->get_rest_quantity(); ?>" name="count[<?php echo $t->ID; ?>]" value="0" />
-								<button class="_control" role="plus">+</button>
-								<button class="_control" role="minas">-</button>
+							<div class="__input _number_input numberManage">
+								<input type="number" class="_number numberManage_number" min="0" max="<?php echo $t->get_rest_quantity(); ?>" name="count[<?php echo $t->ID; ?>]" value="0" />
+								<button class="_control numberManage_control _button _button-default" role="plus">+</button>
+								<button class="_control numberManage_control _button _button-default" role="minas">-</button>
+								<input type="submit" class="_button _button-primary numberManage_submit" value="<?php _e( 'use it', 'mae-ticket' ); ?>" />
 							</div>
+
 						<?php else : ?>
 							<p class="alert alert-danger"><?php _e( 'This ticket is already all used.', 'mae-ticket' ); ?></p>
 						<?php endif; ?>
@@ -87,7 +90,7 @@
 							<?php endforeach; ?>
 						</ul>
 						<?php } else { ?>
-							<p><?php _e('This ticket has not been used yet.','mae-ticket' );?></p>
+							<p><?php _e( 'This ticket has not been used yet.', 'mae-ticket' ); ?></p>
 						<?php } ?>
 					</div><!-- [ /._log ] -->
 
@@ -96,7 +99,7 @@
 			<?php endforeach; ?>
 
 				<div class="_submit_wrap">
-					<input type="submit" class="_submit _button _button-primary _button-block" value="<?php _e( 'use it', 'mae-ticket' ); ?>" />
+
 					
 				</div>
 				

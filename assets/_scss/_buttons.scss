@@ -5,20 +5,22 @@
 	._button {
 		color: #fff;
 		margin: 0 auto;
-		display: block;
-		width: 100%;
 		padding: 0.8em 2.5em;
 		font-size: 1rem;
-		letter-spacing: 3px;
+		letter-spacing: 1px;
 		// background-color: $key_color;
-		border-color: $key_color_dark;
+		border: 1px solid $key_color_dark;
 		font-weight: normal;
-		border-radius: 5px;
+		border-radius: 0.4rem;
 		text-align: center;
 		text-decoration: none;
+		box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+		box-shadow: inset 0px 0px 0px 1px rgba(255, 255, 255, 0.8);
+		// border-bottom-width: 2px;
 		&:focus,
 		&:hover {
 			text-decoration: none;
+			cursor: pointer;
 		}
 		@media (min-width: $md-min) {
 			width: auto;
@@ -41,6 +43,11 @@
 			display: block;
 			margin-bottom: 0.5em;
 		}
+		&-wide {
+			display: block;
+			margin-bottom: 0.5em;
+			width: 80%;
+		}
 		&-xs {
 			font-size: 0.75rem;
 			padding: 0.1rem;
@@ -52,18 +59,18 @@
 			letter-spacing: 1px;
 		}
 	}
-	input[type="submit"],
-	input[type="reset"] {
-		@include btn_primary;
-	}
-	input[type="submit"] {
-		background-color: $link_color;
-		border-color: $link_color;
-		color: #fff;
-	}
-	input[type="reset"] {
-		border-color: $link_color;
-		color: $link_color;
-		background: #fff;
-	}
+	// input[type="submit"],
+	// input[type="reset"] {
+	// 	@include btn_primary;
+	// }
+	// input[type="submit"] {
+	// 	background-color: $link_color;
+	// 	border-color: $link_color;
+	// 	color: #fff;
+	// }
+	// input[type="reset"] {
+	// 	border-color: $link_color;
+	// 	color: $link_color;
+	// 	background: #fff;
+	// }
 }
