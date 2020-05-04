@@ -13,6 +13,18 @@ class MaeTick_Front_Controller {
 		add_filter( 'query_vars', array( __CLASS__, 'query_vars' ), 10, 1 );
 		add_action( 'init', array( __CLASS__, 'add_routes' ) );
 		add_action( 'template_redirect', array( __CLASS__, 'front_controller' ), 10, 1 );
+		add_filter( 'woocommerce_display_item_meta', array( __CLASS__, 'item_meta_hidden' ) );
+	}
+
+	/**
+	 * Delete item meta "maetic_used_ticket_quantity" in mail
+	 *
+	 * @param [type] $html
+	 * @return void
+	 */
+	public static function item_meta_hidden( $html ){
+		$html = '';
+		return $html;
 	}
 
 	public static function set_rewrite_rules() {
