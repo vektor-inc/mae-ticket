@@ -6,7 +6,7 @@
  * Author:          Vektor, Inc.
  * Text Domain:     mae-ticket
  * Domain Path:     /languages
- * Version:         0.0.1
+ * Version:         0.0.2
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
