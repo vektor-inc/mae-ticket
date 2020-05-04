@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: maeticket 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/html\n"
-"POT-Creation-Date: 2020-05-03 17:25+0900\n"
-"PO-Revision-Date: 2020-05-03 17:25+0900\n"
+"POT-Creation-Date: 2020-05-04 10:59+0900\n"
+"PO-Revision-Date: 2020-05-04 11:00+0900\n"
 "Last-Translator: \n"
 "Language-Team: mae ticket\n"
 "Language: ja_JP\n"
@@ -21,7 +21,7 @@ msgstr ""
 
 #: class.maetic_admin.php:24 class.maetic_admin.php:25
 #: class.maetic_admin.php:53 class.maetic_admin.php:65 pages/admin_menu.php:1
-#: templates/header.php:7
+#: templates/footer.php:3 templates/header.php:7
 msgid "MaeTicket"
 msgstr "まえチケ"
 
@@ -48,6 +48,10 @@ msgstr "まえチケ"
 #: class.maetic_admin.php:127
 msgid "this isn't ticket order."
 msgstr "この注文にはチケットがありません"
+
+#: class.maetic_core.php:44
+msgid "Please present this QR code when you come, or tell us the number below."
+msgstr "お越しの際にこちらのQRコードを提示するか下記の番号をお伝えください。"
 
 #: model/class.maetic_woocommerce_order_itemmeta.php:95
 msgid "USE"
@@ -206,9 +210,9 @@ msgstr "お探しのURLが存在しないようです"
 msgid "Go to home page"
 msgstr "ホームページへ移動"
 
-#: templates/404.php:14
-msgid "Login"
-msgstr "ログイン"
+#: templates/404.php:19
+msgid "Click here for store staff"
+msgstr "店舗スタッフの方はこちら"
 
 #: templates/code-page.php:10
 msgid "Input ticket ID"
@@ -238,59 +242,59 @@ msgstr "支払い済み"
 msgid "no"
 msgstr "いいえ"
 
-#: templates/code-page.php:54
+#: templates/code-page.php:62
 msgid "quantity"
 msgstr "数量"
 
-#: templates/code-page.php:58
+#: templates/code-page.php:66
 msgid "expire time"
 msgstr "有効期限"
 
-#: templates/code-page.php:73
+#: templates/code-page.php:81
 msgid "Use ticket"
 msgstr "チケットの使用"
 
-#: templates/code-page.php:76
+#: templates/code-page.php:84
 msgid "Input number of use ticket in this form and press use it button."
 msgstr "利用するチケット枚数を入力して「使用する」ボタンを押してください。"
 
-#: templates/code-page.php:81 templates/code-page.php:105
+#: templates/code-page.php:89 templates/code-page.php:113
 msgid "Use it"
 msgstr "使用する"
 
-#: templates/code-page.php:84
+#: templates/code-page.php:92
 msgid "This ticket is already used."
 msgstr "このチケットは使用済みです。"
 
-#: templates/code-page.php:89
+#: templates/code-page.php:97
 msgid "Usage history"
 msgstr "使用履歴"
 
-#: templates/code-page.php:97 templates/code-page.php:162
+#: templates/code-page.php:105 templates/code-page.php:178
 msgid "This ticket has not been used yet."
 msgstr "このチケットはまだ使用されていません。"
 
-#: templates/code-page.php:121 templates/code-page.php:174
+#: templates/code-page.php:129 templates/code-page.php:190
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: templates/code-page.php:132
+#: templates/code-page.php:148
 msgid "Quantity"
 msgstr "数量"
 
-#: templates/code-page.php:136
+#: templates/code-page.php:152
 msgid "Expire time"
 msgstr "有効期限"
 
-#: templates/code-page.php:151
+#: templates/code-page.php:167
 msgid "Revert used ticket"
 msgstr "使用済みチケットの取り消し"
 
-#: templates/code-page.php:154
+#: templates/code-page.php:170
 msgid "Input number of revert ticket in this form."
 msgstr "使用済みを取り消すチケット枚数を入力してください。"
 
-#: templates/code-page.php:159 templates/code-page.php:175
+#: templates/code-page.php:175 templates/code-page.php:191
 msgid "Revert"
 msgstr "使用取消"
 
@@ -299,12 +303,15 @@ msgid "Input ticket code"
 msgstr "チケットIDを入力"
 
 #: templates/input-form.php:22
+msgid "reset"
+msgstr "リセット"
+
+#: templates/input-form.php:23
 msgid "check"
 msgstr "確認"
 
-#: templates/input-form.php:23
-msgid "reset"
-msgstr "リセット"
+#~ msgid "Login"
+#~ msgstr "ログイン"
 
 #~ msgid "revert"
 #~ msgstr "未使用にする"

@@ -6,14 +6,20 @@
 			<?php _e( 'oops... that url is not found... ', 'mae-ticket' ); ?>
 			<svg class="face" width="1em" height="1em" aria-hidden="true" focusable="false" data-prefix="far" data-icon="grimace" class="svg-inline--fa fa-grimace fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 448c-110.3 0-200-89.7-200-200S137.7 56 248 56s200 89.7 200 200-89.7 200-200 200zm-80-216c17.7 0 32-14.3 32-32s-14.3-32-32-32-32 14.3-32 32 14.3 32 32 32zm160 0c17.7 0 32-14.3 32-32s-14.3-32-32-32-32 14.3-32 32 14.3 32 32 32zm16 16H152c-26.5 0-48 21.5-48 48v32c0 26.5 21.5 48 48 48h192c26.5 0 48-21.5 48-48v-32c0-26.5-21.5-48-48-48zm-168 96h-24c-8.8 0-16-7.2-16-16v-8h40v24zm0-40h-40v-8c0-8.8 7.2-16 16-16h24v24zm64 40h-48v-24h48v24zm0-40h-48v-24h48v24zm64 40h-48v-24h48v24zm0-40h-48v-24h48v24zm56 24c0 8.8-7.2 16-16 16h-24v-24h40v8zm0-24h-40v-24h24c8.8 0 16 7.2 16 16v8z"></path></svg>
 		</p>
-		<p style="text-align: center;">
-			<a href="<?php echo get_site_url(); ?>" class="_button _button-primary"><?php _e( 'Go to home page', 'mae-ticket' ); ?></a>
+		<p style="text-align: center; margin-bottom:1em;">
+			<a href="<?php echo get_site_url(); ?>" class="_button _button-primary _button-wide"><?php _e( 'Go to home page', 'mae-ticket' ); ?></a>
 		</p>
-		<?php if ( ! is_user_logged_in() ) : ?>
-			<a href="<?php echo wp_login_url( $_SERVER['REQUEST_URI'] ); ?>" class="_button _button-default">
-				<?php _e( 'Login', 'mae-ticket' ); ?>
+		<?php // if ( ! is_user_logged_in() ) : 
+		/*
+		未ログインユーザーに見せないと必ず 店舗スタッフがチケット処理する時に「チケットが表示されない！」とか言ってトラブルになる
+		*/
+			?>
+			<p style="text-align: center;">
+			<a href="<?php echo wp_login_url( $_SERVER['REQUEST_URI'] ); ?>" class="_button _button-default _button-wide">
+				<?php _e( 'Click here for store staff', 'mae-ticket' ); ?>
 			</a>
-		<?php endif; ?>
+			</p>
+		<?php // endif; ?>
 	</div>
 </div>
 
