@@ -90,7 +90,7 @@ class Maetic_Admin {
 					'description'       => __( 'Enter the number of days the virtual ticket is valid for.', 'mae-ticket' ),
 					'type'              => 'number',
 					'custom_attributes' => array(
-						'min'     => '1',
+						'min'     => 0,
 						'step'    => '1',
 						'default' => 60
 					),
