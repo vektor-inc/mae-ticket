@@ -62,6 +62,15 @@ class MaeTick_Front_Controller {
 		if ( '' != get_404_template() ) {
 			include get_404_template();
 		} else {
+			add_filter(
+				'body_class',
+				function( $classes ) {
+					$classes[] = 'maetic';
+					return $classes;
+				},
+				10,
+				1
+			);
 			include maetic_get_template( '404' );
 		}
 
