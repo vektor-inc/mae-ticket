@@ -41,7 +41,7 @@ class Maetic_Core {
 </style>
 EOL;
 
-			echo "<p>チケットの詳細です。お越しの際にこちらのQRコードを提示するか、<br/>下記の番号をお伝えください。</p>";
+			echo "<p>".__( 'Please present this QR code when you come, or tell us the number below.', 'mae-ticket' )."</p>";
 			$code = maetic_get_separated_code( $ticket_order->get_ticket_code() );
 			echo '<div id="c_w"><span id="code">'. $code .'</span></div>';
 
