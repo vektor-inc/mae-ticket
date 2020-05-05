@@ -64,4 +64,35 @@ gulp.task('watch', ()=>{
   )
 })
 
-gulp.task('default', gulp.series('sass', 'scripts'))
+gulp.task('default', gulp.series('watch'))
+
+// copy dist ////////////////////////////////////////////////
+
+gulp.task('dist', function() {
+	return gulp.src(
+			[
+				'./*.php',
+				'./**/*.php',
+				'./**/*.txt',
+				'./**/*.css',
+				'./**/*.scss',
+				'./**/*.bat',
+				'./**/*.rb',
+				'./**/*.eot',
+				'./**/*.svg',
+				'./**/*.ttf',
+				'./**/*.woff',
+				'./images/**',
+				'./inc/**',
+				'./js/**',
+				'./languages/**',
+				'./library/**',
+				"!./tests/**",
+				"!./dist/**",
+				"!./node_modules/**/*.*"
+			], {
+				base: './'
+			}
+		)
+		.pipe(gulp.dest('dist/mae-ticket')); // distディレクトリに出力
+});
