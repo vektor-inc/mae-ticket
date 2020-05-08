@@ -4,7 +4,8 @@ const cssmin = require('gulp-clean-css')
 const plumber = require('gulp-plumber')
 const babel = require('gulp-babel')
 const jsmin = require('gulp-uglify')
-const rename = require('gulp-rename');
+const rename = require('gulp-rename')
+const ps = require('child_process').exec
 
 let error_stop = true
 
@@ -65,34 +66,10 @@ gulp.task('watch', ()=>{
 })
 
 gulp.task('default', gulp.series('watch'))
-
-// copy dist ////////////////////////////////////////////////
-
-gulp.task('dist', function() {
-	return gulp.src(
-			[
-				'./*.php',
-				'./**/*.php',
-				'./**/*.txt',
-				'./**/*.css',
-				'./**/*.scss',
-				'./**/*.bat',
-				'./**/*.rb',
-				'./**/*.eot',
-				'./**/*.svg',
-				'./**/*.ttf',
-				'./**/*.woff',
-				'./images/**',
-				'./inc/**',
-				'./js/**',
-				'./languages/**',
-				'./library/**',
-				"!./tests/**",
-				"!./dist/**",
-				"!./node_modules/**/*.*"
-			], {
-				base: './'
-			}
-		)
-		.pipe(gulp.dest('dist/mae-ticket')); // distディレクトリに出力
-});
+gulp.task('build', gulp.series('sass', 'scripts'))
+gulp.task('dist', (done)=>{
+  ps('bin/dist', (err, stdout, stderr)=>{
+    console.log(stdout)
+    done()
+  })
+})

@@ -8,23 +8,19 @@ CURRENT_VERSION=$(cat mae-ticket.php|grep -i version|head -n 1|sed -E 's/^[ *]*V
 
 dist_dir=${PLUGIN_DIR}/dist
 
-ZIPBALL=${dist_dir}/${PLUGIN_NAME}-${CURRENT_VERSION}.zip
-TARBALL=${dist_dir}/${PLUGIN_NAME}-${CURRENT_VERSION}.tar.gz
+ZIPBALL=${dist_dir}/${PLUGIN_NAME}-v${CURRENT_VERSION}.zip
 
-tmp=$(mktemp -d)
+src_dir=${dist_dir}/${PLUGIN_NAME}
 
-[[ -e ${dist_dir} ]] || mkdir ${dist_dir}
+[[ -e ${src_dir} ]] && rm -rf ${src_dir}
+mkdir -p ${src_dir}
 
-rsync -av ${PLUGIN_DIR}/ ${tmp}/${PLUGIN_NAME}/ --exclude-from='.svnignore'
+rsync -av ${PLUGIN_DIR}/ ${src_dir}/ --exclude-from='.svnignore'
 
 [[ -e "${ZIPBALL}" ]] && rm -r ${ZIPBALL}
-[[ -e "${TARBALL}" ]] && rm -r ${TARBALL}
 
-cd ${tmp}
+cd ${dist_dir}
 
 zip -r ${ZIPBALL} ${PLUGIN_NAME}/
-tar -czvf ${TARBALL} ${PLUGIN_NAME}/
-
-rm -r ${tmp}
 
 exit 0
