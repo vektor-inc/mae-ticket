@@ -8,7 +8,7 @@ CURRENT_VERSION=$(cat mae-ticket.php|grep -i version|head -n 1|sed -E 's/^[ *]*V
 
 dist_dir=${PLUGIN_DIR}/dist
 
-ZIPBALL=${dist_dir}/${PLUGIN_NAME}-v${CURRENT_VERSION}.zip
+ZIPBALL=${dist_dir}/${PLUGIN_NAME}_v${CURRENT_VERSION}.zip
 
 src_dir=${dist_dir}/${PLUGIN_NAME}
 
