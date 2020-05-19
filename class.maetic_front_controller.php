@@ -144,8 +144,8 @@ class MaeTick_Front_Controller {
 			}
 
 			if ( $action_var ) {
-				var_dump( $_POST );
-				if ( $_SERVER['REQUEST_METHOD'] != 'POST' ) {
+
+        if ( $_SERVER["REQUEST_METHOD"] != 'POST' ) {
 					self::http404();
 				}
 
@@ -174,12 +174,6 @@ class MaeTick_Front_Controller {
 	}
 }
 
-
-add_action(
-	'wp_mail_failed',
-	function( $err ) {
-		var_dump( $err );
-	},
-	10,
-	1
-);
+add_action('wp_mail_failed', function($err){
+	var_dump($err);
+}, 10, 1);
