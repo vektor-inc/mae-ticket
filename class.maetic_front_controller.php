@@ -114,7 +114,6 @@ class MaeTick_Front_Controller {
 			}
 
 			if ( $action_var ) {
-				var_dump($_POST);
 				if ( $_SERVER["REQUEST_METHOD"] != 'POST' ) {
 					self::http404();
 				}
