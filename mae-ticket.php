@@ -6,14 +6,14 @@
  * Author:          Vektor, Inc.
  * Text Domain:     mae-ticket
  * Domain Path:     /languages
- * Version:         0.0.4
+ * Version:         0.0.5
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	die();
 }
 
-const MAETIC_VERSION = '0.0.4';
+const MAETIC_VERSION = '0.0.5';
 
 
 // include files
