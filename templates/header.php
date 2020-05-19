@@ -9,8 +9,6 @@
 </head>
 
 <body <?php body_class(); ?>>
-<header id="maetic_header">
-    <?php if( ! is_user_logged_in() ): ?>
-        <a href="<?php echo wp_login_url( $_SERVER['REQUEST_URI'] ); ?>"><button>login</button></a>
-    <?php endif; ?>
+<header id="maetic_header" class="header">
+<h1 class="header_title" ><?php echo bloginfo( 'name' ); ?></h1>
 </header>

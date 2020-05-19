@@ -1,0 +1,90 @@
+.maetic {
+	/*-------------------------------------------*/
+	/*  button
+	/*-------------------------------------------*/
+	// button {
+	// 	background-color: $link_color;
+	// 	border: 1px solid $link_color;
+	// }
+	button,
+	._button {
+		margin: 0 auto;
+		padding: 0.8em 1em;
+		font-size: 1rem;
+		letter-spacing: 1px;
+		// background-color: $key_color;
+		border: 1px solid $key_color_dark;
+		font-weight: normal;
+		border-radius: 0.25rem;
+		text-align: center;
+		text-decoration: none;
+		box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+		box-shadow: inset 0px 0px 0px 1px rgba(255, 255, 255, 0.8);
+		// border-bottom-width: 2px;
+		&:focus,
+		&:hover {
+			text-decoration: none;
+			cursor: pointer;
+		}
+		@media (min-width: $md-min) {
+			width: auto;
+			font-size: 1em;
+		}
+		&-primary {
+			@include btn_primary;
+			&:focus,
+			&:hover {
+				@include btn_primary_hover;
+			}
+		}
+		&-default {
+			@include btn_default;
+			&:hover {
+				@include btn_default_hover;
+			}
+		}
+		&-block {
+			display: block;
+			width: 100%;
+			margin-bottom: 0.5em;
+		}
+		&-wide {
+			display: block;
+			margin-bottom: 0.5em;
+			width: 80%;
+		}
+		&-xs {
+			font-size: 0.75rem;
+			padding: 0.1rem;
+			letter-spacing: 0;
+		}
+		&-sm {
+			font-size: 0.875rem;
+			padding: 0.2rem;
+			letter-spacing: 1px;
+		}
+		&-group {
+			display: flex;
+			._button {
+				width: 100%;
+			}
+			._button:not(:last-child) {
+				margin-right: 0.5rem;
+			}
+		}
+	}
+	// input[type="submit"],
+	// input[type="reset"] {
+	// 	@include btn_primary;
+	// }
+	// input[type="submit"] {
+	// 	background-color: $link_color;
+	// 	border-color: $link_color;
+	// 	color: #fff;
+	// }
+	// input[type="reset"] {
+	// 	border-color: $link_color;
+	// 	color: $link_color;
+	// 	background: #fff;
+	// }
+}

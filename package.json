@@ -5,7 +5,7 @@
   "main": "gulpfile.js",
   "scripts": {
     "gulp": "gulp",
-    "build": "gulp default",
+    "build": "gulp build",
     "watch": "gulp watch",
     "dist": "bin/dist",
     "makepot": "docker-compose run wp wp --allow-root i18n make-pot . languages/mae-ticket.pot --domain='mae-ticket'"
@@ -22,6 +22,7 @@
   "devDependencies": {
     "@babel/core": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
+    "child_process": "^1.0.2",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
     "gulp-clean-css": "^4.3.0",

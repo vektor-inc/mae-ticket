@@ -4,6 +4,7 @@ node_modules/
 _js/
 _scss/
 dist/
+bin/
 .wp-env.json
 .gitignore
 .svnignore

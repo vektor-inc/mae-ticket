@@ -18,9 +18,9 @@
 
         <?php do_action('maet_input_after'); ?>
 
-        <div class="_input_wrp">
-            <input type="submit" class="_submit _button" value="<?php _e( 'check', 'mae-ticket' ); ?>" />
-            <input type="reset" class="_clear _button" value="<?php _e( 'reset', 'mae-ticket' ); ?>" />
+        <div class="_button-group">
+		<input type="reset" class="_clear _button _button-default" value="<?php _e( 'reset', 'mae-ticket' ); ?>" />
+        <input type="submit" class="_submit _button _button-primary" value="<?php _e( 'check', 'mae-ticket' ); ?>" />
         </div>
     </form>
 </div>

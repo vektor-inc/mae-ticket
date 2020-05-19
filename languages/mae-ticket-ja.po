@@ -4,32 +4,26 @@ msgid ""
 msgstr ""
 "Project-Id-Version: maeticket 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/html\n"
-"POT-Creation-Date: 2020-05-01 15:38+0900\n"
-"PO-Revision-Date: 2020-05-01 15:39+0900\n"
+"POT-Creation-Date: 2020-05-04 10:59+0900\n"
+"PO-Revision-Date: 2020-05-04 11:00+0900\n"
 "Last-Translator: \n"
-"Language-Team: \n"
+"Language-Team: mae ticket\n"
 "Language: ja_JP\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.3\n"
 "X-Domain: mae-ticket\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
 
-#. Plugin Name of the plugin
 #: class.maetic_admin.php:24 class.maetic_admin.php:25
 #: class.maetic_admin.php:53 class.maetic_admin.php:65 pages/admin_menu.php:1
-#: templates/header.php:7
+#: templates/footer.php:3 templates/header.php:7
 msgid "MaeTicket"
 msgstr "まえチケ"
-
-#. Plugin URI of the plugin
-msgid "https://github.com/vektor-inc/mae-ticket"
-msgstr "https://github.com/vektor-inc/mae-ticket"
-
-#. Author of the plugin
-msgid "Vektor, Inc."
-msgstr "Vektor, Inc."
 
 #: class.maetic_admin.php:40
 msgid "parmalink updated."
@@ -55,6 +49,10 @@ msgstr "まえチケ"
 msgid "this isn't ticket order."
 msgstr "この注文にはチケットがありません"
 
+#: class.maetic_core.php:44
+msgid "Please present this QR code when you come, or tell us the number below."
+msgstr "お越しの際にこちらのQRコードを提示するか下記の番号をお伝えください。"
+
 #: model/class.maetic_woocommerce_order_itemmeta.php:95
 msgid "USE"
 msgstr "使用"
@@ -62,6 +60,103 @@ msgstr "使用"
 #: model/class.maetic_woocommerce_order_itemmeta.php:96
 msgid "REVERT"
 msgstr "取り消し"
+
+#: node_modules/yargs-parser/index.js:301
+#, javascript-format
+msgid "Not enough arguments following: %s"
+msgstr ""
+
+#: node_modules/yargs-parser/index.js:449
+#, javascript-format
+msgid "Invalid JSON config file: %s"
+msgstr ""
+
+#: node_modules/yargs/lib/usage.js:169
+msgid "Commands:"
+msgstr ""
+
+#: node_modules/yargs/lib/usage.js:177 node_modules/yargs/lib/usage.js:407
+msgid "default:"
+msgstr ""
+
+#: node_modules/yargs/lib/usage.js:179
+msgid "aliases:"
+msgstr ""
+
+#: node_modules/yargs/lib/usage.js:241
+msgid "boolean"
+msgstr ""
+
+#: node_modules/yargs/lib/usage.js:242
+msgid "count"
+msgstr ""
+
+#: node_modules/yargs/lib/usage.js:243 node_modules/yargs/lib/usage.js:244
+msgid "string"
+msgstr ""
+
+#: node_modules/yargs/lib/usage.js:245
+msgid "array"
+msgstr ""
+
+#: node_modules/yargs/lib/usage.js:246
+msgid "number"
+msgstr ""
+
+#: node_modules/yargs/lib/usage.js:250
+msgid "required"
+msgstr ""
+
+#: node_modules/yargs/lib/usage.js:251
+msgid "choices:"
+msgstr ""
+
+#: node_modules/yargs/lib/usage.js:270
+msgid "Examples:"
+msgstr ""
+
+#: node_modules/yargs/lib/usage.js:385
+msgid "generated-value"
+msgstr ""
+
+#: node_modules/yargs/lib/validation.js:26
+#: node_modules/yargs/lib/validation.js:49
+#, javascript-format
+msgid "Not enough non-option arguments: got %s, need at least %s"
+msgstr ""
+
+#: node_modules/yargs/lib/validation.js:37
+#, javascript-format
+msgid "Too many non-option arguments: got %s, maximum of %s"
+msgstr ""
+
+#: node_modules/yargs/lib/validation.js:185
+msgid "Invalid values:"
+msgstr ""
+
+#: node_modules/yargs/lib/validation.js:188
+#, javascript-format
+msgid "Argument: %s, Given: %s, Choices: %s"
+msgstr ""
+
+#: node_modules/yargs/lib/validation.js:218
+#, javascript-format
+msgid "Argument check failed: %s"
+msgstr ""
+
+#: node_modules/yargs/lib/validation.js:283
+msgid "Implications failed:"
+msgstr ""
+
+#: node_modules/yargs/lib/validation.js:313
+#, javascript-format
+msgid "Arguments %s and %s are mutually exclusive"
+msgstr ""
+
+#: node_modules/yargs/lib/validation.js:332
+#, javascript-format
+msgid "Did you mean %s?"
+msgstr ""
 
 #: pages/admin_menu.php:6 pages/dashboard.php:1
 msgid "Go Input Code Page."
@@ -83,97 +178,188 @@ msgstr "チケット画面へ移動"
 msgid "tickets"
 msgstr "枚"
 
+#: plugin-update-checker/Puc/v4p9/Plugin/Ui.php:54
+msgid "View details"
+msgstr ""
+
+#: plugin-update-checker/Puc/v4p9/Plugin/Ui.php:77
+#, php-format
+msgid "More information about %s"
+msgstr ""
+
+#: plugin-update-checker/Puc/v4p9/Plugin/Ui.php:128
+msgid "Check for updates"
+msgstr ""
+
+#: plugin-update-checker/Puc/v4p9/Plugin/Ui.php:223
+#, php-format
+msgid "Unknown update checker status \"%s\""
+msgstr ""
+
+#: plugin-update-checker/Puc/v4p9/Vcs/PluginUpdateChecker.php:98
+#, fuzzy
+#| msgid "use is unavailable"
+msgid "There is no changelog available."
+msgstr "すべて使用済みです"
+
 #: templates/404.php:6
 msgid "oops... that url is not found... "
 msgstr "お探しのURLが存在しないようです"
 
 #: templates/404.php:10
-msgid "go site"
-msgstr "トップページ"
+msgid "Go to home page"
+msgstr "ホームページへ移動"
+
+#: templates/404.php:19
+msgid "Click here for store staff"
+msgstr "店舗スタッフの方はこちら"
+
+#: templates/code-page.php:10
+msgid "Input ticket ID"
+msgstr "チケットIDを入力"
 
 #: templates/code-page.php:11
+msgid "Cancel of use"
+msgstr "使用取消処理"
+
+#: templates/code-page.php:19
 msgid "Order ID"
 msgstr "注文番号"
 
-#: templates/code-page.php:13
-msgid "Edit"
-msgstr "編集"
+#: templates/code-page.php:20
+msgid "Order management"
+msgstr "注文管理"
 
-#: templates/code-page.php:14
-msgid "Revert Mode"
-msgstr "取り消しモード"
+#: templates/code-page.php:24
+msgid "Name"
+msgstr "名前"
 
-#: templates/code-page.php:16
-msgid "payd?"
+#: templates/code-page.php:31
+msgid "Payd?"
 msgstr "支払い済み"
 
-#: templates/code-page.php:16
-msgid "yes"
-msgstr "はい"
-
-#: templates/code-page.php:16
+#: templates/code-page.php:36
 msgid "no"
 msgstr "いいえ"
 
-#: templates/code-page.php:17 templates/code-page.php:31
-#: templates/code-page.php:90
-msgid "name"
-msgstr "名前"
-
-#: templates/code-page.php:18
-msgid "email"
-msgstr "email"
-
-#: templates/code-page.php:19
-msgid "pay complete time"
-msgstr "支払い完了日時"
-
-#: templates/code-page.php:34 templates/code-page.php:93
+#: templates/code-page.php:62
 msgid "quantity"
 msgstr "数量"
 
-#: templates/code-page.php:36 templates/code-page.php:95
+#: templates/code-page.php:66
 msgid "expire time"
 msgstr "有効期限"
 
-#: templates/code-page.php:49
-msgid "Use"
-msgstr "使用"
+#: templates/code-page.php:81
+msgid "Use ticket"
+msgstr "チケットの使用"
 
-#: templates/code-page.php:57
-msgid "use is unavailable"
-msgstr "すべて使用済みです"
+#: templates/code-page.php:84
+msgid "Input number of use ticket in this form and press use it button."
+msgstr "利用するチケット枚数を入力して「使用する」ボタンを押してください。"
 
-#: templates/code-page.php:62
-msgid "Logs"
-msgstr "履歴"
-
-#: templates/code-page.php:73
-msgid "use it"
+#: templates/code-page.php:89 templates/code-page.php:113
+msgid "Use it"
 msgstr "使用する"
 
-#: templates/code-page.php:83
+#: templates/code-page.php:92
+msgid "This ticket is already used."
+msgstr "このチケットは使用済みです。"
+
+#: templates/code-page.php:97
+msgid "Usage history"
+msgstr "使用履歴"
+
+#: templates/code-page.php:105 templates/code-page.php:178
+msgid "This ticket has not been used yet."
+msgstr "このチケットはまだ使用されていません。"
+
+#: templates/code-page.php:129 templates/code-page.php:190
+msgid "Cancel"
+msgstr "キャンセル"
+
+#: templates/code-page.php:148
+msgid "Quantity"
+msgstr "数量"
+
+#: templates/code-page.php:152
+msgid "Expire time"
+msgstr "有効期限"
+
+#: templates/code-page.php:167
+msgid "Revert used ticket"
+msgstr "使用済みチケットの取り消し"
+
+#: templates/code-page.php:170
+msgid "Input number of revert ticket in this form."
+msgstr "使用済みを取り消すチケット枚数を入力してください。"
+
+#: templates/code-page.php:175 templates/code-page.php:191
 msgid "Revert"
-msgstr "使用済みを取り消す"
-
-#: templates/code-page.php:114
-msgid "revert"
-msgstr "未使用にする"
-
-#: templates/code-page.php:115 templates/input-form.php:23
-msgid "reset"
-msgstr "リセット"
+msgstr "使用取消"
 
 #: templates/input-form.php:7
 msgid "Input ticket code"
 msgstr "チケットIDを入力"
 
 #: templates/input-form.php:22
+msgid "reset"
+msgstr "リセット"
+
+#: templates/input-form.php:23
 msgid "check"
 msgstr "確認"
 
-#~ msgid "maeticket"
-#~ msgstr "前チケ"
+#~ msgid "Login"
+#~ msgstr "ログイン"
+
+#~ msgid "revert"
+#~ msgstr "未使用にする"
+
+#~ msgid "name"
+#~ msgstr "名前"
+
+#~ msgid "Revert Mode"
+#~ msgstr "取り消しモード"
+
+#~ msgid "Confirm by manually inputted ID"
+#~ msgstr "IDを手入力して確認"
+
+#~ msgid "Ticket ID"
+#~ msgstr "チケットID"
+
+#~ msgid "yes"
+#~ msgstr "はい"
+
+#~ msgid "pay complete time"
+#~ msgstr "支払い完了日時"
+
+#~ msgid "email"
+#~ msgstr "email"
+
+#~ msgid "Logs"
+#~ msgstr "履歴"
+
+#~ msgid "use is unavailable"
+#~ msgstr "すべて使用済みです"
+
+#~ msgid "Use"
+#~ msgstr "使用"
+
+#~ msgid "go site"
+#~ msgstr "トップページ"
+
+#~ msgid "Edit"
+#~ msgstr "編集"
+
+#~ msgid "Check ticket by ID"
+#~ msgstr "IDを入力してチケットを確認する"
+
+#~ msgid "https://github.com/vektor-inc/mae-ticket"
+#~ msgstr "https://github.com/vektor-inc/mae-ticket"
+
+#~ msgid "Vektor, Inc."
+#~ msgstr "Vektor, Inc."
 
 #~ msgid "Maetic"
 #~ msgstr "Maetic"
