@@ -1,7 +1,7 @@
 === MaeTicket ===
 Contributors: vektor-inc,kurudrive,naoki0h,nc30
 Tags: comments, spam
-Requires at least: 5.0
+Requires at least: 5.3
 Tested up to: 5.4.1
 Stable tag: 0.0.5
 License: GPLv2 or later
